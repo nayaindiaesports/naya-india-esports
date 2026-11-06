@@ -172,9 +172,16 @@ import {
  updateProfile
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 import {
- getFirestore,collection,doc,setDoc,getDocs,query,orderBy
+ getFirestore,
+ collection,
+ doc,
+ setDoc,
+ getDocs,
+ query,
+ orderBy,
+ where
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
+  
 /* APNA FIREBASE CONFIG YAHAN PASTE KARO */
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -284,14 +291,83 @@ async function loadTournaments(){
    prize.textContent="🏆 Prize Pool: "+(t.prize||"Not announced");
    const date=document.createElement("p");
    date.textContent="📅 "+(t.date||"Date TBA");
-   const badge=document.createElement("span");
+      const badge=document.createElement("span");
    badge.className="status "+(status==="live"?"live":"upcoming");
    badge.textContent=status.toUpperCase();
+
    card.append(title,game,prize,date,badge);
+
+   // Tournament card website par show karo
    $("tournamentList").append(card);
+
+   // Matches section mein card ki copy
    if(status==="live"||status==="upcoming"){
     $("matchList").append(card.cloneNode(true));
    }
+
+   // REGISTER NOW BUTTON
+   if(status==="upcoming"){
+    const registerBtn=document.createElement("button");
+    registerBtn.className="btn";
+    registerBtn.textContent="Register Now";
+    registerBtn.style.marginTop="12px";
+
+    registerBtn.onclick=async()=>{
+      const user=auth.currentUser;
+
+      if(!user){
+        openAuth();
+        notify("Registration ke liye pehle login karo.");
+        return;
+      }
+
+      try{
+        registerBtn.disabled=true;
+
+        // Check whether user is already registered
+        const existing=await getDocs(
+          query(
+            collection(db,"registrations"),
+            where("userId","==",user.uid),
+            where("tournamentId","==",t.id)
+          )
+        );
+
+        if(!existing.empty){
+          registerBtn.textContent="Registered";
+          notify("Tum pehle se registered ho!");
+          return;
+        }
+
+        // Save registration in Firestore
+        const registrationId=t.id+"_"+user.uid;
+
+        await setDoc(doc(db,"registrations",registrationId),{
+          tournamentId:t.id,
+          tournamentName:t.name||"Untitled Tournament",
+          userId:user.uid,
+          playerName:user.displayName||"Player",
+          email:user.email||"",
+          status:"pending",
+          createdAt:new Date()
+        });
+
+        registerBtn.textContent="Registered";
+        notify("Tournament registration successful!");
+
+      }catch(error){
+        console.error("Registration Error:",error);
+        notify("Registration failed: "+error.message);
+      }finally{
+        if(registerBtn.textContent!=="Registered"){
+          registerBtn.disabled=false;
+        }
+      }
+    };
+
+    card.append(registerBtn);
+   }
+    
   });
   if(!$("matchList").children.length){
    $("matchList").innerHTML='<div class="empty">No live or upcoming matches.</div>';
