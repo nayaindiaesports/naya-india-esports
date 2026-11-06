@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080a12">
+<title>NAYA INDIA ESPORTS | Admin</title>
+
+<style>
+:root{--bg:#080a12;--panel:#111522;--panel2:#1b2233;--red:#ff304f;--text:#f5f6fa;--muted:#9da6bb;--border:#293044}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;background:var(--red);color:white;border:0;padding:11px 14px;border-radius:7px;font-weight:bold}
+button:disabled{opacity:.5}
+.secondary{background:var(--panel2);border:1px solid var(--border)}
+.danger{background:#9e2639}
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login-box{width:100%;max-width:390px;background:var(--panel);padding:25px;border:1px solid var(--border);border-radius:15px}
+.login-box h2{text-align:center}
+input,select,textarea{width:100%;padding:12px;margin:7px 0;background:#090d17;color:white;border:1px solid var(--border);border-radius:7px}
+.layout{display:none;min-height:100vh}
+.sidebar{width:230px;position:fixed;inset:0 auto 0 0;background:#0d111c;border-right:1px solid var(--border);padding:20px 14px}
+.brand{font-weight:900;font-size:17px;margin:10px 0 30px}
+.brand span{color:var(--red)}
+.sidebar nav{display:grid;gap:7px}
+.sidebar nav button{text-align:left;background:transparent;color:#c4cada}
+.sidebar nav button.active,.sidebar nav button:hover{background:#252b3b;color:white}
+.main{margin-left:230px;padding:24px;max-width:1500px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:25px}
+.small{font-size:12px;color:var(--muted);line-height:1.6}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px}
+.stat,.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:17px}
+.stat p{font-size:13px;color:var(--muted)}
+.stat h2{font-size:28px;margin:5px 0}
+.panel{margin-top:18px;overflow:auto}
+.section{display:none}
+.section.active{display:block}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+table{width:100%;border-collapse:collapse;min-width:750px}
+th,td{text-align:left;padding:12px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle}
+th{color:var(--muted)}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
+.actions button{padding:7px 9px;font-size:11px}
+.badge{padding:5px 8px;border-radius:5px;background:#283044;font-size:11px}
+.approved{background:#164c36;color:#8ff2b8}
+.pending{background:#59451c;color:#ffe08a}
+.rejected{background:#501e2a;color:#ff94a5}
+#loginMessage,#formMessage{color:#ff8093;font-size:13px}
+@media(max-width:700px){
+ .sidebar{position:relative;width:100%;padding:12px;height:auto}
+ .brand{margin:5px 0 12px}
+ .sidebar nav{display:flex;overflow:auto}
+ .sidebar nav button{white-space:nowrap}
+ .main{margin:0;padding:14px}
+ .top{align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+ <div class="login-box">
+  <h2>🛡️ ADMIN LOGIN</h2>
+  <p class="small" style="text-align:center">NAYA INDIA ESPORTS Management</p>
+  <input id="email" type="email" placeholder="Admin Email">
+  <input id="password" type="password" placeholder="Password">
+  <button id="loginBtn" style="width:100%">Login to Dashboard</button>
+  <p id="loginMessage"></p>
+ </div>
+</div>
+
+<div class="layout" id="dashboard">
+ <aside class="sidebar">
+  <div class="brand">NAYA INDIA <span>ESPORTS</span></div>
+  <nav>
+   <button class="active" data-page="overview">📊 Dashboard</button>
+   <button data-page="tournaments">🏆 Tournaments</button>
+   <button data-page="payments">💳 Payments</button>
+  </nav>
+  <button id="logoutBtn" class="secondary" style="width:100%;margin-top:25px">↪ Logout</button>
+ </aside>
+
+ <main class="main">
+  <div class="top">
+   <div>
+    <h2 id="pageTitle">Dashboard Overview</h2>
+    <p class="small">NAYA INDIA ESPORTS Admin Control Room</p>
+   </div>
+   <span id="adminEmail" class="small"></span>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section active" id="overview">
+   <div class="stats">
+    <div class="stat"><p>Total Tournaments</p><h2 id="totalTournaments">0</h2></div>
+    <div class="stat"><p>Live Tournaments</p><h2 id="liveTournaments">0</h2></div>
+    <div class="stat"><p>Upcoming Tournaments</p><h2 id="upcomingTournaments">0</h2></div>
+    <div class="stat"><p>Total Payments</p><h2 id="totalPayments">0</h2></div>
+    <div class="stat"><p>Pending Payments</p><h2 id="pendingPayments">0</h2></div>
+    <div class="stat"><p>Approved Amount</p><h2 id="approvedAmount">₹0</h2></div>
+   </div>
+   <div class="panel">
+    <h3>Welcome, Admin! 👋</h3>
+    <p class="small">Yahan se tum apne tournaments aur player payment submissions manage kar sakte ho.</p>
+   </div>
+  </div>
+
+  <!-- TOURNAMENTS -->
+  <div class="section" id="tournaments">
+   <div class="panel">
+    <h3 id="formTitle">➕ Create Tournament</h3>
+    <input type="hidden" id="editId">
+    <div class="form-grid">
+     <input id="name" placeholder="Tournament Name">
+     <select id="game">
+      <option value="">Select Game</option>
+      <option>BGMI</option>
+      <option>Free Fire MAX</option>
+      <option>Valorant</option>
+      <option>Call of Duty Mobile</option>
+      <option>Other</option>
+     </select>
+     <input id="prize" placeholder="Prize Pool (e.g. ₹10,000)">
+     <input id="entryFee" type="number" min="0" step="0.01" placeholder="Suggested Entry Fee ₹">
+     <input id="date" type="date">
+     <input id="time" type="time">
+     <input id="slots" type="number" min="1" placeholder="Total Slots">
+     <select id="status">
+      <option value="upcoming">Upcoming</option>
+      <option value="live">Live</option>
+      <option value="completed">Completed</option>
+     </select>
+    </div>
+    <textarea id="description" rows="3" placeholder="Tournament Description / Rules"></textarea>
+    <button id="saveBtn">Publish Tournament</button>
+    <button class="secondary" id="cancelEdit" style="display:none">Cancel Edit</button>
+    <p id="formMessage"></p>
+   </div>
+
+   <div class="panel">
+    <h3>🏆 All Tournaments</h3>
+    <div style="overflow:auto">
+     <table>
+      <thead><tr><th>Name</th><th>Game</th><th>Prize</th><th>Entry Fee</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody id="tournamentTable"><tr><td colspan="7">Loading...</td></tr></tbody>
+     </table>
+    </div>
+   </div>
+  </div>
+
+  <!-- PAYMENTS -->
+  <div class="section" id="payments">
+   <div class="panel">
+    <h3>💳 Player Payment Verification</h3>
+    <p class="small">Player ke UTR ko apne UPI/bank transaction records mein check karne ke baad hi approve karo.</p>
+    <div style="overflow:auto">
+     <table>
+      <thead>
+       <tr>
+        <th>Player</th>
+        <th>Email</th>
+        <th>Tournament</th>
+        <th>Amount</th>
+        <th>UPI ID</th>
+        <th>UTR</th>
+        <th>Status</th>
+        <th>Actions</th>
+       </tr>
+      </thead>
+      <tbody id="paymentTable"><tr><td colspan="8">Loading...</td></tr></tbody>
+     </table>
+    </div>
+   </div>
+  </div>
+ </main>
+</div>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {
+ getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import {
+ getFirestore,collection,addDoc,getDocs,doc,updateDoc,
+ deleteDoc,serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+/* SAME FIREBASE CONFIG AS INDEX.HTML */
+const firebaseConfig={
+ apiKey:"YOUR_API_KEY",
+ authDomain:"YOUR_PROJECT_ID.firebaseapp.com",
+ projectId:"YOUR_PROJECT_ID",
+ storageBucket:"YOUR_PROJECT_ID.firebasestorage.app",
+ messagingSenderId:"YOUR_MESSAGING_SENDER_ID",
+ appId:"YOUR_APP_ID"
+};
+
+/* IMPORTANT: ADD YOUR REAL FIREBASE AUTH USER UID */
+const ADMIN_UIDS=[
+ "PASTE_YOUR_ADMIN_USER_UID_HERE"
+];
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
+const $=id=>document.getElementById(id);
+
+let tournaments=[];
+let payments=[];
+let activeAdmin=false;
+
+function showMessage(msg){$("loginMessage").textContent=msg}
+function formMessage(msg){$("formMessage").textContent=msg}
+
+function showDashboard(user){
+ $("loginScreen").style.display="none";
+ $("dashboard").style.display="block";
+ $("adminEmail").textContent=user.email||"Admin";
+ activeAdmin=true;
+ loadAll();
+}
+
+function denyAccess(){
+ activeAdmin=false;
+ $("dashboard").style.display="none";
+ $("loginScreen").style.display="flex";
+ showMessage("Access denied. Ye account authorized Admin nahi hai.");
+}
+
+onAuthStateChanged(auth,user=>{
+ if(!user){activeAdmin=false;$("dashboard").style.display="none";$("loginScreen").style.display="flex";return}
+ if(ADMIN_UIDS.includes(user.uid)){showDashboard(user)}
+ else{denyAccess()}
+});
+
+$("loginBtn").onclick=async()=>{
+ try{
+  $("loginBtn").disabled=true;
+  const email=$("email").value.trim();
+  const password=$("password").value;
+  if(!email||!password)throw Error("Email aur password enter karo.");
+  await signInWithEmailAndPassword(auth,email,password);
+ }catch(e){showMessage(e.message)}
+ finally{$("loginBtn").disabled=false}
+};
+
+$("logoutBtn").onclick=()=>signOut(auth);
+
+document.querySelectorAll("[data-page]").forEach(button=>{
+ button.onclick=()=>{
+  if(!activeAdmin)return;
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll("[data-page]").forEach(b=>b.classList.remove("active"));
+  $(button.dataset.page).classList.add("active");
+  button.classList.add("active");
+  $("pageTitle").textContent=button.textContent.trim();
+ };
+});
+
+async function loadAll(){
+ if(!activeAdmin)return;
+ try{
+  const [tSnap,pSnap]=await Promise.all([
+   getDocs(collection(db,"tournaments")),
+   getDocs(collection(db,"payments"))
+  ]);
+  tournaments=tSnap.docs.map(d=>({id:d.id,...d.data()}));
+  payments=pSnap.docs.map(d=>({id:d.id,...d.data()}));
+  renderTournaments();
+  renderPayments();
+  renderStats();
+ }catch(e){
+  console.error(e);
+  formMessage("Firebase data load error: "+e.message);
+ }
+}
+
+function renderStats(){
+ $("totalTournaments").textContent=tournaments.length;
+ $("liveTournaments").textContent=tournaments.filter(t=>t.status==="live").length;
+ $("upcomingTournaments").textContent=tournaments.filter(t=>t.status==="upcoming").length;
+ $("totalPayments").textContent=payments.length;
+ $("pendingPayments").textContent=payments.filter(p=>p.status==="pending").length;
+ const total=payments.filter(p=>p.status==="approved").reduce((sum,p)=>sum+(Number(p.amount)||0),0);
+ $("approvedAmount").textContent="₹"+total.toLocaleString("en-IN");
+}
+
+function renderTournaments(){
+ const tbody=$("tournamentTable");
+ tbody.innerHTML="";
+ if(!tournaments.length){
+  tbody.innerHTML='<tr><td colspan="7">No tournaments created.</td></tr>';
+  return;
+ }
+ tournaments.forEach(t=>{
+  const tr=document.createElement("tr");
+  const cells=[t.name,t.game,t.prize||"TBA","₹"+(t.entryFee??0),t.date||"TBA",t.status||"upcoming"];
+  cells.forEach(value=>{
+   const td=document.createElement("td");
+   td.textContent=value;
+   tr.append(td);
+  });
+  const action=document.createElement("td");
+  const wrap=document.createElement("div");
+  wrap.className="actions";
+  const edit=document.createElement("button");
+  edit.textContent="Edit";
+  edit.className="secondary";
+  edit.onclick=()=>editTournament(t.id);
+  const del=document.createElement("button");
+  del.textContent="Delete";
+  del.className="danger";
+  del.onclick=()=>removeTournament(t.id);
+  wrap.append(edit,del);
+  action.append(wrap);
+  tr.append(action);
+  tbody.append(tr);
+ });
+}
+
+function renderPayments(){
+ const tbody=$("paymentTable");
+ tbody.innerHTML="";
+ if(!payments.length){
+  tbody.innerHTML='<tr><td colspan="8">No payment submissions yet.</td></tr>';
+  return;
+ }
+ payments.forEach(p=>{
+  const tr=document.createElement("tr");
+  const fields=[
+   p.playerName||"Unknown",
+   p.userEmail||"",
+   p.tournamentName||"",
+   "₹"+(p.amount||0),
+   p.upiId||"",
+   p.utr||"",
+   p.status||"pending"
+  ];
+  fields.forEach((value,index)=>{
+   const td=document.createElement("td");
+   td.textContent=value;
+   if(index===6){
+    const badge=document.createElement("span");
+    badge.className="badge "+(value==="approved"?"approved":value==="rejected"?"rejected":"pending");
+    badge.textContent=String(value).toUpperCase();
+    td.textContent="";
+    td.append(badge);
+   }
+   tr.append(td);
+  });
+  const action=document.createElement("td");
+  const wrap=document.createElement("div");
+  wrap.className="actions";
+  if(p.status==="pending"){
+   const approve=document.createElement("button");
+   approve.textContent="Approve";
+   approve.onclick=()=>updatePayment(p.id,"approved");
+   const reject=document.createElement("button");
+   reject.textContent="Reject";
+   reject.className="danger";
+   reject.onclick=()=>updatePayment(p.id,"rejected");
+   wrap.append(approve,reject);
+  }else{
+   wrap.textContent="Reviewed";
+  }
+  action.append(wrap);
+  tr.append(action);
+  tbody.append(tr);
+ });
+}
+
+function resetForm(){
+ $("editId").value="";
+ $("name").value="";
+ $("game").value="";
+ $("prize").value="";
+ $("entryFee").value="";
+ $("date").value="";
+ $("time").value="";
+ $("slots").value="";
+ $("status").value="upcoming";
+ $("description").value="";
+ $("formTitle").textContent="➕ Create Tournament";
+ $("saveBtn").textContent="Publish Tournament";
+ $("cancelEdit").style.display="none";
+ formMessage("");
+}
+
+$("cancelEdit").onclick=resetForm;
+
+$("saveBtn").onclick=async()=>{
+ if(!activeAdmin)return;
+ const name=$("name").value.trim();
+ const game=$("game").value;
+ const entryFee=Number($("entryFee").value||0);
+ const slots=Number($("slots").value||0);
+ if(!name||!game){formMessage("Tournament name aur game required hain.");return}
+ if(!Number.isFinite(entryFee)||entryFee<0||entryFee>100000){
+  formMessage("Valid entry fee enter karo.");return
+ }
+ if(slots<0){formMessage("Valid slots enter karo.");return}
+ const data={
+  name,game,
+  prize:$("prize").value.trim(),
+  entryFee,
+  date:$("date").value,
+  time:$("time").value,
+  slots,
+  status:$("status").value,
+  description:$("description").value.trim(),
+  updatedAt:serverTimestamp()
+ };
+ try{
+  $("saveBtn").disabled=true;
+  const id=$("editId").value;
+  if(id){
+   await updateDoc(doc(db,"tournaments",id),data);
+   formMessage("Tournament updated successfully!");
+  }else{
+   data.createdAt=serverTimestamp();
+   await addDoc(collection(db,"tournaments"),data);
+   formMessage("Tournament published successfully!");
+  }
+  resetForm();
+  await loadAll();
+ }catch(e){formMessage("Error: "+e.message)}
+ finally{$("saveBtn").disabled=false}
+};
+
+function editTournament(id){
+ const t=tournaments.find(x=>x.id===id);
+ if(!t)return;
+ $("editId").value=id;
+ $("name").value=t.name||"";
+ $("game").value=t.game||"";
+ $("prize").value=t.prize||"";
+ $("entryFee").value=t.entryFee??0;
+ $("date").value=t.date||"";
+ $("time").value=t.time||"";
+ $("slots").value=t.slots??"";
+ $("status").value=t.status||"upcoming";
+ $("description").value=t.description||"";
+ $("formTitle").textContent="✏️ Edit Tournament";
+ $("saveBtn").textContent="Save Changes";
+ $("cancelEdit").style.display="inline-block";
+ document.querySelector('[data-page="tournaments"]').click();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+async function removeTournament(id){
+ if(!activeAdmin||!confirm("Delete this tournament?"))return;
+ try{
+  await deleteDoc(doc(db,"tournaments",id));
+  await loadAll();
+ }catch(e){alert("Delete error: "+e.message)}
+}
+
+async function updatePayment(id,status){
+ if(!activeAdmin)return;
+ const p=payments.find(x=>x.id===id);
+ if(!p||p.status!=="pending")return;
+ const warning=status==="approved"
+  ?"Kya tumne UTR apne bank/UPI records mein verify kar liya hai? Approval confirm karo."
+  :"Kya tum payment reject karna chahte ho?";
+ if(!confirm(warning))return;
+ try{
+  await updateDoc(doc(db,"payments",id),{
+   status,
+   reviewedAt:serverTimestamp(),
+   reviewedBy:auth.currentUser.uid
+  });
+  await loadAll();
+ }catch(e){alert("Payment update error: "+e.message)}
+}
+</script>
+</body>
+      </html>
+      
