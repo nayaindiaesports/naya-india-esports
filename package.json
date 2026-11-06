@@ -1,0 +1,11 @@
+naya-india-esports/
+├── index.html
+├── package.json
+├── vite.config.js
+├── .gitignore
+├── .env.example
+└── src/
+    ├── main.jsx
+    ├── App.jsx
+    ├── App.css
+    └── firebase.js
