@@ -6,115 +6,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080a12">
 <title>NAYA INDIA ESPORTS</title>
-/* PLAYER REGISTRATION FORM */
-#playerRegModal .modal-box{
-  max-width:480px;
-}
 
-#playerRegModal label{
-  display:block;
-  font-size:13px;
-  color:var(--muted);
-  margin-top:10px;
-}
-
-#playerRegModal input{
-  width:100%;
-  padding:12px;
-  margin:6px 0;
-  background:#090d17;
-  color:white;
-  border:1px solid var(--border);
-  border-radius:7px;
-}
-
-#playerRegModal .payment-info{
-  background:#203d34;
-  border-radius:9px;
-  padding:14px;
-  margin:15px 0;
-}
-
-#playerRegModal button{
-  margin-top:10px;
-}
-
-#playerRegModal .upi-link{
-  display:block;
-  text-align:center;
-  text-decoration:none;
-  padding:13px;
-  background:var(--red);
-  color:white;
-  border-radius:8px;
-  font-weight:bold;
-  margin-top:12px;
-}
 <style>
-:root {
-  --bg:#080a12;
-  --panel:#111522;
-  --panel2:#171d2d;
-  --red:#ff304f;
-  --text:#f5f6fa;
-  --muted:#9da6bb;
-  --border:#272e40;
+:root{
+ --bg:#080a12;
+ --panel:#111522;
+ --panel2:#171d2d;
+ --red:#ff304f;
+ --text:#f5f6fa;
+ --muted:#9da6bb;
+ --border:#272e40;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
-button,input,select{font:inherit}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Arial,sans-serif
+}
+button,input{font:inherit}
 button{cursor:pointer}
 header{
-  position:sticky;top:0;z-index:10;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:15px 5%;background:#0b0e18ee;
-  border-bottom:1px solid var(--border);backdrop-filter:blur(12px)
+ position:sticky;top:0;z-index:10;
+ display:flex;align-items:center;justify-content:space-between;
+ padding:15px 5%;background:#0b0e18ee;
+ border-bottom:1px solid var(--border)
 }
 .logo{font-weight:900;font-size:19px;color:white}
 .logo span{color:var(--red)}
 nav{display:flex;gap:19px;align-items:center}
 nav a{color:#d4d8e4;text-decoration:none;font-size:13px}
-nav a:hover{color:var(--red)}
-.btn{border:0;border-radius:8px;padding:11px 16px;background:var(--red);color:white;font-weight:bold}
-.btn.secondary{background:var(--panel2);border:1px solid var(--border)}
-.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn{
+ border:0;border-radius:8px;padding:11px 16px;
+ background:var(--red);color:white;font-weight:bold
+}
+.btn.secondary{
+ background:var(--panel2);border:1px solid var(--border)
+}
+.btn:disabled{opacity:.5}
 main{max-width:1200px;margin:auto;padding:25px 5%}
 .hero{
-  min-height:350px;padding:55px 35px;border-radius:18px;
-  display:flex;align-items:center;
-  background:linear-gradient(110deg,#171d30,#381323 65%,#111522);
-  border:1px solid #393044
+ min-height:350px;padding:55px 35px;border-radius:18px;
+ display:flex;align-items:center;
+ background:linear-gradient(110deg,#171d30,#381323 65%,#111522);
+ border:1px solid #393044
 }
 .hero h1{font-size:clamp(35px,6vw,65px);margin:10px 0}
 .hero h1 span{color:var(--red)}
 .hero p{color:#c0c5d3;max-width:550px;line-height:1.7}
 .tag{color:#ff7186;font-weight:bold;letter-spacing:3px;font-size:12px}
 section{margin-top:45px;scroll-margin-top:85px}
-.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.section-head{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:10px
+}
 .section-head h2{font-size:23px}
 .section-head span{color:var(--muted);font-size:12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
-.card{background:var(--panel);border:1px solid var(--border);padding:18px;border-radius:13px}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ gap:15px
+}
+.card{
+ background:var(--panel);border:1px solid var(--border);
+ padding:18px;border-radius:13px
+}
 .card h3{margin:5px 0 10px}
 .card p{color:var(--muted);font-size:13px;line-height:1.6}
 .game{font-size:35px}
-.status{display:inline-block;padding:5px 9px;border-radius:5px;background:#242c3b;color:#bfc8d9;font-size:11px}
+.status{
+ display:inline-block;padding:5px 9px;border-radius:5px;
+ background:#242c3b;color:#bfc8d9;font-size:11px
+}
 .status.live{background:#481b29;color:#ff8093}
 .status.upcoming{background:#203d34;color:#72e5b2}
-.empty{color:var(--muted);padding:20px;text-align:center;grid-column:1/-1}
-table{width:100%;border-collapse:collapse;min-width:450px}
-th,td{padding:13px;text-align:left;border-bottom:1px solid var(--border);font-size:13px}
-th{color:var(--muted)}
-.table-wrap{overflow:auto;background:var(--panel);border-radius:12px;padding:5px}
-footer{text-align:center;padding:35px 15px;color:var(--muted);border-top:1px solid var(--border);margin-top:50px;font-size:13px}
-.modal{position:fixed;inset:0;background:#000b;z-index:30;display:none;align-items:center;justify-content:center;padding:15px}
+.empty{
+ color:var(--muted);padding:20px;text-align:center;grid-column:1/-1
+}
+footer{
+ text-align:center;padding:35px 15px;color:var(--muted);
+ border-top:1px solid var(--border);margin-top:50px;font-size:13px
+}
+.modal{
+ position:fixed;inset:0;background:#000b;z-index:30;
+ display:none;align-items:center;justify-content:center;padding:15px
+}
 .modal.show{display:flex}
-.modal-box{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:23px;width:100%;max-width:410px;max-height:90vh;overflow:auto}
-.modal-box input{width:100%;padding:12px;margin:8px 0;background:#090d17;color:white;border:1px solid var(--border);border-radius:7px}
+.modal-box{
+ background:var(--panel);border:1px solid var(--border);
+ border-radius:15px;padding:23px;width:100%;
+ max-width:410px;max-height:90vh;overflow:auto
+}
+.modal-box input{
+ width:100%;padding:12px;margin:8px 0;
+ background:#090d17;color:white;
+ border:1px solid var(--border);border-radius:7px
+}
 .modal-box h2{margin-top:0}
 .modal-box button{width:100%;margin-top:9px}
-.close{float:right;background:none;border:0;color:white;font-size:23px}
-#notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#242c3b;padding:12px 20px;border-radius:9px;display:none;z-index:50;max-width:90%;text-align:center}
+.close{
+ float:right;background:none;border:0;color:white;
+ font-size:23px;width:auto!important;margin:0!important
+}
+#notice{
+ position:fixed;bottom:20px;left:50%;
+ transform:translateX(-50%);background:#242c3b;
+ padding:12px 20px;border-radius:9px;
+ display:none;z-index:50;max-width:90%;text-align:center
+}
+
+/* PLAYER REGISTRATION FORM */
+#playerRegModal .modal-box{max-width:480px}
+#playerRegModal label{
+ display:block;font-size:13px;color:var(--muted);margin-top:10px
+}
+#playerRegModal input{
+ width:100%;padding:12px;margin:6px 0;
+ background:#090d17;color:white;
+ border:1px solid var(--border);border-radius:7px
+}
+#playerRegModal .payment-info{
+ background:#203d34;border-radius:9px;
+ padding:14px;margin:15px 0
+}
+#playerRegModal .upi-link{
+ display:block;text-align:center;text-decoration:none;
+ padding:13px;background:var(--red);color:white;
+ border-radius:8px;font-weight:bold;margin-top:12px
+}
+.small{font-size:12px;color:var(--muted);line-height:1.6}
+
 @media(max-width:650px){
  header{flex-wrap:wrap;gap:12px}
  nav{width:100%;overflow-x:auto;padding-bottom:5px}
@@ -128,18 +147,19 @@ footer{text-align:center;padding:35px 15px;color:var(--muted);border-top:1px sol
 <body>
 
 <header>
-  <div class="logo">NAYA INDIA <span>ESPORTS</span></div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#games">Games</a>
-    <a href="#tournaments">Tournaments</a>
-    <a href="#matches">Matches</a>
-    <a href="#leaderboard">Leaderboard</a>
-  </nav>
-  <button class="btn" id="accountBtn">Login / Register</button>
+ <div class="logo">NAYA INDIA <span>ESPORTS</span></div>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#games">Games</a>
+  <a href="#tournaments">Tournaments</a>
+  <a href="#matches">Matches</a>
+  <a href="#leaderboard">Leaderboard</a>
+ </nav>
+ <button class="btn" id="accountBtn">Login / Register</button>
 </header>
 
 <main>
+
 <section id="home" class="hero">
  <div>
   <div class="tag">INDIA'S ESPORTS COMMUNITY</div>
@@ -151,7 +171,10 @@ footer{text-align:center;padding:35px 15px;color:var(--muted);border-top:1px sol
 </section>
 
 <section id="games">
- <div class="section-head"><h2>🎮 Popular Games</h2><span>Choose your battlefield</span></div>
+ <div class="section-head">
+  <h2>🎮 Popular Games</h2>
+  <span>Choose your battlefield</span>
+ </div>
  <div class="grid">
   <div class="card"><div class="game">🔫</div><h3>BGMI</h3><p>Battle Royale tournaments</p></div>
   <div class="card"><div class="game">🔥</div><h3>Free Fire MAX</h3><p>Fast-paced battle competitions</p></div>
@@ -161,22 +184,29 @@ footer{text-align:center;padding:35px 15px;color:var(--muted);border-top:1px sol
 </section>
 
 <section id="tournaments">
- <div class="section-head"><h2>🏆 Featured Tournaments</h2><span>From Firebase</span></div>
- <div class="grid" id="tournamentList"><div class="empty">Loading tournaments...</div></div>
+ <div class="section-head">
+  <h2>🏆 Featured Tournaments</h2>
+  <span>From Firebase</span>
+ </div>
+ <div class="grid" id="tournamentList">
+  <div class="empty">Loading tournaments...</div>
+ </div>
 </section>
 
 <section id="matches">
  <div class="section-head"><h2>⚔️ Live & Upcoming Matches</h2></div>
- <div class="grid" id="matchList"><div class="empty">Loading matches...</div></div>
+ <div class="grid" id="matchList">
+  <div class="empty">Loading matches...</div>
+ </div>
 </section>
 
 <section id="leaderboard">
- <div class="section-head"><h2>📊 Leaderboard Preview</h2><span>Top players</span></div>
- <div class="table-wrap">
-  <table>
-   <thead><tr><th>Rank</th><th>Player</th><th>Points</th></tr></thead>
-   <tbody id="leaderboardList"><tr><td colspan="3">Leaderboard coming soon.</td></tr></tbody>
-  </table>
+ <div class="section-head">
+  <h2>📊 Leaderboard Preview</h2>
+  <span>Top players</span>
+ </div>
+ <div class="card">
+  <p>Leaderboard coming soon.</p>
  </div>
 </section>
 
@@ -184,13 +214,17 @@ footer{text-align:center;padding:35px 15px;color:var(--muted);border-top:1px sol
  <div class="card" style="text-align:center;padding:30px">
   <h2>👥 Join Our Gaming Community</h2>
   <p>Connect with gamers, find teammates and stay updated.</p>
-  <a href="https://discord.com/" target="_blank" rel="noopener"><button class="btn">Join Community</button></a>
+  <a href="https://discord.com/" target="_blank" rel="noopener">
+   <button class="btn">Join Community</button>
+  </a>
  </div>
 </section>
+
 </main>
 
 <footer>© 2026 NAYA INDIA ESPORTS. All Rights Reserved.</footer>
 
+<!-- LOGIN MODAL -->
 <div class="modal" id="authModal">
  <div class="modal-box">
   <button class="close" onclick="closeAuth()">×</button>
@@ -205,42 +239,105 @@ footer{text-align:center;padding:35px 15px;color:var(--muted);border-top:1px sol
  </div>
 </div>
 
+<!-- PLAYER REGISTRATION MODAL -->
+<div class="modal" id="playerRegModal">
+ <div class="modal-box">
+  <button class="close" onclick="closePlayerReg()">×</button>
+  <h2>🏆 Player Registration</h2>
+  <p id="regTournamentName" class="small"></p>
+
+  <div id="playerFormSection">
+
+   <label>Player Full Name *</label>
+   <input id="playerName" placeholder="Enter your full name">
+
+   <label>Mobile Number *</label>
+   <input id="playerMobile" type="tel" maxlength="10" placeholder="10 digit mobile number">
+
+   <label>BGMI Character ID</label>
+   <input id="bgmiId" placeholder="Enter BGMI ID">
+
+   <label>Free Fire MAX UID</label>
+   <input id="freeFireId" placeholder="Enter Free Fire UID">
+
+   <label>Valorant Riot ID</label>
+   <input id="valorantId" placeholder="Enter Riot ID">
+
+   <label>Call of Duty Mobile UID</label>
+   <input id="codmId" placeholder="Enter COD Mobile UID">
+
+   <label>Team Name (Optional)</label>
+   <input id="teamName" placeholder="Enter team name">
+
+   <div class="payment-info">
+    <strong>Entry Fee: </strong>
+    <strong id="regEntryFee">₹0</strong>
+   </div>
+
+   <button class="btn" id="submitPlayerForm">Submit Details & Continue</button>
+  </div>
+
+  <div id="playerPaymentSection" style="display:none">
+   <h3>💳 Tournament Payment</h3>
+
+   <div class="payment-info">
+    <p>Payable Amount</p>
+    <h2 id="paymentAmount">₹0</h2>
+    <p>UPI ID: 9125470027@fam</p>
+   </div>
+
+   <a id="upiPayLink" class="upi-link" href="#">Pay Now Using UPI</a>
+
+   <p class="small">
+    Payment karne ke baad apna UTR / Transaction Reference Number enter karo.
+   </p>
+
+   <label>UTR / Transaction Number *</label>
+   <input id="paymentUTR" maxlength="30" placeholder="Enter payment UTR">
+
+   <button class="btn" id="submitPayment">Submit Payment Details</button>
+  </div>
+
+  <p id="registrationMessage" style="font-size:13px;color:#ff8093"></p>
+ </div>
+</div>
+
 <div id="notice"></div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
 import {
  getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
- signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,signOut,
- updateProfile
+ signInWithEmailAndPassword,GoogleAuthProvider,
+ signInWithPopup,signOut,updateProfile
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
 import {
-  getFirestore,
- collection,
- doc,
- setDoc,
- addDoc,
- getDocs,
- query,
- orderBy,
- where
+ getFirestore,collection,doc,setDoc,addDoc,
+ getDocs,query,where
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-  
-/* APNA FIREBASE CONFIG YAHAN PASTE KARO */
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+/* FIREBASE CONFIG */
 const firebaseConfig = {
-  apiKey: "AIzaSyCUOHKfHy35G4M3pUxWHerEWxPQ-zYvyg8",
-  authDomain: "naya-india-esportsa.firebaseapp.com",
-  projectId: "naya-india-esportsa",
-  storageBucket: "naya-india-esportsa.firebasestorage.app",
-  messagingSenderId: "541751208129",
-  appId: "1:541751208129:web:973af506812cfe23d14c40",
-  measurementId: "G-N7CMN7CMLN"
+ apiKey: "AIzaSyCUOHKfHy35G4M3pUxWHerEWxPQ-zYvyg8",
+ authDomain: "naya-india-esportsa.firebaseapp.com",
+ projectId: "naya-india-esportsa",
+ storageBucket: "naya-india-esportsa.firebasestorage.app",
+ messagingSenderId: "541751208129",
+ appId: "1:541751208129:web:973af506812cfe23d14c40",
+ measurementId: "G-N7CMN7CMLN"
 };
 
-let app,auth,db;
-let isRegister=false;
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
+
 const $=id=>document.getElementById(id);
+let isRegister=false;
+let selectedTournament=null;
+let currentRegistrationId=null;
+let currentPlayerName="";
 
 function notify(message){
  $("notice").textContent=message;
@@ -248,26 +345,27 @@ function notify(message){
  setTimeout(()=>$("notice").style.display="none",3500);
 }
 
-try{
- app=initializeApp(firebaseConfig);
- auth=getAuth(app);
- db=getFirestore(app);
-}catch(e){
- console.error(e);
- notify("Firebase configuration check karo.");
-}
+/* AUTH */
+window.openAuth=()=> $("authModal").classList.add("show");
+window.closeAuth=()=> $("authModal").classList.remove("show");
+window.closePlayerReg=()=> $("playerRegModal").classList.remove("show");
 
-window.openAuth=()=>{$("authModal").classList.add("show")};
-window.closeAuth=()=>{$("authModal").classList.remove("show")};
-
-$("accountBtn").onclick=()=>auth?.currentUser?signOut(auth):openAuth();
+$("accountBtn").onclick=()=>{
+ if(auth.currentUser){
+  signOut(auth);
+  notify("Logged out.");
+ }else{
+  openAuth();
+ }
+};
 
 $("authSwitch").onclick=()=>{
  isRegister=!isRegister;
  $("authTitle").textContent=isRegister?"Create Account":"Login";
  $("authSubmit").textContent=isRegister?"Register":"Login";
  $("authName").style.display=isRegister?"block":"none";
- $("authSwitch").textContent=isRegister?"Already have an account? Login":"New user? Create account";
+ $("authSwitch").textContent=isRegister?
+ "Already have an account? Login":"New user? Create account";
  $("authMessage").textContent="";
 };
 
@@ -275,155 +373,350 @@ $("authSubmit").onclick=async()=>{
  const email=$("authEmail").value.trim();
  const password=$("authPassword").value;
  const name=$("authName").value.trim();
+
  try{
   $("authSubmit").disabled=true;
+
   if(!email||!password)throw Error("Email aur password enter karo.");
   if(password.length<6)throw Error("Password minimum 6 characters hona chahiye.");
+
   if(isRegister){
    if(!name)throw Error("Apna naam enter karo.");
+
    const result=await createUserWithEmailAndPassword(auth,email,password);
    await updateProfile(result.user,{displayName:name});
+
    await setDoc(doc(db,"users",result.user.uid),{
     name,email,uid:result.user.uid,createdAt:new Date()
    });
   }else{
    await signInWithEmailAndPassword(auth,email,password);
   }
+
   closeAuth();
   notify("Login successful!");
+
  }catch(e){
   $("authMessage").textContent=e.message;
- }finally{$("authSubmit").disabled=false}
+ }finally{
+  $("authSubmit").disabled=false;
+ }
 };
 
 $("googleLogin").onclick=async()=>{
  try{
   const result=await signInWithPopup(auth,new GoogleAuthProvider());
+
   await setDoc(doc(db,"users",result.user.uid),{
    name:result.user.displayName||"Player",
-   email:result.user.email,uid:result.user.uid
+   email:result.user.email,
+   uid:result.user.uid
   },{merge:true});
+
   closeAuth();
   notify("Google login successful!");
- }catch(e){$("authMessage").textContent=e.message}
+ }catch(e){
+  $("authMessage").textContent=e.message;
+ }
 };
 
 onAuthStateChanged(auth,user=>{
- $("accountBtn").textContent=user?(user.displayName||"My Account")+" / Logout":"Login / Register";
+ $("accountBtn").textContent=user?
+ (user.displayName||"My Account")+" / Logout":"Login / Register";
 });
 
+/* OPEN PLAYER REGISTRATION */
+function openPlayerRegistration(t){
+ const user=auth.currentUser;
+
+ if(!user){
+  openAuth();
+  notify("Pehle login karo.");
+  return;
+ }
+
+ selectedTournament=t;
+ currentRegistrationId=t.id+"_"+user.uid;
+
+ $("regTournamentName").textContent=
+ (t.name||"Tournament")+" | "+(t.game||"Game");
+
+ const fee=Number(t.entryFee||0);
+
+ $("regEntryFee").textContent="₹"+fee;
+ $("paymentAmount").textContent="₹"+fee;
+
+ $("playerName").value=user.displayName||"";
+ $("playerMobile").value="";
+ $("bgmiId").value="";
+ $("freeFireId").value="";
+ $("valorantId").value="";
+ $("codmId").value="";
+ $("teamName").value="";
+ $("paymentUTR").value="";
+
+ $("playerFormSection").style.display="block";
+ $("playerPaymentSection").style.display="none";
+ $("registrationMessage").textContent="";
+
+ $("submitPlayerForm").disabled=false;
+ $("submitPlayerForm").textContent="Submit Details & Continue";
+ $("submitPayment").disabled=false;
+ $("submitPayment").textContent="Submit Payment Details";
+
+ $("playerRegModal").classList.add("show");
+}
+
+/* SUBMIT PLAYER FORM */
+$("submitPlayerForm").onclick=async()=>{
+ const user=auth.currentUser;
+ if(!user||!selectedTournament)return;
+
+ const name=$("playerName").value.trim();
+ const mobile=$("playerMobile").value.trim();
+ const bgmi=$("bgmiId").value.trim();
+ const freefire=$("freeFireId").value.trim();
+ const valorant=$("valorantId").value.trim();
+ const codm=$("codmId").value.trim();
+ const team=$("teamName").value.trim();
+
+ const game=(selectedTournament.game||"").toLowerCase();
+
+ if(!name){
+  notify("Player name enter karo.");
+  return;
+ }
+
+ if(!/^[6-9][0-9]{9}$/.test(mobile)){
+  notify("Valid 10 digit mobile number enter karo.");
+  return;
+ }
+
+ if(game.includes("bgmi")&&!bgmi){
+  notify("BGMI Character ID required hai.");
+  return;
+ }
+
+ if(game.includes("free fire")&&!freefire){
+  notify("Free Fire UID required hai.");
+  return;
+ }
+
+ if(game.includes("valorant")&&!valorant){
+  notify("Valorant Riot ID required hai.");
+  return;
+ }
+
+ if(game.includes("call of duty")&&!codm){
+  notify("COD Mobile UID required hai.");
+  return;
+ }
+
+ if(!game.includes("bgmi")&&
+ !game.includes("free fire")&&
+ !game.includes("valorant")&&
+ !game.includes("call of duty")&&
+ !bgmi&&!freefire&&!valorant&&!codm){
+  notify("Kam se kam ek Game ID enter karo.");
+  return;
+ }
+
+ const fee=Number(selectedTournament.entryFee||0);
+
+ if(!Number.isFinite(fee)||fee<=0){
+  notify("Is tournament ki valid entry fee set nahi hai.");
+  return;
+ }
+
+ try{
+  $("submitPlayerForm").disabled=true;
+  $("registrationMessage").textContent="Saving registration...";
+
+  const existing=await getDocs(query(
+   collection(db,"registrations"),
+   where("userId","==",user.uid),
+   where("tournamentId","==",selectedTournament.id)
+  ));
+
+  if(!existing.empty){
+   throw Error("Tum is tournament mein pehle se registered ho.");
+  }
+
+  currentPlayerName=name;
+
+  await setDoc(doc(db,"registrations",currentRegistrationId),{
+   tournamentId:selectedTournament.id,
+   tournamentName:selectedTournament.name||"",
+   game:selectedTournament.game||"",
+   playerName:name,
+   mobile:mobile,
+   email:user.email||"",
+   userId:user.uid,
+   bgmiId:bgmi,
+   freeFireId:freefire,
+   valorantId:valorant,
+   codmId:codm,
+   teamName:team,
+   amount:fee,
+   status:"pending",
+   createdAt:new Date()
+  });
+
+  const upiLink=
+   "upi://pay?pa=9125470027@fam"+
+   "&pn=NAYA%20INDIA%20ESPORTS"+
+   "&am="+encodeURIComponent(fee)+
+   "&cu=INR"+
+   "&tn="+encodeURIComponent(selectedTournament.name||"Tournament");
+
+  $("upiPayLink").href=upiLink;
+
+  $("playerFormSection").style.display="none";
+  $("playerPaymentSection").style.display="block";
+
+  $("registrationMessage").textContent=
+   "Details saved! Ab payment complete karo.";
+
+ }catch(error){
+  console.error(error);
+  $("registrationMessage").textContent=error.message;
+ }finally{
+  $("submitPlayerForm").disabled=false;
+ }
+};
+
+/* SUBMIT PAYMENT DETAILS */
+$("submitPayment").onclick=async()=>{
+ const user=auth.currentUser;
+
+ if(!user||!selectedTournament||!currentRegistrationId)return;
+
+ const utr=$("paymentUTR").value.trim();
+ const fee=Number(selectedTournament.entryFee||0);
+
+ if(utr.length<8){
+  notify("Valid UTR / Transaction Number enter karo.");
+  return;
+ }
+
+ try{
+  $("submitPayment").disabled=true;
+  $("registrationMessage").textContent="Submitting payment details...";
+
+  const existingPayment=await getDocs(query(
+   collection(db,"payments"),
+   where("userId","==",user.uid),
+   where("registrationId","==",currentRegistrationId)
+  ));
+
+  if(!existingPayment.empty){
+   throw Error("Payment details pehle submit ho chuki hain.");
+  }
+
+  await addDoc(collection(db,"payments"),{
+   registrationId:currentRegistrationId,
+   tournamentId:selectedTournament.id,
+   tournamentName:selectedTournament.name||"",
+   playerName:currentPlayerName,
+   userEmail:user.email||"",
+   userId:user.uid,
+   amount:fee,
+   upiId:"9125470027@fam",
+   utr:utr,
+   status:"pending",
+   createdAt:new Date()
+  });
+
+  $("registrationMessage").textContent=
+   "Payment details submitted! Admin verification pending.";
+
+  $("submitPayment").textContent="Submitted";
+  notify("Payment details successfully submitted!");
+
+ }catch(error){
+  console.error(error);
+  $("registrationMessage").textContent=error.message;
+  $("submitPayment").disabled=false;
+ }
+};
+
+/* LOAD TOURNAMENTS */
 async function loadTournaments(){
  try{
   const snap=await getDocs(collection(db,"tournaments"));
   const items=snap.docs.map(d=>({id:d.id,...d.data()}));
+
   $("tournamentList").innerHTML="";
   $("matchList").innerHTML="";
+
   if(!items.length){
-   $("tournamentList").innerHTML='<div class="empty">No tournaments available yet.</div>';
-   $("matchList").innerHTML='<div class="empty">No matches announced yet.</div>';
+   $("tournamentList").innerHTML=
+    '<div class="empty">No tournaments available yet.</div>';
+   $("matchList").innerHTML=
+    '<div class="empty">No matches announced yet.</div>';
    return;
   }
+
   items.forEach(t=>{
    const status=(t.status||"upcoming").toLowerCase();
    const card=document.createElement("div");
    card.className="card";
+
    const title=document.createElement("h3");
    title.textContent=t.name||"Untitled Tournament";
+
    const game=document.createElement("p");
    game.textContent="🎮 "+(t.game||"Game not specified");
+
    const prize=document.createElement("p");
    prize.textContent="🏆 Prize Pool: "+(t.prize||"Not announced");
+
    const date=document.createElement("p");
    date.textContent="📅 "+(t.date||"Date TBA");
-      const badge=document.createElement("span");
+
+   const fee=document.createElement("p");
+   fee.textContent="💰 Entry Fee: ₹"+Number(t.entryFee||0);
+
+   const badge=document.createElement("span");
    badge.className="status "+(status==="live"?"live":"upcoming");
    badge.textContent=status.toUpperCase();
 
-   card.append(title,game,prize,date,badge);
+   card.append(title,game,prize,date,fee,badge);
 
-   // Tournament card website par show karo
-   $("tournamentList").append(card);
-
-   // Matches section mein card ki copy
-   if(status==="live"||status==="upcoming"){
-    $("matchList").append(card.cloneNode(true));
-   }
-
-   // REGISTER NOW BUTTON
    if(status==="upcoming"){
     const registerBtn=document.createElement("button");
     registerBtn.className="btn";
     registerBtn.textContent="Register Now";
     registerBtn.style.marginTop="12px";
 
-    registerBtn.onclick=async()=>{
-      const user=auth.currentUser;
-
-      if(!user){
-        openAuth();
-        notify("Registration ke liye pehle login karo.");
-        return;
-      }
-
-      try{
-        registerBtn.disabled=true;
-
-        // Check whether user is already registered
-        const existing=await getDocs(
-          query(
-            collection(db,"registrations"),
-            where("userId","==",user.uid),
-            where("tournamentId","==",t.id)
-          )
-        );
-
-        if(!existing.empty){
-          registerBtn.textContent="Registered";
-          notify("Tum pehle se registered ho!");
-          return;
-        }
-
-        // Save registration in Firestore
-        const registrationId=t.id+"_"+user.uid;
-
-        await setDoc(doc(db,"registrations",registrationId),{
-          tournamentId:t.id,
-          tournamentName:t.name||"Untitled Tournament",
-          userId:user.uid,
-          playerName:user.displayName||"Player",
-          email:user.email||"",
-          status:"pending",
-          createdAt:new Date()
-        });
-
-        registerBtn.textContent="Registered";
-        notify("Tournament registration successful!");
-
-      }catch(error){
-        console.error("Registration Error:",error);
-        notify("Registration failed: "+error.message);
-      }finally{
-        if(registerBtn.textContent!=="Registered"){
-          registerBtn.disabled=false;
-        }
-      }
+    registerBtn.onclick=()=>{
+     openPlayerRegistration(t);
     };
 
     card.append(registerBtn);
    }
-    
+
+   $("tournamentList").append(card);
+
+   if(status==="live"||status==="upcoming"){
+    $("matchList").append(card.cloneNode(true));
+   }
   });
+
   if(!$("matchList").children.length){
-   $("matchList").innerHTML='<div class="empty">No live or upcoming matches.</div>';
+   $("matchList").innerHTML=
+    '<div class="empty">No live or upcoming matches.</div>';
   }
- }catch(e){
+
+  }catch(e){
   console.error(e);
-  $("tournamentList").innerHTML='<div class="empty">Data load nahi hua. Firebase check karo.</div>';
+  $("tournamentList").innerHTML=
+   '<div class="empty">Data load nahi hua. Firebase check karo.</div>';
  }
 }
 
-if(db)loadTournaments();
+loadTournaments();
 </script>
-<div id="notice"></div>
+
 </body>
 </html>
