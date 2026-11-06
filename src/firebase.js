@@ -5,13 +5,16 @@ import {
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-const config = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCUOHKfHy35G4M3pUxWHerEWxPQ-zYvyg8",
+  authDomain: "naya-india-esportsa.firebaseapp.com",
+  projectId: "naya-india-esportsa",
+  storageBucket: "naya-india-esportsa.firebasestorage.app",
+  messagingSenderId: "541751208129",
+  appId: "1:541751208129:web:973af506812cfe23d14c40",
+  measurementId: "G-N7CMN7CMLN"
 };
 
 const configured = Boolean(
