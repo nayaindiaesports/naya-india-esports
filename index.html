@@ -6,7 +6,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080a12">
 <title>NAYA INDIA ESPORTS</title>
+/* PLAYER REGISTRATION FORM */
+#playerRegModal .modal-box{
+  max-width:480px;
+}
 
+#playerRegModal label{
+  display:block;
+  font-size:13px;
+  color:var(--muted);
+  margin-top:10px;
+}
+
+#playerRegModal input{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  background:#090d17;
+  color:white;
+  border:1px solid var(--border);
+  border-radius:7px;
+}
+
+#playerRegModal .payment-info{
+  background:#203d34;
+  border-radius:9px;
+  padding:14px;
+  margin:15px 0;
+}
+
+#playerRegModal button{
+  margin-top:10px;
+}
+
+#playerRegModal .upi-link{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  padding:13px;
+  background:var(--red);
+  color:white;
+  border-radius:8px;
+  font-weight:bold;
+  margin-top:12px;
+}
 <style>
 :root {
   --bg:#080a12;
@@ -172,10 +215,11 @@ import {
  updateProfile
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 import {
- getFirestore,
+  getFirestore,
  collection,
  doc,
  setDoc,
+ addDoc,
  getDocs,
  query,
  orderBy,
@@ -380,5 +424,6 @@ async function loadTournaments(){
 
 if(db)loadTournaments();
 </script>
+<div id="notice"></div>
 </body>
 </html>
