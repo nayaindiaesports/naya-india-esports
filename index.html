@@ -2059,6 +2059,62 @@ $("createTeamForm").addEventListener("submit",async event=>{
 
 });
 
+ 
+<!-- ================= NEW WALLET PAGE ================= -->
+
+<section id="wallet" class="page">
+
+ <h2 class="page-title">💰 My Wallet</h2>
+
+ <div class="card">
+  <h3>Available Balance</h3>
+  <h1>₹<span id="walletBalance">0</span></h1>
+ </div>
+
+ <div class="card">
+  <h3>➕ Add Money</h3>
+
+  <input id="upiAmount" type="number"
+   min="10" max="50000" placeholder="Enter amount ₹">
+
+  <button class="btn" onclick="generateUPI()">
+   Pay with UPI
+  </button>
+
+  <div id="upiPaymentBox" style="display:none">
+
+   <img id="upiQR" style="width:220px;max-width:100%">
+
+   <p>UPI ID: 9125470027@fam</p>
+
+   <a id="upiPayLink" class="btn" href="#">
+    Open UPI App
+   </a>
+
+   <input id="upiUTR" placeholder="Enter UTR number">
+
+   <button class="btn" onclick="submitUPIPayment()">
+    Submit Payment
+   </button>
+
+  </div>
+ </div>
+
+ <div class="card">
+  <h3>Payment Status</h3>
+  <div id="paymentStatus">No pending payment.</div>
+ </div>
+
+ <div class="card">
+  <h3>💸 Withdraw</h3>
+  <button class="btn" onclick="showPage('withdraw')">
+   Withdraw Money
+  </button>
+ </div>
+
+</section>
+ 
+
 
 // WITHDRAWAL REQUEST
 
@@ -2105,6 +2161,108 @@ $("withdrawForm").addEventListener("submit",async event=>{
 
 });
 
+ 
+/* ========== UPI MANUAL PAYMENT ========== */
+
+let currentUPIAmount = 0;
+
+window.generateUPI = function(){
+
+ const amount = Number(
+  document.getElementById("upiAmount").value
+ );
+
+ if(!Number.isFinite(amount) || amount < 10 || amount > 50000){
+  notify("Amount ₹10 se ₹50,000 ke beech enter karein.");
+  return;
+ }
+
+ currentUPIAmount = amount;
+
+ const upiID = "9125470027@fam";
+ const payee = "NAYA INDIA ESPORTS";
+ const note = "Wallet Add Money";
+
+ const upiURL =
+  "upi://pay?pa=" + encodeURIComponent(upiID) +
+  "&pn=" + encodeURIComponent(payee) +
+  "&am=" + amount.toFixed(2) +
+  "&cu=INR&tn=" + encodeURIComponent(note);
+
+ const qrURL =
+  "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+  encodeURIComponent(upiURL);
+
+ document.getElementById("upiQR").src = qrURL;
+ document.getElementById("upiPayLink").href = upiURL;
+
+ document.getElementById("upiPaymentBox").style.display = "block";
+
+};
+
+
+/* ========== SUBMIT PAYMENT REQUEST ========== */
+
+window.submitUPIPayment = async function(){
+
+ const user = auth.currentUser;
+
+ if(!user){
+  notify("Payment request ke liye login karein.");
+  showPage("login");
+  return;
+ }
+
+ const utr = document.getElementById("upiUTR").value.trim();
+
+ if(!currentUPIAmount){
+  notify("Pehle payment amount generate karein.");
+  return;
+ }
+
+ if(!/^[A-Za-z0-9]{10,22}$/.test(utr)){
+  notify("Valid UTR / transaction reference enter karein.");
+  return;
+ }
+
+ try{
+
+  const existing = await addDoc(
+   collection(db,"paymentRequests"),
+   {
+    uid:user.uid,
+    email:user.email,
+    amount:currentUPIAmount,
+    upiID:"9125470027@fam",
+    utr:utr,
+    paymentMethod:"UPI",
+    status:"pending",
+    createdAt:serverTimestamp()
+   }
+  );
+
+  document.getElementById("paymentStatus").innerHTML =
+   "Request ID: " + existing.id +
+   "<br>Amount: ₹" + currentUPIAmount +
+   "<br>Status: PENDING";
+
+  document.getElementById("upiPaymentBox").style.display = "none";
+  document.getElementById("upiAmount").value = "";
+  document.getElementById("upiUTR").value = "";
+
+  currentUPIAmount = 0;
+
+  notify("Payment request submitted. Admin verification pending.");
+
+ }catch(error){
+
+  console.error(error);
+  notify("Payment request failed: " + error.message);
+
+ }
+
+};
+ 
 </script>
 
 </body>
