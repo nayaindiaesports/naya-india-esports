@@ -2529,5 +2529,58 @@ if (window.loadTournaments) {
  
 </script>
 
+  
+<!-- DEPOSIT MODAL -->
+<div class="modal" id="depositModal">
+  <div class="modal-box">
+
+    <button class="close"
+      onclick="closeModal('depositModal')">×</button>
+
+    <h2>ADD MONEY</h2>
+    <p>Deposit money into your NAYA INDIA ESPORTS wallet.</p>
+
+    <label>Deposit Amount (₹)</label>
+    <input
+      type="number"
+      id="depositAmount"
+      placeholder="Enter amount"
+      min="1"
+      max="100000"
+    >
+
+    <p>Points you will receive:</p>
+    <h3 id="depositPoints">0</h3>
+
+    <div class="upi-box">
+      <p>Pay using UPI</p>
+      <h3>9125470027@fam</h3>
+      <p>Pay the selected amount to this UPI ID.</p>
+    </div>
+
+    <label>UPI Transaction ID / UTR Number</label>
+    <input
+      type="text"
+      id="depositUTR"
+      placeholder="Enter your 12-digit UTR"
+      maxlength="30"
+    >
+
+    <div id="depositMessage"></div>
+
+    <button
+      type="button"
+      id="submitDepositButton"
+      onclick="submitDepositUTR()">
+      Submit Payment Request
+    </button>
+
+    <p class="small-text">
+      Points will be credited only after Admin verifies your payment.
+    </p>
+
+  </div>
+</div>
+  
 </body>
 </html>
