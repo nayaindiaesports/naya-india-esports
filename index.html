@@ -4,3514 +4,1942 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080a12">
-
+<meta name="theme-color" content="#080d1b">
 <title>NAYA INDIA ESPORTS</title>
 
 <style>
 :root{
-  --bg:#080a12;
-  --panel:#111522;
-  --panel2:#171e30;
-  --blue:#287bff;
-  --blue2:#00c8ff;
-  --red:#ff304f;
-  --green:#20d68a;
-  --text:#f5f7ff;
-  --muted:#8993aa;
-  --border:rgba(255,255,255,.09);
-  --shadow:0 12px 35px rgba(0,0,0,.3);
+  --bg:#080d1b;
+  --panel:#101a2e;
+  --panel2:#14223b;
+  --blue:#168cff;
+  --cyan:#00d9ff;
+  --red:#ff365e;
+  --green:#19d995;
+  --text:#f3f7ff;
+  --muted:#91a4c2;
+  --border:rgba(90,150,220,.19);
+  --shadow:0 12px 35px rgba(0,0,0,.28);
 }
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
+  margin:0;
   background:var(--bg);
   color:var(--text);
-  min-height:100vh;
-  padding-bottom:85px;
+  font-family:Arial,Helvetica,sans-serif;
+  padding-bottom:90px;
 }
-
-button,input,select,textarea{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-img{
-  max-width:100%;
-}
-
-.hidden{
-  display:none!important;
-}
-
-.muted{
-  color:var(--muted);
-}
-
-.small{
-  font-size:12px;
-}
-
-.container{
-  width:100%;
-  max-width:1100px;
-  margin:auto;
-  padding:16px;
-}
-
-/* HEADER */
-
-.header{
-  height:65px;
-  background:rgba(8,10,18,.96);
-  border-bottom:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 16px;
-  position:sticky;
-  top:0;
-  z-index:100;
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}
+a{color:inherit;text-decoration:none}
+.hidden{display:none!important}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.container{width:min(1150px,94%);margin:auto}
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(8,13,27,.94);
   backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border);
 }
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.topbar-inner{
+  min-height:66px;display:flex;align-items:center;
+  justify-content:space-between;gap:12px;
 }
-
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
 .brand-logo{
-  width:42px;
-  height:42px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900;
-  font-size:19px;
-  color:white;
-  background:linear-gradient(135deg,#146cff,#00c8ff);
-  box-shadow:0 0 20px rgba(0,140,255,.3);
+  width:42px;height:42px;border-radius:13px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,#087cff,#00d9ff);
+  color:white;font-size:20px;
+  box-shadow:0 0 22px rgba(0,150,255,.3);
 }
-
-.brand-name{
-  font-size:15px;
-  font-weight:900;
-  letter-spacing:.5px;
+.brand-name{font-size:15px;letter-spacing:.5px}
+.brand-name span{color:var(--cyan)}
+.header-actions{display:flex;align-items:center;gap:8px}
+.wallet-chip{
+  background:#102644;border:1px solid #1c5688;
+  border-radius:30px;padding:9px 12px;
+  font-size:12px;font-weight:800;color:var(--cyan);
 }
-
-.brand-name span{
-  color:var(--blue2);
+.btn{
+  border:0;border-radius:11px;padding:12px 16px;
+  font-weight:800;color:white;
+  background:linear-gradient(135deg,#087cff,#00aaff);
+  box-shadow:0 5px 18px rgba(0,130,255,.2);
 }
-
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.btn:hover{filter:brightness(1.12)}
+.btn-secondary{
+  background:#1a2942;border:1px solid var(--border);
+  box-shadow:none;color:#dceaff;
 }
-
-.icon-btn{
-  width:40px;
-  height:40px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:var(--panel);
-  color:white;
-  font-size:18px;
+.btn-danger{background:linear-gradient(135deg,#e9234c,#ff526b)}
+.btn-success{background:linear-gradient(135deg,#079b70,#20d69c)}
+.btn-block{width:100%}
+.btn-small{padding:8px 11px;font-size:12px;border-radius:8px}
+.hero{
+  margin:22px 0;padding:28px 22px;min-height:245px;
+  border:1px solid #17477c;border-radius:22px;
+  background:
+   radial-gradient(circle at 85% 20%,rgba(0,204,255,.2),transparent 32%),
+   radial-gradient(circle at 10% 100%,rgba(0,106,255,.2),transparent 40%),
+   linear-gradient(130deg,#10284a,#101a31 60%,#101b34);
+  position:relative;overflow:hidden;
 }
-
-/* COMMON */
-
-.section{
-  margin-top:25px;
+.hero:after{
+  content:"";position:absolute;width:190px;height:190px;
+  right:-45px;bottom:-80px;border:25px solid rgba(0,190,255,.08);
+  border-radius:50%;
 }
-
+.hero-tag{
+  display:inline-block;padding:7px 11px;border-radius:30px;
+  background:rgba(0,190,255,.12);color:var(--cyan);
+  font-size:11px;font-weight:900;letter-spacing:1px;
+}
+.hero h1{font-size:clamp(27px,6vw,44px);margin:17px 0 8px;line-height:1.12}
+.hero h1 span{color:var(--cyan)}
+.hero p{max-width:530px;color:#b2c4df;line-height:1.6;font-size:14px}
+.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.section{margin:26px 0}
 .section-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:14px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-bottom:14px;
 }
-
-.section-head h2{
-  font-size:18px;
-  font-weight:800;
-}
-
-.section-head a{
-  color:var(--blue2);
-  font-size:12px;
-}
-
-.card{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:16px;
+.section-head h2{font-size:19px;margin:0}
+.section-head small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stat-card,.card,.panel{
+  background:linear-gradient(145deg,var(--panel),#0d1729);
+  border:1px solid var(--border);border-radius:16px;
   box-shadow:var(--shadow);
 }
-
-.primary-btn{
-  border:0;
-  border-radius:12px;
-  padding:13px 18px;
-  background:linear-gradient(135deg,#176dff,#00bfff);
-  color:white;
-  font-weight:800;
-  font-size:14px;
-  box-shadow:0 5px 20px rgba(0,120,255,.22);
+.stat-card{padding:14px 10px;text-align:center}
+.stat-card strong{display:block;font-size:21px;color:var(--cyan);margin-bottom:5px}
+.stat-card span{font-size:11px;color:var(--muted)}
+.card{padding:15px;min-width:0}
+.card h3{font-size:16px;margin:0 0 8px}
+.card p{font-size:13px;color:var(--muted);line-height:1.5}
+.tournament-card{position:relative;overflow:hidden}
+.tournament-card:before{
+  content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
 }
-
-.primary-btn:disabled{
-  opacity:.5;
-  cursor:not-allowed;
+.game-label{
+  display:inline-block;padding:5px 8px;border-radius:7px;
+  color:var(--cyan);background:#102b49;font-size:10px;font-weight:900;
 }
-
-.secondary-btn{
-  border:1px solid var(--border);
-  background:var(--panel2);
-  color:white;
-  border-radius:12px;
-  padding:12px 16px;
-  font-weight:700;
+.card-meta{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:9px;margin:13px 0;
 }
-
-.danger-btn{
-  border:0;
-  border-radius:10px;
-  padding:11px 15px;
-  background:rgba(255,48,79,.14);
-  color:#ff6379;
-  font-weight:700;
+.meta-item{background:#0b1425;border-radius:9px;padding:9px}
+.meta-item span{display:block;font-size:10px;color:var(--muted)}
+.meta-item b{display:block;font-size:13px;margin-top:4px}
+.status{
+  display:inline-block;padding:5px 8px;border-radius:20px;
+  font-size:10px;font-weight:900;background:#173c35;color:#54e5b1;
 }
-
-.full{
-  width:100%;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:800;
-  background:rgba(40,123,255,.15);
-  color:#67a5ff;
-}
-
-.badge.green{
-  color:var(--green);
-  background:rgba(32,214,138,.12);
-}
-
-.badge.red{
-  color:#ff6379;
-  background:rgba(255,48,79,.12);
-}
-
-/* HERO */
-
-.hero{
-  margin-top:18px;
-  padding:25px 20px;
-  border-radius:20px;
-  min-height:210px;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 90% 20%,rgba(0,200,255,.24),transparent 35%),
-    linear-gradient(125deg,#101b3b,#101629 65%,#111522);
-  border:1px solid rgba(65,145,255,.25);
-  box-shadow:0 15px 40px rgba(0,80,255,.1);
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  border:1px solid rgba(0,200,255,.18);
-  border-radius:50%;
-  right:-55px;
-  top:20px;
-  box-shadow:0 0 0 25px rgba(0,200,255,.03),
-             0 0 0 50px rgba(0,200,255,.02);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:550px;
-}
-
-.hero-tag{
-  color:var(--blue2);
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:2px;
-  margin-bottom:12px;
-}
-
-.hero h1{
-  font-size:28px;
-  line-height:1.2;
-  font-weight:900;
-  margin-bottom:10px;
-}
-
-.hero h1 span{
-  color:var(--blue2);
-}
-
-.hero p{
-  color:#aab5ce;
-  font-size:13px;
-  line-height:1.6;
-  margin-bottom:18px;
-  max-width:310px;
-}
-
-/* STATS */
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:18px;
-}
-
-.stat-card{
-  background:var(--panel);
-  border:1px solid var(--border);
-  padding:15px;
-  border-radius:15px;
-}
-
-.stat-card .stat-icon{
-  font-size:20px;
-  margin-bottom:10px;
-}
-
-.stat-card h3{
-  font-size:21px;
-  margin-bottom:5px;
-}
-
-.stat-card p{
-  color:var(--muted);
-  font-size:11px;
-}
-
-/* TOURNAMENT */
-
-.tournament-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:14px;
-}
-
-.tournament-card{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:16px;
-  overflow:hidden;
-}
-
-.tournament-banner{
-  height:120px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:42px;
-  background:
-    radial-gradient(circle at center,rgba(0,170,255,.25),transparent 60%),
-    linear-gradient(120deg,#111b38,#18223b);
-}
-
-.tournament-info{
-  padding:15px;
-}
-
-.tournament-info h3{
-  font-size:16px;
-  margin:10px 0 7px;
-}
-
-.tournament-meta{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin:14px 0;
-}
-
-.meta-item{
-  font-size:11px;
-  color:var(--muted);
-}
-
-.meta-item strong{
-  display:block;
-  color:white;
-  font-size:14px;
-  margin-top:5px;
-}
-
-/* FORMS */
-
-.field{
-  margin-bottom:15px;
-}
-
-.field label{
-  display:block;
-  color:#aeb8ce;
-  font-size:12px;
-  margin-bottom:8px;
-  font-weight:700;
-}
-
-.field input,
-.field select,
-.field textarea{
-  width:100%;
-  border:1px solid var(--border);
-  background:#0b1020;
-  color:white;
-  border-radius:11px;
-  padding:13px;
-  outline:none;
-  font-size:14px;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(40,123,255,.12);
-}
-
-.field input::placeholder,
-.field textarea::placeholder{
-  color:#66718a;
-}
-
-.notice{
-  padding:13px;
-  border-radius:11px;
-  background:rgba(40,123,255,.09);
-  border:1px solid rgba(40,123,255,.2);
-  color:#a9caff;
-  font-size:12px;
-  line-height:1.6;
-  margin-bottom:15px;
-}
-
-.message{
-  font-size:12px;
-  margin-top:12px;
-  line-height:1.5;
-  color:#ff687d;
-}
-
-.message.success{
-  color:var(--green);
-}
-
-/* MODALS */
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:500;
-  background:rgba(0,0,0,.78);
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-  backdrop-filter:blur(7px);
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-box{
-  background:#111725;
-  border:1px solid var(--border);
-  border-radius:19px;
-  padding:20px;
-  width:100%;
-  max-width:430px;
-  max-height:88vh;
-  overflow-y:auto;
-  box-shadow:0 20px 70px rgba(0,0,0,.55);
-}
-
-.modal-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:20px;
-}
-
-.modal-head h2{
-  font-size:19px;
-}
-
-.close-btn{
-  width:35px;
-  height:35px;
-  border:1px solid var(--border);
-  background:var(--panel2);
-  color:white;
-  border-radius:10px;
-  font-size:20px;
-}
-
-/* WALLET */
-
-.wallet-card{
-  padding:22px;
-  border-radius:18px;
-  background:linear-gradient(130deg,#123b83,#1269ba,#10294f);
-  border:1px solid rgba(80,170,255,.3);
-}
-
-.wallet-card p{
-  font-size:12px;
-  color:#c0ddff;
-}
-
-.wallet-card h2{
-  font-size:32px;
-  margin:10px 0;
-}
-
-.wallet-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:18px;
-}
-
-.wallet-actions button{
-  padding:13px 8px;
-  border-radius:11px;
-  font-weight:800;
-  border:1px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.1);
-  color:white;
-}
-
-/* LISTS */
-
+.status.pending{background:#473716;color:#ffd16a}
+.status.closed{background:#42202b;color:#ff8399}
 .list-item{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:14px 0;
-  border-bottom:1px solid var(--border);
+  padding:13px 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
 }
-
-.list-item:last-child{
-  border-bottom:0;
+.list-item:last-child{border-bottom:0}
+.list-item h4{font-size:13px;margin:0 0 5px}
+.list-item p{font-size:11px;color:var(--muted);margin:0}
+.page{display:none;padding-top:20px}
+.page.active{display:block}
+.page-title{font-size:23px;margin:5px 0 18px}
+.form-group{margin:13px 0}
+.form-group label{display:block;font-size:12px;color:#b6c9e4;margin-bottom:7px}
+.field{
+  width:100%;padding:13px 12px;border-radius:10px;
+  border:1px solid #263d5d;background:#091426;
+  color:white;outline:none;
 }
-
-.empty-state{
-  text-align:center;
-  padding:30px 15px;
-  color:var(--muted);
-  font-size:13px;
+.field:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,217,255,.1)}
+textarea.field{resize:vertical;min-height:90px}
+select.field option{background:#101a2e}
+.panel{padding:17px;margin:14px 0}
+.balance-box{
+  padding:22px;border-radius:17px;
+  background:linear-gradient(120deg,#07519b,#087fca);
+  box-shadow:0 10px 28px rgba(0,100,220,.2);
 }
-
-.empty-state .empty-icon{
-  font-size:35px;
-  margin-bottom:10px;
+.balance-box span{font-size:12px;color:#d4edff}
+.balance-box h2{font-size:32px;margin:9px 0}
+.balance-actions{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
+.balance-actions button{flex:1;min-width:120px}
+.filter-row{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:15px}
+.filter-row .field{flex:1;min-width:130px}
+.empty{
+  padding:25px 12px;text-align:center;color:var(--muted);
+  border:1px dashed #29415f;border-radius:13px;font-size:13px;
 }
-
-/* PROFILE */
-
-.profile-head{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:18px;
-}
-
-.avatar{
-  width:55px;
-  height:55px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:linear-gradient(135deg,#176dff,#00c8ff);
-  font-size:23px;
-  font-weight:900;
-}
-
-/* BOTTOM NAV */
-
 .bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:72px;
-  background:rgba(12,16,29,.97);
+  position:fixed;z-index:60;bottom:0;left:0;right:0;
+  background:rgba(10,18,34,.97);backdrop-filter:blur(14px);
   border-top:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
-  z-index:200;
-  backdrop-filter:blur(15px);
-  padding-bottom:env(safe-area-inset-bottom);
+  display:grid;grid-template-columns:repeat(5,1fr);
+  padding:8px 3px calc(8px + env(safe-area-inset-bottom));
 }
-
-.nav-item{
-  flex:1;
-  border:0;
-  background:transparent;
-  color:#78839b;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:5px;
-  height:100%;
-  font-size:10px;
-  font-weight:700;
+.nav-btn{
+  border:0;background:transparent;color:#8295b2;
+  display:flex;flex-direction:column;align-items:center;
+  gap:4px;font-size:10px;padding:5px 1px;font-weight:700;
 }
-
-.nav-item .nav-icon{
-  font-size:20px;
+.nav-icon{font-size:19px;line-height:22px}
+.nav-btn.active{color:var(--cyan)}
+.modal{
+  display:none;position:fixed;inset:0;z-index:100;
+  background:rgba(0,0,0,.78);padding:18px;
+  align-items:center;justify-content:center;
 }
-
-.nav-item.active{
-  color:var(--blue2);
+.modal.show{display:flex}
+.modal-box{
+  width:min(480px,100%);max-height:88vh;overflow:auto;
+  background:#101c31;border:1px solid #24476d;
+  border-radius:18px;padding:20px;position:relative;
+  box-shadow:0 20px 70px #000;
 }
-
-.nav-item.active .nav-icon{
-  filter:drop-shadow(0 0 7px rgba(0,200,255,.6));
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.modal-head h2{font-size:19px;margin:0}
+.close-btn{
+  width:32px;height:32px;border:0;border-radius:9px;
+  background:#263750;color:white;font-size:20px;
 }
-
-/* PAGE VISIBILITY */
-
-.page{
-  display:none;
-  animation:fadeIn .2s ease;
+.toast{
+  position:fixed;z-index:200;bottom:90px;left:50%;
+  transform:translateX(-50%);width:max-content;max-width:90%;
+  padding:12px 17px;border-radius:10px;background:#19334e;
+  border:1px solid #2871a6;color:white;font-size:13px;
+  box-shadow:var(--shadow);display:none;
 }
-
-.page.active{
-  display:block;
+.toast.show{display:block}
+.toast.error{background:#4b1e2a;border-color:#a83d57}
+.toast.success{background:#124333;border-color:#218d68}
+.loading-overlay{
+  display:none;position:fixed;inset:0;z-index:180;
+  background:rgba(0,0,0,.65);align-items:center;justify-content:center;
 }
-
-@keyframes fadeIn{
-  from{opacity:.5;transform:translateY(5px)}
-  to{opacity:1;transform:translateY(0)}
+.loading-overlay.show{display:flex}
+.loading-box{background:#14233a;padding:22px 28px;border-radius:14px}
+.spinner{
+  width:25px;height:25px;border:3px solid #34506c;
+  border-top-color:var(--cyan);border-radius:50%;
+  animation:spin .8s linear infinite;margin:0 auto 10px;
 }
-
-/* FOOTER */
-
-.footer{
-  text-align:center;
-  padding:25px 10px;
-  color:#647089;
-  font-size:11px;
-  line-height:1.8;
+@keyframes spin{to{transform:rotate(360deg)}}
+hr{border:0;border-top:1px solid var(--border);margin:17px 0}
+.footer{text-align:center;color:#7186a5;font-size:11px;padding:25px 10px}
+@media(max-width:650px){
+ .grid{grid-template-columns:1fr}
+ .stats-grid{grid-template-columns:repeat(2,1fr)}
+ .hero{padding:23px 18px;min-height:225px}
+ .brand-name{font-size:13px}
+ .wallet-chip{padding:8px;font-size:11px}
+ .topbar-inner{min-height:60px}
 }
-
-/* DESKTOP */
-
-@media(min-width:700px){
-  body{
-    padding-bottom:20px;
-  }
-
-  .container{
-    padding:25px;
-  }
-
-  .hero{
-    padding:40px;
-    min-height:260px;
-  }
-
-  .hero h1{
-    font-size:40px;
-  }
-
-  .stats-grid{
-    grid-template-columns:repeat(4,1fr);
-  }
-
-  .tournament-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .bottom-nav{
-    display:none;
-  }
-
-  .header{
-    padding:0 max(calc((100% - 1100px)/2),20px);
-  }
-}
-
 </style>
 </head>
 
 <body>
-
-  <!-- HEADER AND MAIN APP CONTINUE IN PART 2 -->
-
-  
-<!-- HEADER -->
-
-<header class="header">
-  <div class="brand">
-    <div class="brand-logo">NI</div>
-    <div class="brand-name">
-      NAYA INDIA <span>ESPORTS</span>
-    </div>
+<header class="topbar">
+ <div class="container topbar-inner">
+  <div class="brand" onclick="showPage('home')">
+   <div class="brand-logo">NI</div>
+   <div class="brand-name">NAYA INDIA <span>ESPORTS</span></div>
   </div>
-
   <div class="header-actions">
-    <button class="icon-btn" onclick="showPage('notifications')">
-      🔔
-    </button>
-    <button class="icon-btn" onclick="showPage('account')">
-      👤
-    </button>
+   <button class="wallet-chip" onclick="showPage('wallet')">
+    💎 <span id="headerPoints">0</span> PTS
+   </button>
+   <button class="btn btn-small" id="headerAuthButton" onclick="openAuth()">LOGIN</button>
   </div>
+ </div>
 </header>
 
 <main class="container">
 
 <!-- HOME PAGE -->
-
-<section class="page active" id="home">
-
-  <div class="hero">
-    <div class="hero-content">
-      <div class="hero-tag">INDIA'S GAMING ARENA</div>
-
-      <h1>
-        PLAY. COMPETE.<br>
-        <span>WIN BIG.</span>
-      </h1>
-
-      <p>
-        Join exciting esports tournaments,
-        compete with players and win rewards.
-      </p>
-
-      <button class="primary-btn"
-        onclick="showPage('tournaments')">
-        Explore Tournaments →
-      </button>
-    </div>
+<section class="page active" id="page-home">
+ <div class="hero">
+  <span class="hero-tag">INDIA'S GAMING ARENA</span>
+  <h1>PLAY. COMPETE.<br><span>WIN BIG.</span></h1>
+  <p>Join tournaments, challenge the best players and make your mark in the NAYA INDIA ESPORTS community.</p>
+  <div class="hero-buttons">
+   <button class="btn" onclick="showPage('tournaments')">Explore Tournaments</button>
+   <button class="btn btn-secondary" onclick="openAuth()">Join Now</button>
   </div>
+ </div>
 
-  <div class="stats-grid">
+ <div class="stats-grid">
+  <div class="stat-card"><strong id="statTournaments">0</strong><span>TOURNAMENTS</span></div>
+  <div class="stat-card"><strong id="statPlayers">—</strong><span>PLAYERS</span></div>
+  <div class="stat-card"><strong id="statPrize">₹0</strong><span>PRIZE POOL</span></div>
+  <div class="stat-card"><strong>24/7</strong><span>COMMUNITY</span></div>
+ </div>
 
-    <div class="stat-card">
-      <div class="stat-icon">🏆</div>
-      <h3 id="homeTournamentCount">0</h3>
-      <p>Total Tournaments</p>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon">🎮</div>
-      <h3 id="homePlayerCount">0</h3>
-      <p>Registered Players</p>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon">💰</div>
-      <h3 id="homePrizeCount">₹0</h3>
-      <p>Total Prize Pool</p>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon">🔥</div>
-      <h3>LIVE</h3>
-      <p>Gaming Arena</p>
-    </div>
-
+ <div class="section">
+  <div class="section-head">
+   <h2>🔥 Featured Tournaments</h2>
+   <button class="btn btn-small btn-secondary" onclick="showPage('tournaments')">View All</button>
   </div>
-
-  <!-- FEATURED TOURNAMENTS -->
-
-  <div class="section">
-
-    <div class="section-head">
-      <h2>🔥 Featured Tournaments</h2>
-
-      <a href="javascript:void(0)"
-        onclick="showPage('tournaments')">
-        View All →
-      </a>
-    </div>
-
-    <div class="tournament-grid" id="featuredTournaments">
-
-      <div class="card empty-state">
-        <div class="empty-icon">🏆</div>
-        <p>Loading tournaments...</p>
-      </div>
-
-    </div>
-
+  <div class="grid" id="featuredTournaments">
+   <div class="empty">Loading tournaments...</div>
   </div>
+ </div>
 
-  <!-- LIVE MATCHES -->
-
-  <div class="section">
-
-    <div class="section-head">
-      <h2>🔴 Live Matches</h2>
-    </div>
-
-    <div class="card" id="liveMatches">
-
-      <div class="empty-state">
-        <div class="empty-icon">🎮</div>
-        <p>No live matches right now.</p>
-      </div>
-
-    </div>
-
+ <div class="section">
+  <div class="section-head"><h2>🔴 Live Matches</h2></div>
+  <div class="panel" id="liveMatches">
+   <div class="empty">Live match updates will appear here.</div>
   </div>
+ </div>
 
-  <!-- LATEST NEWS -->
-
-  <div class="section">
-
-    <div class="section-head">
-      <h2>📰 Latest News</h2>
-    </div>
-
-    <div id="homeNews">
-
-      <div class="card empty-state">
-        <div class="empty-icon">📰</div>
-        <p>No news available.</p>
-      </div>
-
-    </div>
-
-  </div>
-
+ <div class="section">
+  <div class="section-head"><h2>📰 Latest News</h2><button class="btn btn-small btn-secondary" onclick="showPage('news')">More</button></div>
+  <div class="panel" id="homeNews"><div class="empty">Loading news...</div></div>
+ </div>
 </section>
 
-
+  
 <!-- TOURNAMENTS PAGE -->
-
-<section class="page" id="tournaments">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>🏆 Tournaments</h2>
-  </div>
-
-  <div class="card">
-
-    <div class="field">
-      <label>Search Tournament</label>
-
-      <input
-        type="search"
-        id="tournamentSearch"
-        placeholder="Search tournament..."
-        oninput="filterTournaments()">
-    </div>
-
-    <div class="field">
-      <label>Select Game</label>
-
-      <select id="gameFilter"
-        onchange="filterTournaments()">
-
-        <option value="all">All Games</option>
-        <option value="BGMI">BGMI</option>
-        <option value="Free Fire">Free Fire</option>
-        <option value="Free Fire MAX">Free Fire MAX</option>
-        <option value="COD Mobile">COD Mobile</option>
-        <option value="Other">Other</option>
-
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Tournament Status</label>
-
-      <select id="tournamentStatusFilter"
-        onchange="filterTournaments()">
-
-        <option value="all">All Status</option>
-        <option value="upcoming">Upcoming</option>
-        <option value="live">Live</option>
-        <option value="completed">Completed</option>
-
-      </select>
-    </div>
-
-  </div>
-
-  <div class="section">
-
-    <div class="tournament-grid" id="allTournaments">
-
-      <div class="card empty-state">
-        <div class="empty-icon">🏆</div>
-        <p>Loading tournaments...</p>
-      </div>
-
-    </div>
-
-  </div>
-
+<section class="page" id="page-tournaments">
+ <h2 class="page-title">🏆 Tournaments</h2>
+ <div class="filter-row">
+  <input class="field" id="tournamentSearch" placeholder="Search tournaments..." oninput="filterTournaments()">
+  <select class="field" id="gameFilter" onchange="filterTournaments()">
+   <option value="">All Games</option>
+   <option value="BGMI">BGMI</option>
+   <option value="Free Fire MAX">Free Fire MAX</option>
+   <option value="Valorant">Valorant</option>
+   <option value="Other">Other</option>
+  </select>
+  <select class="field" id="statusFilter" onchange="filterTournaments()">
+   <option value="">All Status</option>
+   <option value="upcoming">Upcoming</option>
+   <option value="live">Live</option>
+   <option value="completed">Completed</option>
+  </select>
+ </div>
+ <div class="grid" id="allTournaments">
+  <div class="empty">Loading tournaments...</div>
+ </div>
 </section>
-
 
 <!-- WALLET PAGE -->
-
-<section class="page" id="wallet">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>💰 My Wallet</h2>
+<section class="page" id="page-wallet">
+ <h2 class="page-title">💎 My Wallet</h2>
+ <div class="balance-box">
+  <span>AVAILABLE WALLET POINTS</span>
+  <h2 id="walletPoints">0 PTS</h2>
+  <span id="walletRupees">Equivalent value: ₹0</span>
+  <div class="balance-actions">
+   <button class="btn btn-secondary" onclick="openDeposit()">＋ Add Points</button>
+   <button class="btn btn-secondary" onclick="loadTransactions()">↻ Refresh</button>
   </div>
-
-  <div class="wallet-card">
-
-    <p>Available Points</p>
-
-    <h2 id="walletPoints">0</h2>
-
-    <p>Welcome to NAYA INDIA ESPORTS</p>
-
-    <div class="wallet-actions">
-
-      <button onclick="openDeposit()">
-        ＋ Add Money
-      </button>
-
-      <button onclick="loadTransactions()">
-        ↻ Refresh
-      </button>
-
-    </div>
-
-  </div>
-
-  <div class="section">
-
-    <div class="section-head">
-      <h2>📋 Transaction History</h2>
-    </div>
-
-    <div class="card" id="transactionHistory">
-
-      <div class="empty-state">
-        <div class="empty-icon">💳</div>
-        <p>Login to view transactions.</p>
-      </div>
-
-    </div>
-
-  </div>
-
+ </div>
+ <div class="panel">
+  <h3>💳 Payment Information</h3>
+  <p class="muted small">Deposit requests are manually verified by the admin. Points are credited only after approval.</p>
+  <p>UPI ID: <b id="walletUPI">9125470027@fam</b></p>
+  <button class="btn btn-small" onclick="copyUPI()">Copy UPI ID</button>
+ </div>
+ <div class="panel">
+  <div class="section-head"><h3>Transaction History</h3></div>
+  <div id="transactionHistory"><div class="empty">Login to see transactions.</div></div>
+ </div>
 </section>
-
 
 <!-- ACCOUNT PAGE -->
+<section class="page" id="page-account">
+ <h2 class="page-title">👤 My Account</h2>
+ <div class="panel" id="accountGuest">
+  <h3>Welcome to NAYA INDIA ESPORTS</h3>
+  <p class="muted">Login to manage your profile, registrations and wallet.</p>
+  <button class="btn btn-block" onclick="openAuth()">Login / Register</button>
+ </div>
 
-<section class="page" id="account">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>👤 My Account</h2>
+ <div class="panel hidden" id="accountProfile">
+  <div style="display:flex;align-items:center;gap:13px">
+   <div class="brand-logo">👤</div>
+   <div>
+    <h3 id="profileDisplayName">Player</h3>
+    <p class="muted small" id="profileDisplayEmail"></p>
+   </div>
   </div>
+  <hr>
+  <div class="list-item"><span class="muted">Wallet Points</span><b id="accountPoints">0</b></div>
+  <div class="list-item"><span class="muted">Account Status</span><b>Active</b></div>
+  <button class="btn btn-block" onclick="openEditProfile()">Edit Profile</button>
+  <button class="btn btn-secondary btn-block" style="margin-top:9px" onclick="logoutUser()">Logout</button>
+ </div>
 
-  <div class="card">
-
-    <div class="profile-head">
-
-      <div class="avatar" id="profileAvatar">N</div>
-
-      <div>
-        <h3 id="profileName">Guest Player</h3>
-        <p class="muted small" id="profileEmail">
-          Please login to continue
-        </p>
-      </div>
-
-    </div>
-
-    <button class="primary-btn full"
-      id="accountAuthButton"
-      onclick="openAuth('login')">
-      Login / Register
-    </button>
-
+ <div class="panel">
+  <h3>My Gaming</h3>
+  <div class="list-item" onclick="showPage('my-registrations')">
+   <span>🏆 My Registrations</span><span>›</span>
   </div>
-
-  <div class="section">
-
-    <div class="card">
-
-      <div class="list-item">
-        <span>🎮 My Registrations</span>
-        <button class="secondary-btn"
-          onclick="showPage('myRegistrations')">
-          View
-        </button>
-      </div>
-
-      <div class="list-item">
-        <span>👥 My Teams</span>
-        <button class="secondary-btn"
-          onclick="showPage('teams')">
-          View
-        </button>
-      </div>
-
-      <div class="list-item">
-        <span>🔔 Notifications</span>
-        <button class="secondary-btn"
-          onclick="showPage('notifications')">
-          View
-        </button>
-      </div>
-
-      <div class="list-item">
-        <span>🏅 Leaderboard</span>
-        <button class="secondary-btn"
-          onclick="showPage('leaderboard')">
-          View
-        </button>
-      </div>
-
-      <div class="list-item">
-        <span>⚙️ Edit Profile</span>
-        <button class="secondary-btn"
-          onclick="showPage('editProfile')">
-          Edit
-        </button>
-      </div>
-
-      <div class="list-item">
-        <span>🚪 Logout</span>
-        <button class="danger-btn"
-          onclick="logoutUser()">
-          Logout
-        </button>
-      </div>
-
-    </div>
-
+  <div class="list-item" onclick="showPage('teams')">
+   <span>👥 My Teams</span><span>›</span>
   </div>
-
+  <div class="list-item" onclick="showPage('leaderboard')">
+   <span>🥇 Leaderboard</span><span>›</span>
+  </div>
+  <div class="list-item" onclick="showPage('notifications')">
+   <span>🔔 Notifications</span><span>›</span>
+  </div>
+  <div class="list-item" onclick="showPage('support')">
+   <span>🎧 Help & Support</span><span>›</span>
+  </div>
+  <div class="list-item" onclick="showPage('about')">
+   <span>ℹ️ About Us</span><span>›</span>
+  </div>
+ </div>
 </section>
 
-
-<!-- MY REGISTRATIONS PAGE -->
-
-<section class="page" id="myRegistrations">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>🎮 My Registrations</h2>
-  </div>
-
-  <div class="card" id="myRegistrationsList">
-    <div class="empty-state">
-      <div class="empty-icon">🎮</div>
-      <p>Login to view registrations.</p>
-    </div>
-  </div>
-
-  <button class="secondary-btn full"
-    style="margin-top:15px"
-    onclick="showPage('account')">
-    ← Back to Account
-  </button>
-
+<!-- MY REGISTRATIONS -->
+<section class="page" id="page-my-registrations">
+ <h2 class="page-title">🏆 My Registrations</h2>
+ <div class="panel" id="myRegistrations">
+  <div class="empty">Login to see your registrations.</div>
+ </div>
 </section>
 
-
-<!-- TEAMS PAGE -->
-
-<section class="page" id="teams">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>👥 Teams</h2>
-  </div>
-
-  <div class="card" id="teamsList">
-    <div class="empty-state">
-      <div class="empty-icon">👥</div>
-      <p>No teams available.</p>
-    </div>
-  </div>
-
+<!-- TEAMS -->
+<section class="page" id="page-teams">
+ <h2 class="page-title">👥 Teams</h2>
+ <div class="panel" id="teamsList">
+  <div class="empty">Loading teams...</div>
+ </div>
 </section>
 
-
-<!-- NOTIFICATIONS PAGE -->
-
-<section class="page" id="notifications">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>🔔 Notifications</h2>
-  </div>
-
-  <div class="card" id="notificationsList">
-    <div class="empty-state">
-      <div class="empty-icon">🔔</div>
-      <p>No notifications available.</p>
-    </div>
-  </div>
-
+<!-- LEADERBOARD -->
+<section class="page" id="page-leaderboard">
+ <h2 class="page-title">🥇 Leaderboard</h2>
+ <div class="panel" id="leaderboardList">
+  <div class="empty">Loading leaderboard...</div>
+ </div>
 </section>
 
-
-<!-- LEADERBOARD PAGE -->
-
-<section class="page" id="leaderboard">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>🏅 Leaderboard</h2>
-  </div>
-
-  <div class="card" id="leaderboardList">
-    <div class="empty-state">
-      <div class="empty-icon">🏆</div>
-      <p>Loading leaderboard...</p>
-    </div>
-  </div>
-
+<!-- NOTIFICATIONS -->
+<section class="page" id="page-notifications">
+ <h2 class="page-title">🔔 Notifications</h2>
+ <div class="panel" id="notificationsList">
+  <div class="empty">Login to see notifications.</div>
+ </div>
 </section>
 
-
-<!-- EDIT PROFILE PAGE -->
-
-<section class="page" id="editProfile">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>⚙️ Edit Profile</h2>
-  </div>
-
-  <div class="card">
-
-    <div class="field">
-      <label>Player Name</label>
-      <input id="editName" placeholder="Enter your name">
-    </div>
-
-    <div class="field">
-      <label>Game ID</label>
-      <input id="editGameId" placeholder="Enter game ID">
-    </div>
-
-    <div class="field">
-      <label>Phone Number</label>
-      <input id="editPhone" type="tel"
-        placeholder="Enter phone number">
-    </div>
-
-    <button class="primary-btn full"
-      onclick="saveProfile()">
-      Save Profile
-    </button>
-
-    <div id="profileMessage" class="message"></div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- BOTTOM NAVIGATION -->
-
-<nav class="bottom-nav">
-
-  <button class="nav-item active"
-    onclick="showPage('home',this)">
-
-    <span class="nav-icon">⌂</span>
-    <span>Home</span>
-
-  </button>
-
-  <button class="nav-item"
-    onclick="showPage('tournaments',this)">
-
-    <span class="nav-icon">🏆</span>
-    <span>Tournaments</span>
-
-  </button>
-
-  <button class="nav-item"
-    onclick="showPage('wallet',this)">
-
-    <span class="nav-icon">💰</span>
-    <span>Wallet</span>
-
-  </button>
-
-  <button class="nav-item"
-    onclick="showPage('account',this)">
-
-    <span class="nav-icon">👤</span>
-    <span>Account</span>
-
-  </button>
-
-</nav>
-
-<!-- PART 3 CONTINUES HERE -->
-  
-<!-- DEPOSIT MODAL -->
-
-<div class="modal" id="depositModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-      <h2>💰 Deposit Request</h2>
-
-      <button class="close-btn"
-        onclick="closeModal('depositModal')">
-        ×
-      </button>
-    </div>
-
-    <div class="notice">
-      Pay your selected amount to the UPI ID below.
-      After payment, enter your UTR number.
-      Your points will be credited after admin verification.
-    </div>
-
-    <div class="card" style="margin-bottom:15px">
-
-      <p class="muted small">Official UPI ID</p>
-
-      <h3 style="margin:8px 0;color:var(--blue2)"
-        id="paymentUpi">
-        9125470027@fam
-      </h3>
-
-      <button class="secondary-btn full"
-        type="button"
-        onclick="copyUPI()">
-        📋 Copy UPI ID
-      </button>
-
-    </div>
-
-    <div class="field">
-      <label>Deposit Amount (₹)</label>
-
-      <input
-        id="depositAmount"
-        type="number"
-        min="1"
-        max="100000"
-        placeholder="Enter amount"
-        oninput="updateDepositPoints()">
-    </div>
-
-    <div class="notice">
-      Points you will receive:
-      <strong id="depositPoints">0</strong>
-    </div>
-
-    <div class="field">
-      <label>UPI Transaction ID / UTR</label>
-
-      <input
-        id="depositUTR"
-        type="text"
-        maxlength="50"
-        placeholder="Enter your UTR number">
-    </div>
-
-    <button
-      class="primary-btn full"
-      type="button"
-      id="submitDepositButton"
-      onclick="submitDepositUTR()">
-
-      Submit Payment Request
-
-    </button>
-
-    <div class="message" id="depositMessage"></div>
-
-  </div>
-
-</div>
-
-
-<!-- TOURNAMENT REGISTRATION MODAL -->
-
-<div class="modal" id="registrationModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2>🎮 Tournament Registration</h2>
-
-      <button class="close-btn"
-        onclick="closeModal('registrationModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="notice">
-      Fill your correct player details.
-      Registration will be sent to admin for review.
-    </div>
-
-    <input type="hidden" id="registrationTournamentId">
-
-    <div class="field">
-      <label>Player Name</label>
-      <input id="registrationName"
-        placeholder="Enter player name">
-    </div>
-
-    <div class="field">
-      <label>Game ID</label>
-      <input id="registrationGameId"
-        placeholder="Enter your game ID">
-    </div>
-
-    <div class="field">
-      <label>Game</label>
-
-      <select id="registrationGame">
-        <option value="BGMI">BGMI</option>
-        <option value="Free Fire">Free Fire</option>
-        <option value="Free Fire MAX">Free Fire MAX</option>
-        <option value="COD Mobile">COD Mobile</option>
-        <option value="Other">Other</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Team Name (Optional)</label>
-      <input id="registrationTeam"
-        placeholder="Enter team name">
-    </div>
-
-    <div class="field">
-      <label>Phone Number</label>
-      <input id="registrationPhone"
-        type="tel"
-        placeholder="Enter phone number">
-    </div>
-
-    <button class="primary-btn full"
-      id="submitRegistrationButton"
-      onclick="submitRegistration()">
-
-      Submit Registration
-
-    </button>
-
-    <div class="message" id="registrationMessage"></div>
-
-  </div>
-
-</div>
-
-
-<!-- AUTH MODAL -->
-
-<div class="modal" id="authModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2 id="authTitle">Login</h2>
-
-      <button class="close-btn"
-        onclick="closeModal('authModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="field" id="authNameField"
-      style="display:none">
-
-      <label>Full Name</label>
-
-      <input
-        id="authName"
-        type="text"
-        placeholder="Enter your name">
-
-    </div>
-
-    <div class="field">
-
-      <label>Email Address</label>
-
-      <input
-        id="authEmail"
-        type="email"
-        placeholder="Enter your email">
-
-    </div>
-
-    <div class="field">
-
-      <label>Password</label>
-
-      <input
-        id="authPassword"
-        type="password"
-        placeholder="Enter password">
-
-    </div>
-
-    <button
-      class="primary-btn full"
-      id="authSubmitButton"
-      onclick="submitAuth()">
-
-      Login
-
-    </button>
-
-    <button
-      class="secondary-btn full"
-      style="margin-top:10px"
-      onclick="googleLogin()">
-
-      Continue with Google
-
-    </button>
-
-    <p style="text-align:center;margin-top:18px"
-      class="small muted">
-
-      <span id="authSwitchText">
-        Don't have an account?
-      </span>
-
-      <a href="javascript:void(0)"
-        style="color:var(--blue2);font-weight:800"
-        id="authSwitchLink"
-        onclick="switchAuthMode()">
-
-        Register
-
-      </a>
-
-    </p>
-
-    <div class="message" id="authMessage"></div>
-
-  </div>
-
-</div>
-
-
-<!-- TOURNAMENT DETAILS MODAL -->
-
-<div class="modal" id="tournamentDetailsModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2>🏆 Tournament Details</h2>
-
-      <button class="close-btn"
-        onclick="closeModal('tournamentDetailsModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div id="tournamentDetailsContent">
-
-      <div class="empty-state">
-        Loading tournament details...
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- PART 4 CONTINUES HERE -->
-  
 <!-- NEWS PAGE -->
-
-<section class="page" id="news">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>📰 Esports News</h2>
-  </div>
-
-  <div id="newsList">
-
-    <div class="card empty-state">
-      <div class="empty-icon">📰</div>
-      <p>Loading news...</p>
-    </div>
-
-  </div>
-
+<section class="page" id="page-news">
+ <h2 class="page-title">📰 Esports News</h2>
+ <div class="panel" id="newsList">
+  <div class="empty">Loading news...</div>
+ </div>
 </section>
-
 
 <!-- SUPPORT PAGE -->
-
-<section class="page" id="support">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>💬 Help & Support</h2>
-  </div>
-
-  <div class="card">
-
-    <div class="notice">
-      Need help with tournaments, registration,
-      wallet or payments? Send us your message.
-    </div>
-
-    <div class="field">
-      <label>Your Name</label>
-      <input id="supportName"
-        placeholder="Enter your name">
-    </div>
-
-    <div class="field">
-      <label>Email Address</label>
-      <input id="supportEmail"
-        type="email"
-        placeholder="Enter your email">
-    </div>
-
-    <div class="field">
-      <label>Subject</label>
-      <select id="supportSubject">
-        <option value="Payment">Payment Issue</option>
-        <option value="Tournament">Tournament Issue</option>
-        <option value="Registration">Registration Issue</option>
-        <option value="Account">Account Issue</option>
-        <option value="Other">Other</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Your Message</label>
-      <textarea id="supportMessage"
-        rows="4"
-        placeholder="Write your message..."></textarea>
-    </div>
-
-    <button class="primary-btn full"
-      onclick="submitSupport()">
-      Send Message
-    </button>
-
-    <div class="message" id="supportResult"></div>
-
-  </div>
-
+<section class="page" id="page-support">
+ <h2 class="page-title">🎧 Help & Support</h2>
+ <div class="panel">
+  <p class="muted">Send your question or problem to our support team.</p>
+  <form id="supportForm" onsubmit="submitSupport(event)">
+   <div class="form-group">
+    <label>Subject</label>
+    <input class="field" id="supportSubject" required maxlength="100" placeholder="Enter subject">
+   </div>
+   <div class="form-group">
+    <label>Your Message</label>
+    <textarea class="field" id="supportMessage" required maxlength="1000" placeholder="Describe your issue"></textarea>
+   </div>
+   <button class="btn btn-block" type="submit">Submit Support Request</button>
+  </form>
+ </div>
 </section>
-
 
 <!-- ABOUT PAGE -->
-
-<section class="page" id="about">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>ℹ️ About Us</h2>
-  </div>
-
-  <div class="card">
-
-    <div style="text-align:center;padding:15px">
-
-      <div class="brand-logo"
-        style="width:65px;height:65px;margin:auto;font-size:25px">
-        NI
-      </div>
-
-      <h2 style="margin-top:15px">
-        NAYA INDIA ESPORTS
-      </h2>
-
-      <p class="muted small"
-        style="margin-top:10px;line-height:1.8">
-        Play. Compete. Win Big.
-        <br>
-        Your destination for competitive esports
-        tournaments and gaming events.
-      </p>
-
-    </div>
-
-    <div class="list-item">
-      <span class="muted">Platform</span>
-      <strong>Esports Gaming</strong>
-    </div>
-
-    <div class="list-item">
-      <span class="muted">Country</span>
-      <strong>India</strong>
-    </div>
-
-    <div class="list-item">
-      <span class="muted">Version</span>
-      <strong>1.0.0</strong>
-    </div>
-
-  </div>
-
+<section class="page" id="page-about">
+ <h2 class="page-title">ℹ️ About NAYA INDIA ESPORTS</h2>
+ <div class="panel">
+  <h3>Play. Compete. Win Big.</h3>
+  <p class="muted">NAYA INDIA ESPORTS is a gaming tournament community where players can discover tournaments, register, compete and track their gaming journey.</p>
+  <hr>
+  <p><b>Games</b></p>
+  <p class="muted">BGMI · Free Fire MAX · Other supported games</p>
+  <p class="small muted">Play responsibly. Follow tournament rules and fair-play policies.</p>
+ </div>
 </section>
 
-
-<!-- ACCOUNT MENU ADDITIONS -->
-
-<section class="page" id="accountExtra">
-
-  <div class="section-head" style="margin-top:12px">
-    <h2>⚙️ More Options</h2>
-  </div>
-
-  <div class="card">
-
-    <div class="list-item">
-      <span>📰 News</span>
-      <button class="secondary-btn"
-        onclick="showPage('news')">
-        Open
-      </button>
-    </div>
-
-    <div class="list-item">
-      <span>💬 Help & Support</span>
-      <button class="secondary-btn"
-        onclick="showPage('support')">
-        Open
-      </button>
-    </div>
-
-    <div class="list-item">
-      <span>ℹ️ About Us</span>
-      <button class="secondary-btn"
-        onclick="showPage('about')">
-        Open
-      </button>
-    </div>
-
-  </div>
-
+<!-- EDIT PROFILE PAGE -->
+<section class="page" id="page-edit-profile">
+ <h2 class="page-title">✏️ Edit Profile</h2>
+ <div class="panel">
+  <form id="profileForm" onsubmit="saveProfile(event)">
+   <div class="form-group">
+    <label>Full Name</label>
+    <input class="field" id="editName" required maxlength="60">
+   </div>
+   <div class="form-group">
+    <label>Phone Number</label>
+    <input class="field" id="editPhone" type="tel" maxlength="15">
+   </div>
+   <div class="form-group">
+    <label>In-game Name</label>
+    <input class="field" id="editGameName" maxlength="40">
+   </div>
+   <button class="btn btn-block" type="submit">Save Profile</button>
+  </form>
+ </div>
 </section>
 
-
-<!-- REGISTRATION SUCCESS MODAL -->
-
-<div class="modal" id="successModal">
-
-  <div class="modal-box" style="text-align:center">
-
-    <div style="font-size:55px;margin:10px">
-      ✅
-    </div>
-
-    <h2 id="successTitle">
-      Request Submitted!
-    </h2>
-
-    <p id="successText"
-      class="muted small"
-      style="line-height:1.7;margin:15px 0 20px">
-      Your request has been submitted successfully.
-    </p>
-
-    <button class="primary-btn full"
-      onclick="closeModal('successModal')">
-      Continue
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- LOADING OVERLAY -->
-
-<div class="modal" id="loadingModal">
-
-  <div class="modal-box"
-    style="text-align:center">
-
-    <div style="font-size:35px;margin-bottom:15px">
-      ⏳
-    </div>
-
-    <h3 id="loadingText">
-      Please wait...
-    </h3>
-
-    <p class="muted small"
-      style="margin-top:10px">
-      Processing your request
-    </p>
-
-  </div>
-
-</div>
-
-
-<!-- FOOTER -->
+<!-- BOTTOM NAVIGATION -->
+<nav class="bottom-nav">
+ <button class="nav-btn active" data-page="home" onclick="showPage('home')">
+  <span class="nav-icon">🏠</span>Home
+ </button>
+ <button class="nav-btn" data-page="tournaments" onclick="showPage('tournaments')">
+  <span class="nav-icon">🏆</span>Tournaments
+ </button>
+ <button class="nav-btn" data-page="wallet" onclick="showPage('wallet')">
+  <span class="nav-icon">💎</span>Wallet
+ </button>
+ <button class="nav-btn" data-page="leaderboard" onclick="showPage('leaderboard')">
+  <span class="nav-icon">🥇</span>Ranks
+ </button>
+ <button class="nav-btn" data-page="account" onclick="showPage('account')">
+  <span class="nav-icon">👤</span>Account
+ </button>
+</nav>
+</main>
 
 <footer class="footer">
-
-  <div class="brand-logo"
-    style="margin:0 auto 12px">
-    NI
-  </div>
-
-  <strong>NAYA INDIA ESPORTS</strong>
-
-  <p style="margin-top:8px">
-    Play. Compete. Win Big.
-  </p>
-
-  <p style="margin-top:8px">
-    © 2026 NAYA INDIA ESPORTS.
-    All Rights Reserved.
-  </p>
-
+ NAYA INDIA ESPORTS © 2026 · Play Fair · Game On
 </footer>
 
+<!-- DEPOSIT MODAL -->
+<div class="modal" id="depositModal">
+ <div class="modal-box">
+  <div class="modal-head">
+   <h2>💎 Add Wallet Points</h2>
+   <button class="close-btn" onclick="closeModal('depositModal')">×</button>
+  </div>
+  <p class="muted small">Pay using UPI and submit your UTR number. Admin will verify your payment.</p>
 
-<!-- PART 5 CONTINUES HERE -->
-  
-<!-- FIREBASE CONNECTION AND APP LOGIC -->
+  <div class="panel">
+   <span class="muted small">PAY TO UPI ID</span>
+   <h3 id="depositUPI">9125470027@fam</h3>
+   <button class="btn btn-small" onclick="copyUPI()">Copy UPI ID</button>
+  </div>
 
+  <form id="depositForm" onsubmit="submitDepositUTR(event)">
+   <div class="form-group">
+    <label>Deposit Amount (₹)</label>
+    <input class="field" id="depositAmount" type="number" min="1" max="100000" step="1" required placeholder="Enter amount" oninput="updateDepositPoints()">
+   </div>
+   <div class="form-group">
+    <label>Points You Will Receive</label>
+    <input class="field" id="depositPoints" readonly placeholder="0 points">
+   </div>
+   <div class="form-group">
+    <label>UPI Transaction ID / UTR</label>
+    <input class="field" id="depositUTR" required minlength="8" maxlength="40" placeholder="Enter UTR number">
+   </div>
+   <p class="small muted">Submitting this form creates a pending request. Points are not credited until the admin verifies the payment.</p>
+   <button class="btn btn-block" id="submitDepositButton" type="submit">Submit Payment Request</button>
+  </form>
+ </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal" id="authModal">
+ <div class="modal-box">
+  <div class="modal-head">
+   <h2 id="authTitle">Login</h2>
+   <button class="close-btn" onclick="closeModal('authModal')">×</button>
+  </div>
+
+  <form id="authForm" onsubmit="submitAuth(event)">
+   <div class="form-group hidden" id="authNameGroup">
+    <label>Full Name</label>
+    <input class="field" id="authName" maxlength="60" placeholder="Your name">
+   </div>
+   <div class="form-group">
+    <label>Email Address</label>
+    <input class="field" id="authEmail" type="email" required autocomplete="email" placeholder="Email address">
+   </div>
+   <div class="form-group">
+    <label>Password</label>
+    <input class="field" id="authPassword" type="password" required minlength="6" autocomplete="current-password" placeholder="Password">
+   </div>
+   <button class="btn btn-block" id="authSubmitButton" type="submit">Login</button>
+  </form>
+
+  <button class="btn btn-secondary btn-block" style="margin-top:10px" onclick="googleLogin()">Continue with Google</button>
+
+  <p class="muted small" style="text-align:center;margin-top:17px">
+   <span id="authSwitchText">Don't have an account?</span>
+   <button class="btn btn-small btn-secondary" id="authSwitchButton" onclick="switchAuthMode()" type="button">Register</button>
+  </p>
+ </div>
+</div>
+
+<!-- TOURNAMENT DETAILS MODAL -->
+<div class="modal" id="tournamentDetailsModal">
+ <div class="modal-box">
+  <div class="modal-head">
+   <h2>Tournament Details</h2>
+   <button class="close-btn" onclick="closeModal('tournamentDetailsModal')">×</button>
+  </div>
+  <div id="tournamentDetailsContent"></div>
+ </div>
+</div>
+
+<!-- TOURNAMENT REGISTRATION MODAL -->
+<div class="modal" id="registrationModal">
+ <div class="modal-box">
+  <div class="modal-head">
+   <h2>🏆 Tournament Registration</h2>
+   <button class="close-btn" onclick="closeModal('registrationModal')">×</button>
+  </div>
+
+  <div class="panel">
+   <b id="registrationTournamentName">Tournament</b>
+   <p class="muted small" id="registrationTournamentGame"></p>
+  </div>
+
+  <form id="registrationForm" onsubmit="submitRegistration(event)">
+   <input type="hidden" id="registrationTournamentId">
+
+   <div class="form-group">
+    <label>Player Name</label>
+    <input class="field" id="registrationPlayerName" required maxlength="60" placeholder="Your full name">
+   </div>
+
+   <div class="form-group">
+    <label>Game ID</label>
+    <input class="field" id="registrationGameId" required maxlength="60" placeholder="Your in-game ID">
+   </div>
+
+   <div class="form-group">
+    <label>In-game Name</label>
+    <input class="field" id="registrationGameName" maxlength="60" placeholder="Your gaming name">
+   </div>
+
+   <div class="form-group">
+    <label>Team Name (if applicable)</label>
+    <input class="field" id="registrationTeamName" maxlength="60" placeholder="Solo players can leave blank">
+   </div>
+
+   <div class="form-group">
+    <label>Phone Number</label>
+    <input class="field" id="registrationPhone" type="tel" required maxlength="15" placeholder="Your contact number">
+   </div>
+
+   <button class="btn btn-block" id="registrationSubmitButton" type="submit">Submit Registration</button>
+  </form>
+ </div>
+</div>
+
+<!-- SUCCESS / MESSAGE MODAL -->
+<div class="modal" id="messageModal">
+ <div class="modal-box" style="text-align:center">
+  <div style="font-size:45px" id="messageIcon">✅</div>
+  <h2 id="messageTitle">Success</h2>
+  <p class="muted" id="messageText">Your request has been submitted.</p>
+  <button class="btn btn-block" onclick="closeModal('messageModal')">Continue</button>
+ </div>
+</div>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loadingOverlay">
+ <div class="loading-box">
+  <div class="spinner"></div>
+  <div class="small">Please wait...</div>
+ </div>
+</div>
+
+<!-- TOAST MESSAGE -->
+<div class="toast" id="toastMessage"></div>
+
+
+<!-- FIREBASE MODULE START -->
 <script type="module">
 
-/* =====================================
-   1. FIREBASE IMPORTS
-===================================== */
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+ getAuth,
+ onAuthStateChanged,
+ createUserWithEmailAndPassword,
+ signInWithEmailAndPassword,
+ GoogleAuthProvider,
+ signInWithPopup,
+ signOut,
+ updateProfile
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
-  onAuthStateChanged,
-  updateProfile
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+ getFirestore,
+ doc,
+ getDoc,
+ setDoc,
+ updateDoc,
+ collection,
+ addDoc,
+ getDocs,
+ query,
+ where,
+ orderBy,
+ limit,
+ serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-import {
-  getFirestore,
-  doc,
-  setDoc,
-  getDoc,
-  updateDoc,
-  addDoc,
-  collection,
-  getDocs,
-  query,
-  where,
-  orderBy,
-  limit,
-  serverTimestamp,
-  runTransaction
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-
-/* =====================================
-   2. FIREBASE CONFIGURATION
-===================================== */
-
+/* FIREBASE CONFIG */
 const firebaseConfig = {
-  apiKey: "AIzaSyCUOHKfHy35G4M3pUxWHerEWxPQ-zYvyg8",
-  authDomain: "naya-india-esportsa.firebaseapp.com",
-  projectId: "naya-india-esportsa",
-  storageBucket: "nayaindiaesportsa.firebasestorage.app",
-  messagingSenderId: "541751208129",
-  appId: "1:541751208129:web:973af506812cfe23d14c40",
-  measurementId: "G-N7CMN7CMLN"
+ apiKey: "AIzaSyCUOHKfHy35G4M3pUxWHerEWxPQ-zYvyg8",
+ authDomain: "naya-india-esportsa.firebaseapp.com",
+ projectId: "naya-india-esportsa",
+ storageBucket: "nayaindiaesportsa.firebasestorage.app",
+ messagingSenderId: "541751208129",
+ appId: "1:541751208129:web:973af506812cfe23d14c40",
+ measurementId: "G-N7CMN7CMLN"
 };
 
-
-/* =====================================
-   3. INITIALIZE FIREBASE
-===================================== */
-
+/* INITIALIZE FIREBASE */
 const firebaseApp = initializeApp(firebaseConfig);
-
 const auth = getAuth(firebaseApp);
-
 const db = getFirestore(firebaseApp);
-
 const googleProvider = new GoogleAuthProvider();
 
-googleProvider.setCustomParameters({
-  prompt: "select_account"
-});
-
-
-/* =====================================
-   4. GLOBAL APP VARIABLES
-===================================== */
-
+/* GLOBAL VARIABLES */
 let currentUser = null;
-
 let currentUserData = {};
-
-let selectedDepositAmount = 0;
-
-let tournamentData = [];
-
 let allTournamentData = [];
-
+let selectedTournament = null;
 let authMode = "login";
-
-const POINTS_PER_RUPEE = 1;
+let toastTimer = null;
 
 const ADMIN_UID = "fmSlWbEz0PY7WgKXqmQFXmeeOuX2";
-
 const UPI_ID = "9125470027@fam";
+const POINTS_PER_RUPEE = 1;
 
-
-/* =====================================
-   5. GLOBAL REFERENCES
-===================================== */
-
-window.db = db;
-window.auth = auth;
-
-
-/* =====================================
-   6. HELPER FUNCTIONS
-===================================== */
-
-function getElement(id){
-  return document.getElementById(id);
+/* COMMON HELPERS */
+function el(id){
+ return document.getElementById(id);
 }
 
-function showMessage(id,message,type="error"){
-
-  const element = getElement(id);
-
-  if(!element) return;
-
-  element.textContent = message;
-
-  element.className =
-    type === "success"
-      ? "message success"
-      : "message";
-}
-
-function openModal(id){
-
-  const modal = getElement(id);
-
-  if(modal){
-    modal.classList.add("show");
-  }
-
-}
-
-function closeModal(id){
-
-  const modal = getElement(id);
-
-  if(modal){
-    modal.classList.remove("show");
-  }
-
-}
-
-function showLoading(message="Please wait..."){
-
-  const text = getElement("loadingText");
-
-  if(text){
-    text.textContent = message;
-  }
-
-  openModal("loadingModal");
-
-}
-
-function hideLoading(){
-
-  closeModal("loadingModal");
-
+function escapeHTML(value){
+ return String(value ?? "").replace(/[&<>"']/g, function(char){
+  const map = {
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#039;"
+  };
+  return map[char];
+ });
 }
 
 function formatCurrency(value){
-
-  return "₹" + Number(value || 0).toLocaleString("en-IN");
-
+ return "₹" + Number(value || 0).toLocaleString("en-IN");
 }
 
 function formatDate(value){
-
-  if(!value) return "Not available";
-
-  const date =
-    value.toDate
-      ? value.toDate()
-      : new Date(value);
-
-  if(Number.isNaN(date.getTime())){
-    return "Not available";
-  }
-
-  return date.toLocaleDateString("en-IN",{
-    day:"2-digit",
-    month:"short",
-    year:"numeric"
-  });
-
+ if(!value) return "Date not available";
+ const date = value.toDate ? value.toDate() : new Date(value);
+ if(Number.isNaN(date.getTime())) return "Date not available";
+ return date.toLocaleString("en-IN",{
+  day:"2-digit",
+  month:"short",
+  year:"numeric",
+  hour:"2-digit",
+  minute:"2-digit"
+ });
 }
 
-function escapeHTML(value=""){
-
-  return String(value).replace(/[&<>"']/g,function(char){
-
-    const entities = {
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-    };
-
-    return entities[char];
-
-  });
-
+function showMessage(title,message,icon="✅"){
+ el("messageTitle").textContent = title;
+ el("messageText").textContent = message;
+ el("messageIcon").textContent = icon;
+ openModal("messageModal");
 }
 
+function showToast(message,type="success"){
+ const toast = el("toastMessage");
+ toast.textContent = message;
+ toast.className = "toast show " + type;
+ clearTimeout(toastTimer);
+ toastTimer = setTimeout(()=>{
+  toast.className = "toast";
+ },3500);
+}
 
-/* =====================================
-   7. PAGE NAVIGATION
-===================================== */
+function setLoading(active){
+ el("loadingOverlay").classList.toggle("show",Boolean(active));
+}
 
-window.showPage = function(pageId,button=null){
+function openModal(id){
+ const modal = el(id);
+ if(modal) modal.classList.add("show");
+}
 
-  document.querySelectorAll(".page").forEach(page=>{
-    page.classList.remove("active");
-  });
+function closeModal(id){
+ const modal = el(id);
+ if(modal) modal.classList.remove("show");
+}
 
-  const selectedPage = getElement(pageId);
+/* PAGE NAVIGATION */
+window.showPage = function(page){
+ const target = el("page-" + page);
+ if(!target){
+  showToast("Page not found: " + page,"error");
+  return;
+ }
 
-  if(selectedPage){
-    selectedPage.classList.add("active");
-  }
+ document.querySelectorAll(".page").forEach(section=>{
+  section.classList.remove("active");
+ });
 
-  document.querySelectorAll(".nav-item").forEach(item=>{
-    item.classList.remove("active");
-  });
+ target.classList.add("active");
 
-  if(button){
-    button.classList.add("active");
-  }else{
+ document.querySelectorAll(".nav-btn").forEach(button=>{
+  button.classList.toggle("active",button.dataset.page === page);
+ });
 
-    const navButton = document.querySelector(
-      '.nav-item[onclick*="' + pageId + '"]'
-    );
+ if(page === "wallet"){
+  updateWalletUI();
+  if(currentUser) window.loadTransactions();
+ }
+ if(page === "account") updateAccountUI();
+ if(page === "my-registrations") loadMyRegistrations();
+ if(page === "teams") loadTeams();
+ if(page === "leaderboard") loadLeaderboard();
+ if(page === "notifications") loadNotifications();
+ if(page === "news") loadNews();
 
-    if(navButton){
-      navButton.classList.add("active");
-    }
-
-  }
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
+ window.scrollTo({top:0,behavior:"smooth"});
 };
 
-
-/* =====================================
-   8. AUTH MODAL MODE
-===================================== */
-
+/* AUTH MODAL */
 window.openAuth = function(mode="login"){
-
-  authMode = mode;
-
-  const isRegister = mode === "register";
-
-  getElement("authTitle").textContent =
-    isRegister ? "Create Account" : "Login";
-
-  getElement("authSubmitButton").textContent =
-    isRegister ? "Create Account" : "Login";
-
-  getElement("authNameField").style.display =
-    isRegister ? "block" : "none";
-
-  getElement("authSwitchText").textContent =
-    isRegister
-      ? "Already have an account?"
-      : "Don't have an account?";
-
-  getElement("authSwitchLink").textContent =
-    isRegister ? "Login" : "Register";
-
-  showMessage("authMessage","");
-
-  openModal("authModal");
-
+ if(currentUser){
+  showPage("account");
+  return;
+ }
+ authMode = mode;
+ updateAuthUI();
+ openModal("authModal");
 };
-
 
 window.switchAuthMode = function(){
+ authMode = authMode === "login" ? "register" : "login";
+ updateAuthUI();
+};
 
-  openAuth(
-    authMode === "login"
-      ? "register"
-      : "login"
+function updateAuthUI(){
+ const registering = authMode === "register";
+ el("authTitle").textContent = registering ? "Create Account" : "Login";
+ el("authSubmitButton").textContent = registering ? "Create Account" : "Login";
+ el("authNameGroup").classList.toggle("hidden",!registering);
+ el("authName").required = registering;
+ el("authPassword").autocomplete = registering ? "new-password" : "current-password";
+ el("authSwitchText").textContent = registering ?
+  "Already have an account?" : "Don't have an account?";
+ el("authSwitchButton").textContent = registering ? "Login" : "Register";
+}
+
+/* LOGIN AND REGISTRATION */
+window.submitAuth = async function(event){
+ event.preventDefault();
+
+ const email = el("authEmail").value.trim().toLowerCase();
+ const password = el("authPassword").value;
+ const name = el("authName").value.trim();
+
+ if(authMode === "register" && name.length < 2){
+  showToast("Please enter your full name.","error");
+  return;
+ }
+
+ const button = el("authSubmitButton");
+ button.disabled = true;
+ setLoading(true);
+
+ try{
+  if(authMode === "register"){
+   const result = await createUserWithEmailAndPassword(auth,email,password);
+
+   await updateProfile(result.user,{displayName:name});
+
+   await setDoc(doc(db,"users",result.user.uid),{
+    uid:result.user.uid,
+    name:name,
+    email:email,
+    points:0,
+    walletBalance:0,
+    role:"user",
+    createdAt:serverTimestamp()
+   });
+
+   el("authForm").reset();
+   closeModal("authModal");
+   showMessage("Account Created","Welcome to NAYA INDIA ESPORTS!");
+  }else{
+   await signInWithEmailAndPassword(auth,email,password);
+   el("authForm").reset();
+   closeModal("authModal");
+   showToast("Login successful!");
+  }
+ }catch(error){
+  console.error("Authentication error:",error);
+  showToast(getFriendlyAuthError(error),"error");
+ }finally{
+  button.disabled = false;
+  setLoading(false);
+ }
+};
+
+function getFriendlyAuthError(error){
+ const code = error?.code || "";
+ const messages = {
+  "auth/email-already-in-use":"This email is already registered.",
+  "auth/invalid-email":"Please enter a valid email.",
+  "auth/weak-password":"Password must be at least 6 characters.",
+  "auth/invalid-credential":"Incorrect email or password.",
+  "auth/user-not-found":"Account not found. Please register.",
+  "auth/wrong-password":"Incorrect password.",
+  "auth/popup-closed-by-user":"Google login was cancelled.",
+  "auth/unauthorized-domain":"Add this website domain in Firebase Authorized Domains."
+ };
+ return messages[code] || (error?.message || "Authentication failed.");
+}
+
+/* GOOGLE LOGIN */
+window.googleLogin = async function(){
+ setLoading(true);
+ try{
+  const result = await signInWithPopup(auth,googleProvider);
+  const userRef = doc(db,"users",result.user.uid);
+  const userSnap = await getDoc(userRef);
+
+  if(!userSnap.exists()){
+   await setDoc(userRef,{
+    uid:result.user.uid,
+    name:result.user.displayName || "Player",
+    email:result.user.email || "",
+    points:0,
+    walletBalance:0,
+    role:"user",
+    createdAt:serverTimestamp()
+   });
+  }
+
+  closeModal("authModal");
+  showToast("Google login successful!");
+ }catch(error){
+  console.error("Google login error:",error);
+  showToast(getFriendlyAuthError(error),"error");
+ }finally{
+  setLoading(false);
+ }
+};
+
+/* LOGOUT */
+window.logoutUser = async function(){
+ if(!currentUser) return;
+
+ if(!confirm("Are you sure you want to logout?")) return;
+
+ try{
+  await signOut(auth);
+  showToast("Logged out successfully.");
+  showPage("home");
+ }catch(error){
+  console.error(error);
+  showToast("Logout failed.","error");
+ }
+};
+
+/* AUTH STATE LISTENER */
+onAuthStateChanged(auth,async(user)=>{
+ currentUser = user;
+
+ if(user){
+  await loadUserProfile();
+ }else{
+  currentUserData = {};
+  updateAccountUI();
+  updateWalletUI();
+
+  el("transactionHistory").innerHTML =
+   '<div class="empty">Login to see transactions.</div>';
+
+  el("myRegistrations").innerHTML =
+   '<div class="empty">Login to see your registrations.</div>';
+ }
+
+ updateHeaderAuth();
+});
+
+/* USER PROFILE */
+async function loadUserProfile(){
+ if(!currentUser) return;
+
+ try{
+  const userRef = doc(db,"users",currentUser.uid);
+  const snapshot = await getDoc(userRef);
+
+  if(snapshot.exists()){
+   currentUserData = snapshot.data();
+  }else{
+   currentUserData = {
+    uid:currentUser.uid,
+    name:currentUser.displayName || "Player",
+    email:currentUser.email || "",
+    points:0,
+    walletBalance:0,
+    role:"user"
+   };
+
+   await setDoc(userRef,{
+    ...currentUserData,
+    createdAt:serverTimestamp()
+   });
+  }
+
+  updateAccountUI();
+  updateWalletUI();
+  updateHeaderAuth();
+
+  loadMyRegistrations();
+  window.loadTransactions();
+ }catch(error){
+  console.error("Profile loading error:",error);
+  showToast("Could not load profile. Check Firestore Rules.","error");
+ }
+}
+
+/* HEADER AND ACCOUNT UI */
+function updateHeaderAuth(){
+ el("headerAuthButton").textContent = currentUser ? "ACCOUNT" : "LOGIN";
+ el("headerAuthButton").onclick = currentUser ?
+  ()=>showPage("account") : ()=>window.openAuth();
+}
+
+function updateAccountUI(){
+ const loggedIn = Boolean(currentUser);
+
+ el("accountGuest").classList.toggle("hidden",loggedIn);
+ el("accountProfile").classList.toggle("hidden",!loggedIn);
+
+ if(!loggedIn) return;
+
+ const name = currentUserData.name || currentUser.displayName || "Player";
+ const email = currentUser.email || "";
+
+ el("profileDisplayName").textContent = name;
+ el("profileDisplayEmail").textContent = email;
+ el("accountPoints").textContent = Number(currentUserData.points || 0);
+}
+
+function updateWalletUI(){
+ const points = Number(currentUserData.points || 0);
+
+ el("walletPoints").textContent = points.toLocaleString("en-IN") + " PTS";
+ el("headerPoints").textContent = points.toLocaleString("en-IN");
+ el("walletRupees").textContent =
+  "Equivalent value: " + formatCurrency(points / POINTS_PER_RUPEE);
+}
+
+/* EDIT PROFILE */
+window.openEditProfile = function(){
+ if(!currentUser){
+  window.openAuth();
+  return;
+ }
+
+ el("editName").value = currentUserData.name || currentUser.displayName || "";
+ el("editPhone").value = currentUserData.phone || "";
+ el("editGameName").value = currentUserData.gameName || "";
+
+ showPage("edit-profile");
+};
+
+window.saveProfile = async function(event){
+ event.preventDefault();
+
+ if(!currentUser){
+  showToast("Please login first.","error");
+  return;
+ }
+
+ const name = el("editName").value.trim();
+ const phone = el("editPhone").value.trim();
+ const gameName = el("editGameName").value.trim();
+
+ if(name.length < 2){
+  showToast("Enter a valid name.","error");
+  return;
+ }
+
+ setLoading(true);
+
+ try{
+  await updateDoc(doc(db,"users",currentUser.uid),{
+   name:name,
+   phone:phone,
+   gameName:gameName,
+   updatedAt:serverTimestamp()
+  });
+
+  currentUserData.name = name;
+  currentUserData.phone = phone;
+  currentUserData.gameName = gameName;
+
+  await updateProfile(currentUser,{displayName:name});
+
+  updateAccountUI();
+  showPage("account");
+  showToast("Profile updated successfully.");
+ }catch(error){
+  console.error("Profile update error:",error);
+  showToast("Profile update failed: "+error.message,"error");
+ }finally{
+  setLoading(false);
+ }
+};
+
+/* DEPOSIT FORM HELPERS */
+window.openDeposit = function(){
+ if(!currentUser){
+  window.openAuth();
+  return;
+ }
+
+ el("depositForm").reset();
+ el("depositPoints").value = "0 points";
+ el("depositUPI").textContent = UPI_ID;
+ openModal("depositModal");
+};
+
+window.updateDepositPoints = function(){
+ const amount = Number(el("depositAmount").value || 0);
+ const points = Math.floor(amount * POINTS_PER_RUPEE);
+ el("depositPoints").value = points.toLocaleString("en-IN") + " points";
+};
+
+window.copyUPI = async function(){
+ try{
+  await navigator.clipboard.writeText(UPI_ID);
+  showToast("UPI ID copied!");
+ }catch(error){
+  showToast("Copy failed. UPI ID: "+UPI_ID,"error");
+ }
+};
+
+  
+/* ==========================================
+   MANUAL UPI PAYMENT
+========================================== */
+
+/* Add UPI payment button to deposit modal */
+(function addUPIPaymentButton(){
+ const form = el("depositForm");
+ if(!form || el("payUPIButton")) return;
+
+ const button = document.createElement("button");
+ button.type = "button";
+ button.id = "payUPIButton";
+ button.className = "btn btn-success btn-block";
+ button.style.marginBottom = "12px";
+ button.textContent = "Pay Now Using UPI App";
+
+ button.addEventListener("click",window.payViaUPI);
+
+ form.insertBefore(button,form.querySelector("button[type='submit']"));
+})();
+
+/* Open installed UPI app */
+window.payViaUPI = function(){
+ if(!currentUser){
+  window.openAuth();
+  return;
+ }
+
+ const amount = Number(el("depositAmount").value);
+
+ if(!Number.isFinite(amount) || amount < 1 || amount > 100000){
+  showToast("Enter a valid deposit amount first.","error");
+  el("depositAmount").focus();
+  return;
+ }
+
+ const params = new URLSearchParams({
+  pa:UPI_ID,
+  pn:"NAYA INDIA ESPORTS",
+  am:amount.toFixed(2),
+  cu:"INR",
+  tn:"NAYA INDIA ESPORTS Wallet Deposit"
+ });
+
+ const upiURL = "upi://pay?" + params.toString();
+
+ showToast("Complete payment in your UPI app, then return here.");
+
+ window.location.href = upiURL;
+};
+
+/* ==========================================
+   SUBMIT DEPOSIT REQUEST
+========================================== */
+
+window.submitDepositUTR = async function(event){
+ event.preventDefault();
+
+ if(!currentUser){
+  showToast("Please login first.","error");
+  window.openAuth();
+  return;
+ }
+
+ const amount = Number(el("depositAmount").value);
+ const utr = el("depositUTR").value.trim();
+ const pointsRequested = Math.floor(amount * POINTS_PER_RUPEE);
+
+ if(!Number.isFinite(amount) || amount < 1 || amount > 100000){
+  showToast("Enter an amount between ₹1 and ₹100000.","error");
+  return;
+ }
+
+ if(!/^[a-zA-Z0-9]{8,40}$/.test(utr)){
+  showToast("Enter a valid UTR / transaction ID.","error");
+  return;
+ }
+
+ const button = el("submitDepositButton");
+ button.disabled = true;
+ button.textContent = "Submitting...";
+
+ setLoading(true);
+
+ try{
+  /* Prevent duplicate pending UTR requests */
+  const duplicateQuery = query(
+   collection(db,"payments"),
+   where("utr","==",utr)
   );
 
+  const duplicateSnapshot = await getDocs(duplicateQuery);
+
+  if(!duplicateSnapshot.empty){
+   throw new Error("This UTR has already been submitted.");
+  }
+
+  await addDoc(collection(db,"payments"),{
+   userId:currentUser.uid,
+   userEmail:currentUser.email || "",
+   userName:currentUserData.name || currentUser.displayName || "Player",
+   amount:amount,
+   utr:utr,
+   type:"deposit",
+   pointsRequested:pointsRequested,
+   status:"pending",
+   createdAt:serverTimestamp()
+  });
+
+  el("depositForm").reset();
+  el("depositPoints").value = "0 points";
+
+  closeModal("depositModal");
+  showMessage(
+   "Request Submitted",
+   "Your payment request is pending. Points will be credited only after admin verification."
+  );
+
+  await window.loadTransactions();
+
+ }catch(error){
+  console.error("Deposit request error:",error);
+  showToast(error.message || "Payment request failed.","error");
+ }finally{
+  button.disabled = false;
+  button.textContent = "Submit Payment Request";
+  setLoading(false);
+ }
 };
 
+/* ==========================================
+   TRANSACTION HISTORY
+========================================== */
 
-/* =====================================
-   9. EMAIL LOGIN / REGISTER
-===================================== */
+window.loadTransactions = async function(){
+ if(!currentUser){
+  el("transactionHistory").innerHTML =
+   '<div class="empty">Please login to see transactions.</div>';
+  return;
+ }
 
-window.submitAuth = async function(){
+ try{
+  const paymentQuery = query(
+   collection(db,"payments"),
+   where("userId","==",currentUser.uid)
+  );
 
-  const name = getElement("authName").value.trim();
+  const snapshot = await getDocs(paymentQuery);
 
-  const email = getElement("authEmail").value.trim();
+  const payments = snapshot.docs.map(item=>({
+   id:item.id,
+   ...item.data()
+  }));
 
-  const password = getElement("authPassword").value;
+  payments.sort((a,b)=>{
+   const dateA = a.createdAt?.toMillis?.() || 0;
+   const dateB = b.createdAt?.toMillis?.() || 0;
+   return dateB-dateA;
+  });
 
-  if(!email || !password){
-
-    showMessage(
-      "authMessage",
-      "Please enter email and password."
-    );
-
-    return;
-
+  if(!payments.length){
+   el("transactionHistory").innerHTML =
+    '<div class="empty">No transactions found.</div>';
+   return;
   }
 
-  if(password.length < 6){
+  el("transactionHistory").innerHTML = payments.map(payment=>{
+   const status = String(payment.status || "pending").toLowerCase();
+   const statusClass =
+    status === "approved" || status === "success" ? "" :
+    status === "rejected" || status === "failed" ? "closed" : "pending";
 
-    showMessage(
-      "authMessage",
-      "Password must be at least 6 characters."
-    );
+   return `
+    <div class="list-item">
+     <div>
+      <h4>${escapeHTML(formatCurrency(payment.amount))} Deposit</h4>
+      <p>UTR: ${escapeHTML(payment.utr || "—")}</p>
+      <p>${escapeHTML(formatDate(payment.createdAt))}</p>
+      <p>${Number(payment.pointsRequested || 0)} points requested</p>
+     </div>
+     <span class="status ${statusClass}">${escapeHTML(status.toUpperCase())}</span>
+    </div>
+   `;
+  }).join("");
 
-    return;
+ }catch(error){
+  console.error("Transaction history error:",error);
+  el("transactionHistory").innerHTML =
+   '<div class="empty">Could not load transactions. Check Firestore Rules.</div>';
+ }
+};
 
+/* ==========================================
+   TOURNAMENT DATA
+========================================== */
+
+function normalizeStatus(value){
+ const status = String(value || "upcoming").toLowerCase();
+
+ if(["live","ongoing","running"].includes(status)) return "live";
+ if(["completed","complete","finished","closed"].includes(status)) return "completed";
+ if(["upcoming","open","registration open"].includes(status)) return "upcoming";
+
+ return status;
+}
+
+function getTournamentName(data){
+ return data.name || data.title || "Untitled Tournament";
+}
+
+function getTournamentPrize(data){
+ return Number(data.prizePool ?? data.prize ?? 0);
+}
+
+function getTournamentFee(data){
+ return Number(data.entryFee ?? data.fee ?? 0);
+}
+
+function getTournamentStatus(data){
+ return normalizeStatus(data.status);
+}
+
+function tournamentCard(tournament){
+ const status = getTournamentStatus(tournament);
+ const statusClass = status === "completed" ? "closed" :
+  status === "upcoming" ? "pending" : "";
+
+ const date = formatDate(tournament.date || tournament.startDate);
+ const prize = getTournamentPrize(tournament);
+ const fee = getTournamentFee(tournament);
+ const slots = tournament.slots ?? tournament.maxPlayers ?? "—";
+
+ return `
+  <article class="card tournament-card">
+   <span class="game-label">${escapeHTML(tournament.game || "Gaming")}</span>
+   <span class="status ${statusClass}" style="float:right">
+    ${escapeHTML(status.toUpperCase())}
+   </span>
+   <h3 style="margin-top:14px">${escapeHTML(getTournamentName(tournament))}</h3>
+   <div class="card-meta">
+    <div class="meta-item">
+     <span>Prize Pool</span>
+     <b>${escapeHTML(formatCurrency(prize))}</b>
+    </div>
+    <div class="meta-item">
+     <span>Entry Fee</span>
+     <b>${fee === 0 ? "FREE" : escapeHTML(formatCurrency(fee))}</b>
+    </div>
+    <div class="meta-item">
+     <span>Date</span>
+     <b>${escapeHTML(date)}</b>
+    </div>
+    <div class="meta-item">
+     <span>Slots</span>
+     <b>${escapeHTML(slots)}</b>
+    </div>
+   </div>
+   <button class="btn btn-block" onclick="viewTournament('${escapeHTML(tournament.id)}')">
+    View Details
+   </button>
+  </article>
+ `;
+}
+
+/* LOAD TOURNAMENTS */
+async function loadTournaments(){
+ try{
+  const snapshot = await getDocs(collection(db,"tournaments"));
+
+  allTournamentData = snapshot.docs.map(item=>({
+   id:item.id,
+   ...item.data()
+  }));
+
+  renderTournaments(allTournamentData);
+  updateHomeStats();
+
+ }catch(error){
+  console.error("Tournament loading error:",error);
+
+  el("featuredTournaments").innerHTML =
+   '<div class="empty">Unable to load tournaments. Check Firestore Rules.</div>';
+
+  el("allTournaments").innerHTML =
+   '<div class="empty">Unable to load tournaments. Please try again later.</div>';
+ }
+}
+
+/* RENDER TOURNAMENTS */
+function renderTournaments(data){
+ const featured = data.filter(item=>
+  getTournamentStatus(item) !== "completed"
+ ).slice(0,2);
+
+ el("featuredTournaments").innerHTML = featured.length ?
+  featured.map(tournamentCard).join("") :
+  '<div class="empty">No featured tournaments available.</div>';
+
+ el("allTournaments").innerHTML = data.length ?
+  data.map(tournamentCard).join("") :
+  '<div class="empty">No tournaments available right now.</div>';
+}
+
+/* FILTER TOURNAMENTS */
+window.filterTournaments = function(){
+ const search = (el("tournamentSearch").value || "").toLowerCase().trim();
+ const game = el("gameFilter").value;
+ const status = el("statusFilter").value;
+
+ const filtered = allTournamentData.filter(item=>{
+  const name = getTournamentName(item).toLowerCase();
+  const itemGame = String(item.game || "");
+  const itemStatus = getTournamentStatus(item);
+
+  return name.includes(search) &&
+   (!game || itemGame === game) &&
+   (!status || itemStatus === status);
+ });
+
+ el("allTournaments").innerHTML = filtered.length ?
+  filtered.map(tournamentCard).join("") :
+  '<div class="empty">No matching tournaments found.</div>';
+};
+
+/* HOME STATISTICS */
+function updateHomeStats(){
+ el("statTournaments").textContent = allTournamentData.length;
+
+ const totalPrize = allTournamentData.reduce((sum,item)=>{
+  return sum + getTournamentPrize(item);
+ },0);
+
+ el("statPrize").textContent = formatCurrency(totalPrize);
+}
+
+/* ==========================================
+   TOURNAMENT DETAILS AND REGISTRATION
+========================================== */
+
+window.viewTournament = function(tournamentId){
+ const tournament = allTournamentData.find(item=>item.id === tournamentId);
+
+ if(!tournament){
+  showToast("Tournament not found. Refresh and try again.","error");
+  return;
+ }
+
+ selectedTournament = tournament;
+
+ const status = getTournamentStatus(tournament);
+
+ el("tournamentDetailsContent").innerHTML = `
+  <span class="game-label">${escapeHTML(tournament.game || "Gaming")}</span>
+  <h2>${escapeHTML(getTournamentName(tournament))}</h2>
+  <p class="muted">${escapeHTML(tournament.description || "Tournament details and rules will be shared by the organizer.")}</p>
+  <div class="card-meta">
+   <div class="meta-item"><span>Prize Pool</span><b>${escapeHTML(formatCurrency(getTournamentPrize(tournament)))}</b></div>
+   <div class="meta-item"><span>Entry Fee</span><b>${escapeHTML(formatCurrency(getTournamentFee(tournament)))}</b></div>
+   <div class="meta-item"><span>Date</span><b>${escapeHTML(formatDate(tournament.date || tournament.startDate))}</b></div>
+   <div class="meta-item"><span>Status</span><b>${escapeHTML(status.toUpperCase())}</b></div>
+  </div>
+  <p class="muted small">${escapeHTML(tournament.rules || "Follow fair-play rules and organizer instructions.")}</p>
+  <button class="btn btn-block" ${status === "completed" ? "disabled" : ""}
+   onclick="openRegistration('${escapeHTML(tournament.id)}')">
+   ${status === "completed" ? "Tournament Completed" : "Register Now"}
+  </button>
+ `;
+
+ openModal("tournamentDetailsModal");
+};
+
+/* OPEN REGISTRATION */
+window.openRegistration = function(tournamentId){
+ if(!currentUser){
+  closeModal("tournamentDetailsModal");
+  window.openAuth();
+  return;
+ }
+
+ const tournament = allTournamentData.find(item=>item.id === tournamentId);
+
+ if(!tournament){
+  showToast("Tournament not found.","error");
+  return;
+ }
+
+ if(getTournamentStatus(tournament) === "completed"){
+  showToast("This tournament is already completed.","error");
+  return;
+ }
+
+ selectedTournament = tournament;
+
+ el("registrationTournamentId").value = tournament.id;
+ el("registrationTournamentName").textContent = getTournamentName(tournament);
+ el("registrationTournamentGame").textContent = tournament.game || "";
+ el("registrationPlayerName").value =
+  currentUserData.name || currentUser.displayName || "";
+ el("registrationPhone").value = currentUserData.phone || "";
+ el("registrationGameName").value = currentUserData.gameName || "";
+ el("registrationGameId").value = "";
+ el("registrationTeamName").value = "";
+
+ closeModal("tournamentDetailsModal");
+ openModal("registrationModal");
+};
+
+/* SUBMIT REGISTRATION */
+window.submitRegistration = async function(event){
+ event.preventDefault();
+
+ if(!currentUser){
+  showToast("Please login first.","error");
+  return;
+ }
+
+ const tournamentId = el("registrationTournamentId").value;
+ const tournament = allTournamentData.find(item=>item.id === tournamentId);
+
+ if(!tournament){
+  showToast("Tournament not found.","error");
+  return;
+ }
+
+ const playerName = el("registrationPlayerName").value.trim();
+ const gameId = el("registrationGameId").value.trim();
+ const gameName = el("registrationGameName").value.trim();
+ const teamName = el("registrationTeamName").value.trim();
+ const phone = el("registrationPhone").value.trim();
+
+ if(playerName.length < 2 || !gameId || !phone){
+  showToast("Please complete all required fields.","error");
+  return;
+ }
+
+ const button = el("registrationSubmitButton");
+ button.disabled = true;
+ button.textContent = "Submitting...";
+ setLoading(true);
+
+ try{
+  const existingQuery = query(
+   collection(db,"registrations"),
+   where("userId","==",currentUser.uid),
+   where("tournamentId","==",tournamentId)
+  );
+
+  const existing = await getDocs(existingQuery);
+
+  if(!existing.empty){
+   throw new Error("You have already registered for this tournament.");
   }
 
-  if(authMode === "register" && !name){
+  await addDoc(collection(db,"registrations"),{
+   userId:currentUser.uid,
+   userEmail:currentUser.email || "",
+   playerName:playerName,
+   gameId:gameId,
+   gameName:gameName,
+   game:tournament.game || "",
+   teamName:teamName,
+   phone:phone,
+   tournamentId:tournamentId,
+   tournamentName:getTournamentName(tournament),
+   status:"pending",
+   createdAt:serverTimestamp()
+  });
 
-    showMessage(
-      "authMessage",
-      "Please enter your name."
-    );
+  closeModal("registrationModal");
+  el("registrationForm").reset();
 
-    return;
+  showMessage(
+   "Registration Submitted",
+   "Your tournament registration is pending admin approval."
+  );
 
+  await loadMyRegistrations();
+
+ }catch(error){
+  console.error("Registration error:",error);
+  showToast(error.message || "Registration failed.","error");
+ }finally{
+  button.disabled = false;
+  button.textContent = "Submit Registration";
+  setLoading(false);
+ }
+};
+
+/* ==========================================
+   MY REGISTRATIONS
+========================================== */
+
+async function loadMyRegistrations(){
+ if(!currentUser){
+  el("myRegistrations").innerHTML =
+   '<div class="empty">Please login to see your registrations.</div>';
+  return;
+ }
+
+ try{
+  const registrationQuery = query(
+   collection(db,"registrations"),
+   where("userId","==",currentUser.uid)
+  );
+
+  const snapshot = await getDocs(registrationQuery);
+
+  const registrations = snapshot.docs.map(item=>item.data());
+
+  if(!registrations.length){
+   el("myRegistrations").innerHTML =
+    '<div class="empty">You have not registered for any tournament.</div>';
+   return;
   }
 
-  const button = getElement("authSubmitButton");
+  el("myRegistrations").innerHTML = registrations.map(item=>{
+   const status = String(item.status || "pending").toLowerCase();
+   const statusClass = status === "approved" ? "" :
+    status === "rejected" ? "closed" : "pending";
 
-  button.disabled = true;
+   return `
+    <div class="list-item">
+     <div>
+      <h4>${escapeHTML(item.tournamentName || "Tournament")}</h4>
+      <p>${escapeHTML(item.game || "")}</p>
+      <p>${escapeHTML(formatDate(item.createdAt))}</p>
+     </div>
+     <span class="status ${statusClass}">${escapeHTML(status.toUpperCase())}</span>
+    </div>
+   `;
+  }).join("");
 
-  button.textContent = "Please wait...";
+ }catch(error){
+  console.error("My registrations error:",error);
+  el("myRegistrations").innerHTML =
+   '<div class="empty">Could not load registrations. Check Firestore Rules.</div>';
+ }
+}
 
-  try{
+/* ================================
+   PART 6 — REMAINING FEATURES
+================================ */
 
-    if(authMode === "register"){
+/* LOAD NEWS */
+async function loadNews() {
+  const container = el("newsList");
+  if (!container) return;
 
-      const result =
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
+  try {
+    const snap = await getDocs(
+      query(collection(db, "news"), limit(20))
+    );
 
-      await updateProfile(result.user,{
-        displayName:name
-      });
-
-      await setDoc(
-        doc(db,"users",result.user.uid),
-        {
-          name:name,
-          email:email,
-          points:0,
-          gameId:"",
-          phone:"",
-          createdAt:serverTimestamp()
-        }
-      );
-
-    }else{
-
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
+    if (snap.empty) {
+      container.innerHTML =
+        '<div class="empty-state">No news available yet.</div>';
+      return;
     }
 
-    closeModal("authModal");
+    container.innerHTML = snap.docs.map(d => {
+      const n = d.data();
 
-    showPage("home");
+      return `
+        <div class="card">
+          <h3>${escapeHTML(n.title || "Latest News")}</h3>
+          <p>${escapeHTML(n.description || n.content || "")}</p>
+          <small>${escapeHTML(formatDate(n.createdAt || n.date))}</small>
+        </div>
+      `;
+    }).join("");
 
-  }catch(error){
+  } catch (error) {
+    console.error("News loading error:", error);
+    container.innerHTML =
+      '<div class="empty-state">News could not be loaded.</div>';
+  }
+}
 
-    console.error("Authentication error:",error);
 
-    showMessage(
-      "authMessage",
-      error.message
+/* LOAD TEAMS */
+async function loadTeams() {
+  const container = el("teamsList");
+  if (!container) return;
+
+  try {
+    const snap = await getDocs(
+      query(collection(db, "teams"), limit(30))
     );
 
-  }finally{
-
-    button.disabled = false;
-
-    button.textContent =
-      authMode === "register"
-        ? "Create Account"
-        : "Login";
-
-  }
-
-};
-
-
-/* =====================================
-   10. GOOGLE LOGIN
-===================================== */
-
-window.googleLogin = async function(){
-
-  try{
-
-    showLoading("Connecting Google account...");
-
-    const result =
-      await signInWithPopup(
-        auth,
-        googleProvider
-      );
-
-    const userRef = doc(db,"users",result.user.uid);
-
-    const userSnap = await getDoc(userRef);
-
-    if(!userSnap.exists()){
-
-      await setDoc(userRef,{
-        name:result.user.displayName || "Player",
-        email:result.user.email || "",
-        points:0,
-        gameId:"",
-        phone:"",
-        createdAt:serverTimestamp()
-      });
-
+    if (snap.empty) {
+      container.innerHTML =
+        '<div class="empty-state">No teams available yet.</div>';
+      return;
     }
 
-    closeModal("authModal");
+    container.innerHTML = snap.docs.map(d => {
+      const t = d.data();
 
-    showPage("home");
+      return `
+        <div class="card">
+          <h3>${escapeHTML(t.name || t.teamName || "Team")}</h3>
+          <p>Game: ${escapeHTML(t.game || t.gameName || "Not specified")}</p>
+          <p>Members: ${escapeHTML(String(t.membersCount || t.members || 0))}</p>
+          <small>${escapeHTML(t.status || "Active")}</small>
+        </div>
+      `;
+    }).join("");
 
-  }catch(error){
+  } catch (error) {
+    console.error("Teams loading error:", error);
+    container.innerHTML =
+      '<div class="empty-state">Teams could not be loaded.</div>';
+  }
+}
 
-    console.error("Google login error:",error);
 
-    showMessage(
-      "authMessage",
-      error.message
+/* LOAD NOTIFICATIONS */
+async function loadNotifications() {
+  const container = el("notificationsList");
+  if (!container || !currentUser) return;
+
+  try {
+    const q = query(
+      collection(db, "notifications"),
+      where("userId", "==", currentUser.uid),
+      limit(30)
     );
 
-  }finally{
+    const snap = await getDocs(q);
 
-    hideLoading();
+    if (snap.empty) {
+      container.innerHTML =
+        '<div class="empty-state">No notifications yet.</div>';
+      return;
+    }
 
+    container.innerHTML = snap.docs.map(d => {
+      const n = d.data();
+
+      return `
+        <div class="card">
+          <h3>${escapeHTML(n.title || "Notification")}</h3>
+          <p>${escapeHTML(n.message || n.description || "")}</p>
+          <small>${escapeHTML(formatDate(n.createdAt))}</small>
+        </div>
+      `;
+    }).join("");
+
+  } catch (error) {
+    console.error("Notifications error:", error);
+    container.innerHTML =
+      '<div class="empty-state">Notifications could not be loaded.</div>';
   }
+}
 
-};
+
+/* LOAD LEADERBOARD */
+async function loadLeaderboard() {
+  const container = el("leaderboardList");
+  if (!container) return;
+
+  try {
+    const snap = await getDocs(
+      query(collection(db, "users"), limit(100))
+    );
+
+    const players = snap.docs.map(d => ({
+      ...d.data(),
+      uid: d.id
+    }));
+
+    players.sort(
+      (a, b) => Number(b.points || 0) - Number(a.points || 0)
+    );
+
+    const topPlayers = players.slice(0, 20);
+
+    if (!topPlayers.length) {
+      container.innerHTML =
+        '<div class="empty-state">Leaderboard is empty.</div>';
+      return;
+    }
+
+    container.innerHTML = topPlayers.map((p, index) => `
+      <div class="card leaderboard-row">
+        <strong>#${index + 1}</strong>
+        <span>${escapeHTML(p.displayName || p.name || "Player")}</span>
+        <strong>${Number(p.points || 0)} Points</strong>
+      </div>
+    `).join("");
+
+  } catch (error) {
+    console.error("Leaderboard error:", error);
+    container.innerHTML =
+      '<div class="empty-state">Leaderboard is currently unavailable.</div>';
+  }
+}
 
 
-/* =====================================
-   11. LOGOUT
-===================================== */
+/* SUPPORT FORM */
+window.submitSupport = async function(event) {
+  event.preventDefault();
 
-window.logoutUser = async function(){
-
-  if(!confirm("Are you sure you want to logout?")){
+  if (!currentUser) {
+    showToast("Please login first.");
+    openAuth("login");
     return;
   }
 
-  try{
+  const subject = el("supportSubject")?.value.trim();
+  const message = el("supportMessage")?.value.trim();
 
-    await signOut(auth);
-
-    showPage("home");
-
-    alert("Logout successful.");
-
-  }catch(error){
-
-    alert("Logout failed: " + error.message);
-
+  if (!subject || !message) {
+    showToast("Please fill all fields.");
+    return;
   }
 
+  try {
+    setLoading(true);
+
+    await addDoc(collection(db, "support"), {
+      userId: currentUser.uid,
+      name: currentUserData.name || currentUser.displayName || "",
+      email: currentUser.email || "",
+      subject,
+      message,
+      status: "pending",
+      createdAt: serverTimestamp()
+    });
+
+    el("supportSubject").value = "";
+    el("supportMessage").value = "";
+
+    showToast("Support request submitted successfully!");
+
+  } catch (error) {
+    console.error("Support submission error:", error);
+    showMessage(
+      "Support request failed. Please check Firestore rules and try again."
+    );
+
+  } finally {
+    setLoading(false);
+  }
 };
 
 
-/* =====================================
-   12. AUTH STATE LISTENER
-===================================== */
+/* REFRESH DATA WHEN PAGE OPENS */
+const originalShowPage = window.showPage;
 
-onAuthStateChanged(auth,async user=>{
-
-  currentUser = user;
-
-  if(user){
-
-    await loadUserProfile();
-
-    await loadTransactions();
-
-    await loadMyRegistrations();
-
-  }else{
-
-    currentUserData = {};
-
-    updateAccountUI();
-
-    updateWalletUI();
-
+window.showPage = function(pageName) {
+  if (typeof originalShowPage === "function") {
+    originalShowPage(pageName);
   }
 
+  if (pageName === "tournaments") loadTournaments();
+  if (pageName === "news") loadNews();
+  if (pageName === "teams") loadTeams();
+  if (pageName === "leaderboard") loadLeaderboard();
+  if (pageName === "notifications") loadNotifications();
+  if (pageName === "wallet") updateWalletUI();
+  if (pageName === "account") updateAccountUI();
+};
+
+
+/* AUTHENTICATION: LOAD USER NOTIFICATIONS */
+onAuthStateChanged(auth, user => {
+  if (user) {
+    loadNotifications();
+  }
 });
 
 
-/* =====================================
-   13. LOAD PLAYER PROFILE
-===================================== */
-
-async function loadUserProfile(){
-
-  if(!currentUser) return;
-
-  try{
-
-    const userRef = doc(
-      db,
-      "users",
-      currentUser.uid
-    );
-
-    const snapshot = await getDoc(userRef);
-
-    if(snapshot.exists()){
-
-      currentUserData = snapshot.data();
-
-    }else{
-
-      currentUserData = {
-        name:currentUser.displayName || "Player",
-        email:currentUser.email || "",
-        points:0
-      };
-
+/* CLOSE MODAL WHEN BACKGROUND IS CLICKED */
+document.querySelectorAll(".modal").forEach(modal => {
+  modal.addEventListener("click", event => {
+    if (event.target === modal) {
+      modal.classList.remove("show");
     }
-
-    updateAccountUI();
-
-    updateWalletUI();
-
-  }catch(error){
-
-    console.error("Profile load error:",error);
-
-  }
-
-}
-
-
-/* =====================================
-   14. ACCOUNT UI
-===================================== */
-
-function updateAccountUI(){
-
-  const name =
-    currentUserData.name ||
-    currentUser?.displayName ||
-    "Guest Player";
-
-  const email =
-    currentUser?.email ||
-    "Please login to continue";
-
-  getElement("profileName").textContent = name;
-
-  getElement("profileEmail").textContent = email;
-
-  getElement("profileAvatar").textContent =
-    name.charAt(0).toUpperCase();
-
-  getElement("accountAuthButton").textContent =
-    currentUser
-      ? "Account Active"
-      : "Login / Register";
-
-  getElement("accountAuthButton").onclick =
-    currentUser
-      ? ()=>showPage("editProfile")
-      : ()=>openAuth("login");
-
-  getElement("editName").value =
-    currentUserData.name || "";
-
-  getElement("editGameId").value =
-    currentUserData.gameId || "";
-
-  getElement("editPhone").value =
-    currentUserData.phone || "";
-
-}
-
-
-/* =====================================
-   15. WALLET UI
-===================================== */
-
-function updateWalletUI(){
-
-  const points = Number(
-    currentUserData.points || 0
-  );
-
-  getElement("walletPoints").textContent =
-    points.toLocaleString("en-IN");
-
-}
-
-
-/* =====================================
-   16. DEPOSIT POINT CALCULATOR
-===================================== */
-
-window.updateDepositPoints = function(){
-
-  const amount = Number(
-    getElement("depositAmount").value
-  );
-
-  selectedDepositAmount =
-    Number.isFinite(amount) && amount > 0
-      ? amount
-      : 0;
-
-  getElement("depositPoints").textContent =
-    Math.floor(
-      selectedDepositAmount * POINTS_PER_RUPEE
-    ).toLocaleString("en-IN");
-
-};
-
-
-/* =====================================
-   17. OPEN DEPOSIT MODAL
-===================================== */
-
-window.openDeposit = function(){
-
-  if(!currentUser){
-
-    alert("Please login to add money.");
-
-    openAuth("login");
-
-    return;
-
-  }
-
-  selectedDepositAmount = 0;
-
-  getElement("depositAmount").value = "";
-
-  getElement("depositUTR").value = "";
-
-  getElement("depositPoints").textContent = "0";
-
-  showMessage("depositMessage","");
-
-  openModal("depositModal");
-
-};
-
-
-/* =====================================
-   18. COPY UPI ID
-===================================== */
-
-window.copyUPI = async function(){
-
-  try{
-
-    await navigator.clipboard.writeText(UPI_ID);
-
-    alert("UPI ID copied successfully.");
-
-  }catch(error){
-
-    alert("Please copy manually: " + UPI_ID);
-
-  }
-
-};
-
-
-/* =====================================
-   19. SAVE PLAYER PROFILE
-===================================== */
-
-window.saveProfile = async function(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-  const name = getElement("editName").value.trim();
-
-  const gameId = getElement("editGameId").value.trim();
-
-  const phone = getElement("editPhone").value.trim();
-
-  if(!name){
-
-    showMessage(
-      "profileMessage",
-      "Please enter your name."
-    );
-
-    return;
-
-  }
-
-  try{
-
-    await updateDoc(
-      doc(db,"users",currentUser.uid),
-      {
-        name:name,
-        gameId:gameId,
-        phone:phone
-      }
-    );
-
-    currentUserData.name = name;
-
-    currentUserData.gameId = gameId;
-
-    currentUserData.phone = phone;
-
-    await updateProfile(currentUser,{
-      displayName:name
-    });
-
-    updateAccountUI();
-
-    showMessage(
-      "profileMessage",
-      "Profile updated successfully.",
-      "success"
-    );
-
-  }catch(error){
-
-    console.error("Profile update error:",error);
-
-    showMessage(
-      "profileMessage",
-      error.message
-    );
-
-  }
-
-};
-
-
-/* =====================================
-   20. INITIAL APP MESSAGE
-===================================== */
-
-console.log("NAYA INDIA ESPORTS Firebase initialized.");
-
-<!-- PART 6 CONTINUES HERE -->
-
-  
-/* =====================================
-   21. SUBMIT DEPOSIT REQUEST
-===================================== */
-
-window.submitDepositUTR = async function(){
-
-  if(!currentUser){
-    openAuth("login");
-    return;
-  }
-
-  const amount = Number(
-    getElement("depositAmount").value
-  );
-
-  const utr = getElement("depositUTR").value.trim();
-
-  if(!Number.isFinite(amount) || amount < 1 || amount > 100000){
-    showMessage("depositMessage","Enter a valid amount between ₹1 and ₹100000.");
-    return;
-  }
-
-  if(utr.length < 8){
-    showMessage("depositMessage","Please enter a valid UTR number.");
-    return;
-  }
-
-  const button = getElement("submitDepositButton");
-
-  button.disabled = true;
-  button.textContent = "Submitting...";
-
-  try{
-
-    const pointsRequested = Math.floor(
-      amount * POINTS_PER_RUPEE
-    );
-
-    await addDoc(collection(db,"payments"),{
-      userId:currentUser.uid,
-      userEmail:currentUser.email || "",
-      amount:amount,
-      utr:utr,
-      type:"deposit",
-      pointsRequested:pointsRequested,
-      status:"pending",
-      createdAt:serverTimestamp()
-    });
-
-    getElement("depositUTR").value = "";
-
-    showMessage(
-      "depositMessage",
-      "Payment request submitted. Points will be credited after admin verification.",
-      "success"
-    );
-
-    await loadTransactions();
-
-  }catch(error){
-
-    console.error("Deposit error:",error);
-
-    showMessage(
-      "depositMessage",
-      "Request failed: " + error.message
-    );
-
-  }finally{
-
-    button.disabled = false;
-    button.textContent = "Submit Payment Request";
-
-  }
-
-};
-
-
-/* =====================================
-   22. LOAD TRANSACTION HISTORY
-===================================== */
-
-window.loadTransactions = async function(){
-
-  const container = getElement("transactionHistory");
-
-  if(!currentUser){
-
-    container.innerHTML =
-      '<div class="empty-state">Login to view transactions.</div>';
-
-    return;
-
-  }
-
-  container.innerHTML =
-    '<div class="empty-state">Loading transactions...</div>';
-
-  try{
-
-    const transactionQuery = query(
-      collection(db,"payments"),
-      where("userId","==",currentUser.uid)
-    );
-
-    const snapshot = await getDocs(transactionQuery);
-
-    if(snapshot.empty){
-
-      container.innerHTML =
-        '<div class="empty-state"><div class="empty-icon">💳</div><p>No transactions yet.</p></div>';
-
-      return;
-
-    }
-
-    const items = [];
-
-    snapshot.forEach(item=>{
-      items.push({
-        id:item.id,
-        ...item.data()
-      });
-    });
-
-    items.sort((a,b)=>{
-      const dateA = a.createdAt?.toMillis?.() || 0;
-      const dateB = b.createdAt?.toMillis?.() || 0;
-      return dateB-dateA;
-    });
-
-    container.innerHTML = items.map(item=>{
-
-      const status = String(item.status || "pending").toLowerCase();
-
-      const statusClass =
-        status === "approved" ? "green" :
-        status === "rejected" ? "red" : "";
-
-      return `
-        <div class="list-item">
-          <div>
-            <strong>${escapeHTML(item.type || "Deposit")}</strong>
-            <p class="muted small">UTR: ${escapeHTML(item.utr || "N/A")}</p>
-            <p class="muted small">${formatDate(item.createdAt)}</p>
-          </div>
-          <div style="text-align:right">
-            <strong>${formatCurrency(item.amount)}</strong>
-            <p><span class="badge ${statusClass}">${escapeHTML(status)}</span></p>
-          </div>
-        </div>
-      `;
-
-    }).join("");
-
-  }catch(error){
-
-    console.error("Transaction history error:",error);
-
-    container.innerHTML =
-      '<div class="empty-state">Could not load transactions. Please check Firestore Rules.</div>';
-
-  }
-
-};
-
-
-/* =====================================
-   23. LOAD TOURNAMENTS
-===================================== */
-
-async function loadTournaments(){
-
-  const featured = getElement("featuredTournaments");
-  const all = getElement("allTournaments");
-
-  try{
-
-    const snapshot = await getDocs(
-      collection(db,"tournaments")
-    );
-
-    allTournamentData = [];
-
-    snapshot.forEach(item=>{
-
-      allTournamentData.push({
-        id:item.id,
-        ...item.data()
-      });
-
-    });
-
-    renderTournaments();
-
-    updateHomeStats();
-
-  }catch(error){
-
-    console.error("Tournament loading error:",error);
-
-    featured.innerHTML =
-      '<div class="card empty-state">Could not load tournaments.</div>';
-
-    all.innerHTML =
-      '<div class="card empty-state">Could not load tournaments. Check Firestore Rules.</div>';
-
-  }
-
-}
-
-
-function getTournamentStatus(item){
-
-  const status = String(item.status || "upcoming").toLowerCase();
-
-  if(status.includes("complete") || status.includes("finished")){
-    return "completed";
-  }
-
-  if(status === "live" || status.includes("ongoing")){
-    return "live";
-  }
-
-  return "upcoming";
-
-}
-
-
-function tournamentCard(item){
-
-  const name = escapeHTML(
-    item.name || item.title || "Tournament"
-  );
-
-  const game = escapeHTML(
-    item.game || "Gaming"
-  );
-
-  const prize = Number(
-    item.prizePool || item.prize || 0
-  );
-
-  const fee = Number(
-    item.entryFee || item.fee || 0
-  );
-
-  const status = getTournamentStatus(item);
-
-  const badgeClass =
-    status === "live" ? "green" :
-    status === "completed" ? "red" : "";
-
-  return `
-    <div class="tournament-card">
-
-      <div class="tournament-banner">🎮</div>
-
-      <div class="tournament-info">
-
-        <span class="badge ${badgeClass}">
-          ${escapeHTML(status.toUpperCase())}
-        </span>
-
-        <h3>${name}</h3>
-
-        <p class="muted small">${game}</p>
-
-        <div class="tournament-meta">
-
-          <div class="meta-item">
-            Prize Pool
-            <strong>${formatCurrency(prize)}</strong>
-          </div>
-
-          <div class="meta-item">
-            Entry Fee
-            <strong>${formatCurrency(fee)}</strong>
-          </div>
-
-          <div class="meta-item">
-            Date
-            <strong>${escapeHTML(item.date || "To be announced")}</strong>
-          </div>
-
-          <div class="meta-item">
-            Slots
-            <strong>${escapeHTML(item.slots || "Open")}</strong>
-          </div>
-
-        </div>
-
-        <button class="primary-btn full"
-          onclick="viewTournament('${item.id}')">
-          View Details
-        </button>
-
-      </div>
-
-    </div>
-  `;
-
-}
-
-
-function renderTournaments(){
-
-  const featured = getElement("featuredTournaments");
-  const all = getElement("allTournaments");
-
-  if(!allTournamentData.length){
-
-    featured.innerHTML =
-      '<div class="card empty-state">No featured tournaments available.</div>';
-
-    all.innerHTML =
-      '<div class="card empty-state">No tournaments available right now.</div>';
-
-    return;
-
-  }
-
-  featured.innerHTML =
-    allTournamentData.slice(0,2).map(tournamentCard).join("");
-
-  filterTournaments();
-
-}
-
-
-window.filterTournaments = function(){
-
-  const search = (
-    getElement("tournamentSearch")?.value || ""
-  ).toLowerCase();
-
-  const game = (
-    getElement("gameFilter")?.value || "all"
-  );
-
-  const status = (
-    getElement("tournamentStatusFilter")?.value || "all"
-  );
-
-  const filtered = allTournamentData.filter(item=>{
-
-    const name = String(item.name || item.title || "").toLowerCase();
-
-    const itemGame = String(item.game || "");
-
-    const itemStatus = getTournamentStatus(item);
-
-    const matchesSearch = name.includes(search);
-
-    const matchesGame =
-      game === "all" || itemGame === game;
-
-    const matchesStatus =
-      status === "all" || itemStatus === status;
-
-    return matchesSearch && matchesGame && matchesStatus;
-
   });
+});
 
-  getElement("allTournaments").innerHTML =
-    filtered.length
-      ? filtered.map(tournamentCard).join("")
-      : '<div class="card empty-state">No matching tournaments found.</div>';
 
-};
+/* STARTUP */
+loadTournaments();
+loadNews();
+loadTeams();
+loadLeaderboard();
 
+console.log("NAYA INDIA ESPORTS app initialized successfully.");
 
-/* =====================================
-   24. HOME STATISTICS
-===================================== */
 
-function updateHomeStats(){
-
-  const total = allTournamentData.length;
-
-  getElement("homeTournamentCount").textContent = total;
-
-  const prizeTotal = allTournamentData.reduce((sum,item)=>{
-
-    return sum + Number(
-      item.prizePool || item.prize || 0
-    );
-
-  },0);
-
-  getElement("homePrizeCount").textContent =
-    formatCurrency(prizeTotal);
-
-  getElement("homePlayerCount").textContent = "—";
-
-}
-
-
-/* =====================================
-   25. TOURNAMENT DETAILS
-===================================== */
-
-window.viewTournament = function(id){
-
-  const item = allTournamentData.find(
-    tournament=>tournament.id === id
-  );
-
-  if(!item) return;
-
-  const content = getElement("tournamentDetailsContent");
-
-  content.innerHTML = `
-    <h2>${escapeHTML(item.name || item.title || "Tournament")}</h2>
-
-    <p class="muted small" style="margin:10px 0">
-      ${escapeHTML(item.game || "Gaming")}
-    </p>
-
-    <div class="notice">
-      Status: ${escapeHTML(getTournamentStatus(item))}
-    </div>
-
-    <div class="list-item">
-      <span>Prize Pool</span>
-      <strong>${formatCurrency(item.prizePool || item.prize || 0)}</strong>
-    </div>
-
-    <div class="list-item">
-      <span>Entry Fee</span>
-      <strong>${formatCurrency(item.entryFee || item.fee || 0)}</strong>
-    </div>
-
-    <div class="list-item">
-      <span>Date</span>
-      <strong>${escapeHTML(item.date || "To be announced")}</strong>
-    </div>
-
-    <div class="list-item">
-      <span>Slots</span>
-      <strong>${escapeHTML(item.slots || "Open")}</strong>
-    </div>
-
-    <p class="muted small" style="margin:15px 0">
-      ${escapeHTML(item.description || "Join this tournament and compete with other players.")}
-    </p>
-
-    <button class="primary-btn full"
-      onclick="openRegistration('${item.id}')">
-      Register Now
-    </button>
-  `;
-
-  openModal("tournamentDetailsModal");
-
-};
-
-
-/* =====================================
-   26. OPEN REGISTRATION
-===================================== */
-
-window.openRegistration = function(id){
-
-  if(!currentUser){
-
-    closeModal("tournamentDetailsModal");
-
-    openAuth("login");
-
-    return;
-
-  }
-
-  const item = allTournamentData.find(
-    tournament=>tournament.id === id
-  );
-
-  if(!item) return;
-
-  if(getTournamentStatus(item) === "completed"){
-
-    alert("This tournament has already completed.");
-
-    return;
-
-  }
-
-  getElement("registrationTournamentId").value = id;
-
-  getElement("registrationName").value =
-    currentUserData.name || currentUser.displayName || "";
-
-  getElement("registrationGameId").value =
-    currentUserData.gameId || "";
-
-  getElement("registrationGame").value =
-    item.game || "BGMI";
-
-  getElement("registrationPhone").value =
-    currentUserData.phone || "";
-
-  showMessage("registrationMessage","");
-
-  closeModal("tournamentDetailsModal");
-
-  openModal("registrationModal");
-
-};
-
-
-/* =====================================
-   27. SUBMIT REGISTRATION
-===================================== */
-
-window.submitRegistration = async function(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-  const tournamentId =
-    getElement("registrationTournamentId").value;
-
-  const name =
-    getElement("registrationName").value.trim();
-
-  const gameId =
-    getElement("registrationGameId").value.trim();
-
-  const game =
-    getElement("registrationGame").value;
-
-  const team =
-    getElement("registrationTeam").value.trim();
-
-  const phone =
-    getElement("registrationPhone").value.trim();
-
-  if(!tournamentId || !name || !gameId || !phone){
-
-    showMessage(
-      "registrationMessage",
-      "Please complete all required fields."
-    );
-
-    return;
-
-  }
-
-  const button = getElement("submitRegistrationButton");
-
-  button.disabled = true;
-
-  button.textContent = "Submitting...";
-
-  try{
-
-    const existing = await getDocs(
-      query(
-        collection(db,"registrations"),
-        where("userId","==",currentUser.uid),
-        where("tournamentId","==",tournamentId)
-      )
-    );
-
-    if(!existing.empty){
-
-      showMessage(
-        "registrationMessage",
-        "You have already registered for this tournament."
-      );
-
-      return;
-
-    }
-
-    const tournament = allTournamentData.find(
-      item=>item.id === tournamentId
-    );
-
-    await addDoc(collection(db,"registrations"),{
-
-      userId:currentUser.uid,
-      userEmail:currentUser.email || "",
-      playerName:name,
-      gameId:gameId,
-      game:game,
-      teamName:team,
-      phone:phone,
-      tournamentId:tournamentId,
-      tournamentName:tournament?.name || tournament?.title || "",
-      status:"pending",
-      createdAt:serverTimestamp()
-
-    });
-
-    showMessage(
-      "registrationMessage",
-      "Registration submitted successfully!",
-      "success"
-    );
-
-    await loadMyRegistrations();
-
-  }catch(error){
-
-    console.error("Registration error:",error);
-
-    showMessage(
-      "registrationMessage",
-      "Registration failed: " + error.message
-    );
-
-  }finally{
-
-    button.disabled = false;
-
-    button.textContent = "Submit Registration";
-
-  }
-
-};
-
-
-/* =====================================
-   28. LOAD MY REGISTRATIONS
-===================================== */
-
-async function loadMyRegistrations(){
-
-  const container = getElement("myRegistrationsList");
-
-  if(!currentUser) return;
-
-  try{
-
-    const snapshot = await getDocs(
-      query(
-        collection(db,"registrations"),
-        where("userId","==",currentUser.uid)
-      )
-    );
-
-    if(snapshot.empty){
-
-      container.innerHTML =
-        '<div class="empty-state">No registrations found.</div>';
-
-      return;
-
-    }
-
-    const items = [];
-
-    snapshot.forEach(item=>{
-      items.push(item.data());
-    });
-
-    container.innerHTML = items.map(item=>`
-
-      <div class="list-item">
-
-        <div>
-          <strong>${escapeHTML(item.tournamentName || "Tournament")}</strong>
-          <p class="muted small">${escapeHTML(item.game || "")}</p>
-          <p class="muted small">${formatDate(item.createdAt)}</p>
-        </div>
-
-        <span class="badge ${
-          item.status === "approved" ? "green" :
-          item.status === "rejected" ? "red" : ""
-        }">
-          ${escapeHTML(item.status || "pending")}
-        </span>
-
-      </div>
-
-    `).join("");
-
-  }catch(error){
-
-    console.error("Registration list error:",error);
-
-    container.innerHTML =
-      '<div class="empty-state">Could not load registrations. Check Firestore Rules.</div>';
-
-  }
-
-}
-
-
-/* =====================================
-   29. LOAD NEWS
-===================================== */
-
-async function loadNews(){
-
-  const home = getElement("homeNews");
-  const page = getElement("newsList");
-
-  try{
-
-    const snapshot = await getDocs(
-      collection(db,"news")
-    );
-
-    if(snapshot.empty){
-
-      home.innerHTML =
-        '<div class="card empty-state">No news available.</div>';
-
-      page.innerHTML =
-        '<div class="card empty-state">No news available.</div>';
-
-      return;
-
-    }
-
-    const items = [];
-
-    snapshot.forEach(item=>{
-      items.push(item.data());
-    });
-
-    const html = items.map(item=>`
-
-      <div class="card" style="margin-bottom:12px">
-
-        <h3>${escapeHTML(item.title || "Esports Update")}</h3>
-
-        <p class="muted small" style="margin:10px 0">
-          ${escapeHTML(item.description || item.content || "")}
-        </p>
-
-        <span class="muted small">
-          ${formatDate(item.createdAt)}
-        </span>
-
-      </div>
-
-    `).join("");
-
-    home.innerHTML = html;
-
-    page.innerHTML = html;
-
-  }catch(error){
-
-    console.error("News error:",error);
-
-    home.innerHTML =
-      '<div class="card empty-state">News is currently unavailable.</div>';
-
-    page.innerHTML =
-      '<div class="card empty-state">News is currently unavailable.</div>';
-
-  }
-
-}
-
-
-/* =====================================
-   30. LOAD TEAMS
-===================================== */
-
-async function loadTeams(){
-
-  const container = getElement("teamsList");
-
-  try{
-
-    const snapshot = await getDocs(
-      collection(db,"teams")
-    );
-
-    if(snapshot.empty){
-
-      container.innerHTML =
-        '<div class="empty-state">No teams available.</div>';
-
-      return;
-
-    }
-
-    const items = [];
-
-    snapshot.forEach(item=>{
-      items.push(item.data());
-    });
-
-    container.innerHTML = items.map(item=>`
-
-      <div class="list-item">
-        <div>
-          <strong>${escapeHTML(item.name || item.teamName || "Team")}</strong>
-          <p class="muted small">${escapeHTML(item.game || "")}</p>
-        </div>
-        <span class="badge">Team</span>
-      </div>
-
-    `).join("");
-
-  }catch(error){
-
-    console.error("Teams error:",error);
-
-    container.innerHTML =
-      '<div class="empty-state">Teams are currently unavailable.</div>';
-
-  }
-
-}
-
-
-/* =====================================
-   31. LOAD NOTIFICATIONS
-===================================== */
-
-async function loadNotifications(){
-
-  const container = getElement("notificationsList");
-
-  if(!currentUser){
-
-    container.innerHTML =
-      '<div class="empty-state">Login to view notifications.</div>';
-
-    return;
-
-  }
-
-  try{
-
-    const snapshot = await getDocs(
-      query(
-        collection(db,"notifications"),
-        where("userId","==",currentUser.uid)
-      )
-    );
-
-    if(snapshot.empty){
-
-      container.innerHTML =
-        '<div class="empty-state">No notifications available.</div>';
-
-      return;
-
-    }
-
-    const items = [];
-
-    snapshot.forEach(item=>{
-      items.push(item.data());
-    });
-
-    container.innerHTML = items.map(item=>`
-
-      <div class="list-item">
-        <div>
-          <strong>${escapeHTML(item.title || "Notification")}</strong>
-          <p class="muted small">${escapeHTML(item.message || "")}</p>
-          <p class="muted small">${formatDate(item.createdAt)}</p>
-        </div>
-      </div>
-
-    `).join("");
-
-  }catch(error){
-
-    console.error("Notification error:",error);
-
-    container.innerHTML =
-      '<div class="empty-state">Notifications are currently unavailable.</div>';
-
-  }
-
-}
-
-
-/* =====================================
-   32. LOAD LEADERBOARD
-===================================== */
-
-async function loadLeaderboard(){
-
-  const container = getElement("leaderboardList");
-
-  try{
-
-    const snapshot = await getDocs(
-      collection(db,"users")
-    );
-
-    const players = [];
-
-    snapshot.forEach(item=>{
-
-      const data = item.data();
-
-      players.push({
-        name:data.name || "Player",
-        points:Number(data.points || 0)
-      });
-
-    });
-
-    players.sort((a,b)=>b.points-a.points);
-
-    if(!players.length){
-
-      container.innerHTML =
-        '<div class="empty-state">No leaderboard data available.</div>';
-
-      return;
-
-    }
-
-    container.innerHTML = players.slice(0,20).map((player,index)=>`
-
-      <div class="list-item">
-
-        <div>
-          <strong>${index+1}. ${escapeHTML(player.name)}</strong>
-        </div>
-
-        <strong>${player.points.toLocaleString("en-IN")} pts</strong>
-
-      </div>
-
-    `).join("");
-
-  }catch(error){
-
-    console.error("Leaderboard error:",error);
-
-    container.innerHTML =
-      '<div class="empty-state">Leaderboard is unavailable. Your Firestore Rules may not allow reading other players.</div>';
-
-  }
-
-}
-
-
-/* =====================================
-   33. SUBMIT SUPPORT MESSAGE
-===================================== */
-
-window.submitSupport = async function(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-  const name = getElement("supportName").value.trim();
-
-  const email = getElement("supportEmail").value.trim();
-
-  const subject = getElement("supportSubject").value;
-
-  const message = getElement("supportMessage").value.trim();
-
-  if(!name || !email || !message){
-
-    showMessage(
-      "supportResult",
-      "Please complete all fields."
-    );
-
-    return;
-
-  }
-
-  try{
-
-    await addDoc(collection(db,"support"),{
-
-      userId:currentUser.uid,
-      name:name,
-      email:email,
-      subject:subject,
-      message:message,
-      status:"pending",
-      createdAt:serverTimestamp()
-
-    });
-
-    getElement("supportMessage").value = "";
-
-    showMessage(
-      "supportResult",
-      "Your message has been submitted
-
-      </script>
+/* ================================
+   END OF PART 6
+================================ */
+</script>
 </body>
 </html>
