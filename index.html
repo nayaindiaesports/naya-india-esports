@@ -1,0 +1,2604 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1c">
+<title>NAYA INDIA ESPORTS</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#080d1c;
+  --card:#101b30;
+  --card2:#14243b;
+  --blue:#078bff;
+  --cyan:#00d9f5;
+  --text:#f4f7ff;
+  --muted:#9baac4;
+  --border:#263955;
+  --green:#00d68f;
+  --red:#ff4d67;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+button,input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:none;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.container{
+  width:100%;
+  max-width:1100px;
+  margin:auto;
+  padding:15px;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#080d1cf5;
+  border-bottom:1px solid var(--border);
+  padding:14px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:65px;
+  height:65px;
+  border-radius:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#078bff,#00d9f5);
+  color:white;
+  font-size:27px;
+  font-weight:900;
+  box-shadow:0 0 22px #008cff55;
+}
+
+.brand-name{
+  font-size:19px;
+  font-weight:900;
+  line-height:1.3;
+}
+
+.brand-name span{
+  color:var(--cyan);
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.points-box{
+  background:#10243c;
+  border:1px solid #17639b;
+  border-radius:30px;
+  padding:12px;
+  color:var(--cyan);
+  font-weight:bold;
+  text-align:center;
+}
+
+.account-btn{
+  padding:14px 17px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#087bfa,#00aaff);
+  color:white;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.hero{
+  margin-top:20px;
+  padding:35px;
+  min-height:450px;
+  border-radius:35px;
+  border:1px solid #24517a;
+  background:
+  radial-gradient(circle at 85% 75%,#075b9c55,transparent 35%),
+  linear-gradient(135deg,#12304c,#101a32);
+  box-shadow:0 12px 35px #0005;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.hero-tag{
+  display:inline-block;
+  width:max-content;
+  padding:10px 17px;
+  background:#073e60;
+  color:var(--cyan);
+  border-radius:30px;
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:35px;
+}
+
+.hero h1{
+  font-size:42px;
+  line-height:1.3;
+  font-weight:900;
+  margin-bottom:25px;
+}
+
+.hero h1 span{
+  color:var(--cyan);
+}
+
+.hero p{
+  color:#b9c8df;
+  font-size:19px;
+  line-height:1.8;
+  max-width:650px;
+  margin-bottom:30px;
+}
+
+.primary-btn{
+  background:linear-gradient(120deg,#087bff,#00aaff);
+  color:white;
+  padding:17px 23px;
+  border-radius:17px;
+  font-size:17px;
+  font-weight:bold;
+  box-shadow:0 5px 20px #008cff44;
+}
+
+.secondary-btn{
+  background:#1b2d49;
+  color:white;
+  padding:17px 23px;
+  border:1px solid #304663;
+  border-radius:17px;
+  font-size:17px;
+  font-weight:bold;
+}
+
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-top:22px;
+}
+
+.stat-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:25px 12px;
+  text-align:center;
+}
+
+.stat-card h2{
+  color:var(--cyan);
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.stat-card p{
+  color:var(--muted);
+  font-size:15px;
+}
+
+.section{
+  margin-top:35px;
+  scroll-margin-top:90px;
+}
+
+.section-heading{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.section-heading h2{
+  font-size:24px;
+  font-weight:900;
+}
+
+.view-btn{
+  background:#192d49;
+  border:1px solid var(--border);
+  color:white;
+  padding:12px 16px;
+  border-radius:14px;
+  font-weight:bold;
+}
+
+.panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+}
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  z-index:200;
+  background:#080d1cf7;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-around;
+  padding:12px 3px 10px;
+  padding-bottom:calc(10px + env(safe-area-inset-bottom));
+}
+
+.nav-item{
+  flex:1;
+  text-align:center;
+  color:#8594ae;
+  font-size:12px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.nav-item .nav-icon{
+  display:block;
+  font-size:25px;
+  margin-bottom:5px;
+}
+
+.nav-item.active{
+  color:var(--cyan);
+}
+
+main{
+  padding-bottom:100px;
+}
+
+@media(min-width:700px){
+  .stats-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+  .hero{
+    padding:55px;
+  }
+  .hero h1{
+    font-size:52px;
+  }
+}
+
+@media(max-width:400px){
+  .logo{
+    width:53px;
+    height:53px;
+  }
+  .brand-name{
+    font-size:15px;
+  }
+  .account-btn{
+    padding:12px;
+    font-size:12px;
+  }
+  .hero{
+    padding:25px;
+  }
+  .hero h1{
+    font-size:34px;
+  }
+  .hero p{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP HEADER -->
+<header class="topbar">
+
+  <div class="brand">
+    <div class="logo">NI</div>
+    <div class="brand-name">
+      NAYA INDIA<br>
+      <span>ESPORTS</span>
+    </div>
+  </div>
+
+  <div class="header-actions">
+    <div class="points-box">
+      💎 <span id="headerPoints">0</span><br>
+      PTS
+    </div>
+
+    <button class="account-btn"
+      onclick="showPage('account')">
+      ACCOUNT
+    </button>
+  </div>
+
+</header>
+
+<main class="container">
+
+<!-- HOME PAGE -->
+<div id="homePage" class="page">
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+
+    <div class="hero-tag">
+      INDIA'S GAMING ARENA
+    </div>
+
+    <h1>
+      PLAY. COMPETE.<br>
+      <span>WIN BIG.</span>
+    </h1>
+
+    <p>
+      Join tournaments, challenge the best players
+      and make your mark in the NAYA INDIA
+      ESPORTS community.
+    </p>
+
+    <div class="hero-buttons">
+
+      <button class="primary-btn"
+        onclick="showPage('tournaments')">
+        Explore Tournaments
+      </button>
+
+      <button class="secondary-btn"
+        onclick="showPage('account')">
+        Join Now
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- STATISTICS -->
+  <section class="stats-grid">
+
+    <div class="stat-card">
+      <h2 id="totalTournaments">1</h2>
+      <p>TOURNAMENTS</p>
+    </div>
+
+    <div class="stat-card">
+      <h2 id="totalPlayers">—</h2>
+      <p>PLAYERS</p>
+    </div>
+
+    <div class="stat-card">
+      <h2 id="totalPrize">₹400</h2>
+      <p>PRIZE POOL</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>24/7</h2>
+      <p>COMMUNITY</p>
+    </div>
+
+  </section>
+
+  <!-- FEATURED TOURNAMENTS -->
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>🔥 Featured Tournaments</h2>
+
+      <button class="view-btn"
+        onclick="showPage('tournaments')">
+        View All
+      </button>
+    </div>
+
+    <div id="featuredTournaments">
+
+      <div class="panel" style="text-align:center">
+        <h3>🏆 Tournaments Coming Soon</h3>
+        <p style="color:#9baac4;margin-top:10px">
+          Stay tuned for upcoming tournaments!
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- LIVE MATCHES -->
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>🔴 Live Matches</h2>
+      <button class="view-btn"
+        onclick="showPage('tournaments')">
+        View All
+      </button>
+    </div>
+
+    <div id="liveMatches">
+
+      <div class="panel" style="text-align:center">
+        <h3>🎮 No Live Matches</h3>
+        <p style="color:#9baac4;margin-top:10px">
+          Live matches will appear here.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- UPCOMING MATCHES -->
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>📅 Upcoming Matches</h2>
+    </div>
+
+    <div id="upcomingMatches">
+
+      <div class="panel" style="text-align:center">
+        <h3>⚔️ Get Ready!</h3>
+        <p style="color:#9baac4;margin-top:10px">
+          Upcoming matches will appear here.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TOP PLAYERS -->
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>👑 Top Players</h2>
+      <button class="view-btn"
+        onclick="showPage('ranks')">
+        Rankings
+      </button>
+    </div>
+
+    <div id="topPlayers">
+
+      <div class="panel" style="text-align:center">
+        <h3>🏅 Top Players</h3>
+        <p style="color:#9baac4;margin-top:10px">
+          Player rankings will appear here.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- LEADERBOARD PREVIEW -->
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>📊 Leaderboard</h2>
+
+      <button class="view-btn"
+        onclick="showPage('ranks')">
+        View All
+      </button>
+    </div>
+
+    <div id="leaderboardPreview">
+
+      <div class="panel">
+        <p style="color:#9baac4;text-align:center">
+          🏆 Leaderboard will appear here.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="section">
+
+    <div class="panel"
+      style="text-align:center;padding:30px 15px">
+
+      <h2>🚀 Join Our Community</h2>
+
+      <p style="color:#9baac4;margin:15px 0">
+        Connect with gamers, participate in tournaments
+        and become an esports champion.
+      </p>
+
+      <button class="primary-btn"
+        onclick="window.open('https://discord.com/','_blank')">
+        Join Community
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+</main>
+
+<!-- BOTTOM NAVIGATION -->
+<nav class="bottom-nav">
+
+  <div class="nav-item active"
+    onclick="showPage('home')">
+    <span class="nav-icon">🏠</span>
+    Home
+  </div>
+
+  <div class="nav-item"
+    onclick="showPage('tournaments')">
+    <span class="nav-icon">🏆</span>
+    Tournaments
+  </div>
+
+  <div class="nav-item"
+    onclick="showPage('wallet')">
+    <span class="nav-icon">💎</span>
+    Wallet
+  </div>
+
+  <div class="nav-item"
+    onclick="showPage('ranks')">
+    <span class="nav-icon">🏅</span>
+    Ranks
+  </div>
+
+  <div class="nav-item"
+    onclick="showPage('account')">
+    <span class="nav-icon">👤</span>
+    Account
+  </div>
+
+</nav>
+</body>
+</html>
+
+<!-- ACCOUNT PAGE -->
+<div id="accountPage" class="page hidden">
+
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>👤 My Account</h2>
+    </div>
+
+    <!-- USER PROFILE -->
+    <div class="panel" style="text-align:center;padding:25px">
+
+      <div style="
+        width:85px;
+        height:85px;
+        border-radius:50%;
+        background:linear-gradient(135deg,#078bff,#00d9f5);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:auto;
+        font-size:38px;">
+        👤
+      </div>
+
+      <h2 id="profileName" style="margin-top:15px">
+        Guest Player
+      </h2>
+
+      <p id="profileEmail"
+        style="color:#9baac4;margin-top:7px">
+        Login to access your profile
+      </p>
+
+      <p style="color:#00d9f5;margin-top:12px">
+        🎮 NAYA INDIA ESPORTS PLAYER
+      </p>
+
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="panel" id="loginBox" style="margin-top:20px">
+
+      <h2 style="margin-bottom:20px">
+        🔐 Player Login
+      </h2>
+
+      <form id="loginForm">
+
+        <label>Email Address</label>
+
+        <input type="email"
+          id="loginEmail"
+          placeholder="Enter your email"
+          required
+          style="width:100%;padding:15px;margin:10px 0 18px;
+          border-radius:12px;background:#080d1c;
+          border:1px solid #263955;color:white;">
+
+        <label>Password</label>
+
+        <input type="password"
+          id="loginPassword"
+          placeholder="Enter password"
+          required
+          style="width:100%;padding:15px;margin:10px 0 18px;
+          border-radius:12px;background:#080d1c;
+          border:1px solid #263955;color:white;">
+
+        <button type="submit" class="primary-btn"
+          style="width:100%">
+          LOGIN NOW
+        </button>
+
+      </form>
+
+      <p style="text-align:center;margin-top:20px;color:#9baac4">
+        Don't have an account?
+      </p>
+
+      <button class="secondary-btn"
+        style="width:100%;margin-top:12px"
+        onclick="showAuthForm('register')">
+        CREATE NEW ACCOUNT
+      </button>
+
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div class="panel hidden" id="registerBox"
+      style="margin-top:20px">
+
+      <h2 style="margin-bottom:20px">
+        📝 Create Player Account
+      </h2>
+
+      <form id="registerForm">
+
+        <label>Full Name</label>
+
+        <input type="text"
+          id="registerName"
+          placeholder="Enter your full name"
+          required
+          style="width:100%;padding:15px;margin:10px 0 18px;
+          border-radius:12px;background:#080d1c;
+          border:1px solid #263955;color:white;">
+
+        <label>Email Address</label>
+
+        <input type="email"
+          id="registerEmail"
+          placeholder="Enter your email"
+          required
+          style="width:100%;padding:15px;margin:10px 0 18px;
+          border-radius:12px;background:#080d1c;
+          border:1px solid #263955;color:white;">
+
+        <label>Mobile Number</label>
+
+        <input type="tel"
+          id="registerPhone"
+          placeholder="Enter mobile number"
+          required
+          style="width:100%;padding:15px;margin:10px 0 18px;
+          border-radius:12px;background:#080d1c;
+          border:1px solid #263955;color:white;">
+
+        <label>Create Password</label>
+
+        <input type="password"
+          id="registerPassword"
+          placeholder="Create password"
+          minlength="6"
+          required
+          style="width:100%;padding:15px;margin:10px 0 18px;
+          border-radius:12px;background:#080d1c;
+          border:1px solid #263955;color:white;">
+
+        <label>Confirm Password</label>
+
+        <input type="password"
+          id="confirmPassword"
+          placeholder="Confirm password"
+          minlength="6"
+          required
+          style="width:100%;padding:15px;margin:10px 0 18px;
+          border-radius:12px;background:#080d1c;
+          border:1px solid #263955;color:white;">
+
+        <button type="submit" class="primary-btn"
+          style="width:100%">
+          REGISTER NOW
+        </button>
+
+      </form>
+
+      <p style="text-align:center;margin-top:20px;color:#9baac4">
+        Already have an account?
+      </p>
+
+      <button class="secondary-btn"
+        style="width:100%;margin-top:12px"
+        onclick="showAuthForm('login')">
+        BACK TO LOGIN
+      </button>
+
+    </div>
+
+    <!-- LOGGED IN ACCOUNT MENU -->
+    <div id="userMenu" class="hidden">
+
+      <div class="section">
+
+        <div class="section-heading">
+          <h2>⚡ Player Dashboard</h2>
+        </div>
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <h2 id="myTournamentCount">0</h2>
+            <p>TOURNAMENTS</p>
+          </div>
+
+          <div class="stat-card">
+            <h2 id="myWins">0</h2>
+            <p>WINS</p>
+          </div>
+
+          <div class="stat-card">
+            <h2 id="myKills">0</h2>
+            <p>TOTAL KILLS</p>
+          </div>
+
+          <div class="stat-card">
+            <h2 id="myEarnings">₹0</h2>
+            <p>EARNINGS</p>
+          </div>
+
+        </div>
+
+        <div class="panel" style="margin-top:20px">
+
+          <h3>👤 Account Settings</h3>
+
+          <button class="secondary-btn"
+            style="width:100%;margin-top:15px"
+            onclick="showPage('tournaments')">
+            🏆 My Tournaments
+          </button>
+
+          <button class="secondary-btn"
+            style="width:100%;margin-top:12px"
+            onclick="showPage('wallet')">
+            💎 My Wallet
+          </button>
+
+          <button class="secondary-btn"
+            style="width:100%;margin-top:12px"
+            onclick="showPage('ranks')">
+            🏅 My Rankings
+          </button>
+
+          <button class="secondary-btn"
+            style="width:100%;margin-top:12px"
+            onclick="showPage('notifications')">
+            🔔 Notifications
+          </button>
+
+          <button class="secondary-btn"
+            style="width:100%;margin-top:12px"
+            onclick="showPage('settings')">
+            ⚙️ Settings
+          </button>
+
+          <button class="secondary-btn"
+            style="width:100%;margin-top:12px;color:#ff6377"
+            onclick="logoutUser()">
+            🚪 LOGOUT
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+<!-- GAMES PAGE -->
+<div id="gamesPage" class="page hidden">
+
+  <section class="section">
+    <div class="section-heading">
+      <h2>🎮 Explore Games</h2>
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="panel" style="text-align:center">
+        <div style="font-size:45px">🔫</div>
+        <h3>BGMI</h3>
+        <p style="color:#9baac4;margin:10px">Battlegrounds Mobile India</p>
+        <button class="primary-btn"
+          onclick="filterGame('BGMI')">Explore</button>
+      </div>
+
+      <div class="panel" style="text-align:center">
+        <div style="font-size:45px">🔥</div>
+        <h3>Free Fire MAX</h3>
+        <p style="color:#9baac4;margin:10px">Battle Royale</p>
+        <button class="primary-btn"
+          onclick="filterGame('Free Fire MAX')">Explore</button>
+      </div>
+
+      <div class="panel" style="text-align:center">
+        <div style="font-size:45px">🎯</div>
+        <h3>Valorant</h3>
+        <p style="color:#9baac4;margin:10px">Tactical Shooter</p>
+        <button class="primary-btn"
+          onclick="filterGame('Valorant')">Explore</button>
+      </div>
+
+      <div class="panel" style="text-align:center">
+        <div style="font-size:45px">⚔️</div>
+        <h3>Call of Duty Mobile</h3>
+        <p style="color:#9baac4;margin:10px">Multiplayer Action</p>
+        <button class="primary-btn"
+          onclick="filterGame('Call of Duty Mobile')">Explore</button>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+
+<!-- TOURNAMENTS PAGE -->
+<div id="tournamentsPage" class="page hidden">
+
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>🏆 Tournaments</h2>
+    </div>
+
+    <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px">
+
+      <button class="view-btn" onclick="filterTournament('All')">
+        All
+      </button>
+
+      <button class="view-btn" onclick="filterTournament('Upcoming')">
+        Upcoming
+      </button>
+
+      <button class="view-btn" onclick="filterTournament('Live')">
+        🔴 Live
+      </button>
+
+      <button class="view-btn" onclick="filterTournament('Completed')">
+        Completed
+      </button>
+
+    </div>
+
+    <div class="panel" style="margin-bottom:18px">
+      <h3>🔍 Find Tournament</h3>
+
+      <input type="text"
+        id="tournamentSearch"
+        placeholder="Search tournament..."
+        oninput="searchTournaments()"
+        style="width:100%;padding:14px;margin-top:12px;
+        background:#080d1c;color:white;
+        border:1px solid #263955;border-radius:12px">
+    </div>
+
+    <div id="allTournaments">
+
+      <div class="panel" style="text-align:center">
+        <h3>🏆 No Tournaments Available</h3>
+        <p style="color:#9baac4;margin-top:10px">
+          New tournaments will appear here.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- TEAMS PAGE -->
+<div id="teamsPage" class="page hidden">
+
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>👥 Esports Teams</h2>
+    </div>
+
+    <div class="panel" style="text-align:center">
+
+      <div style="font-size:55px">🛡️</div>
+
+      <h2>Create Your Team</h2>
+
+      <p style="color:#9baac4;margin:15px 0">
+        Build your squad, invite players and compete
+        in esports tournaments.
+      </p>
+
+      <button class="primary-btn"
+        onclick="createTeam()">
+        + CREATE TEAM
+      </button>
+
+    </div>
+
+    <div class="section">
+
+      <div class="section-heading">
+        <h2>🏅 My Team</h2>
+      </div>
+
+      <div id="myTeamList">
+        <div class="panel" style="text-align:center">
+          <p style="color:#9baac4">
+            You have not joined any team yet.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section">
+
+      <div class="section-heading">
+        <h2>🌍 Explore Teams</h2>
+      </div>
+
+      <div id="exploreTeams">
+        <div class="panel" style="text-align:center">
+          <p style="color:#9baac4">
+            Teams will appear here.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- LEADERBOARD PAGE -->
+<div id="ranksPage" class="page hidden">
+
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>🏅 Leaderboard</h2>
+    </div>
+
+    <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px">
+
+      <button class="view-btn"
+        onclick="loadLeaderboard('Overall')">
+        Overall
+      </button>
+
+      <button class="view-btn"
+        onclick="loadLeaderboard('BGMI')">
+        BGMI
+      </button>
+
+      <button class="view-btn"
+        onclick="loadLeaderboard('Free Fire MAX')">
+        Free Fire
+      </button>
+
+      <button class="view-btn"
+        onclick="loadLeaderboard('Valorant')">
+        Valorant
+      </button>
+
+    </div>
+
+    <div class="panel">
+
+      <h3 style="margin-bottom:18px">
+        👑 Top Players Ranking
+      </h3>
+
+      <div style="display:grid;
+        grid-template-columns:45px 1fr 70px;
+        gap:10px;color:#9baac4;
+        padding-bottom:12px;border-bottom:1px solid #263955">
+
+        <span>Rank</span>
+        <span>Player</span>
+        <span>Points</span>
+
+      </div>
+
+      <div id="leaderboardList">
+
+        <div style="text-align:center;padding:25px;color:#9baac4">
+          🏆 Rankings will appear here.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- TOURNAMENT DETAIL PAGE -->
+<div id="tournamentDetailPage" class="page hidden">
+
+  <section class="section">
+
+    <button class="view-btn"
+      onclick="showPage('tournaments')">
+      ← Back to Tournaments
+    </button>
+
+    <div id="tournamentDetailContent"
+      class="panel" style="margin-top:18px">
+
+      <h2>Tournament Details</h2>
+
+      <p style="color:#9baac4;margin-top:12px">
+        Select a tournament to see its details.
+      </p>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- TEAM CREATION MODAL -->
+<div id="teamModal" class="hidden"
+  style="position:fixed;inset:0;z-index:500;
+  background:#000c;display:none;
+  align-items:center;justify-content:center;padding:18px">
+
+  <div class="panel" style="width:100%;max-width:450px">
+
+    <h2 style="margin-bottom:18px">
+      🛡️ Create New Team
+    </h2>
+
+    <form id="teamForm">
+
+      <label>Team Name</label>
+
+      <input type="text" id="teamName"
+        placeholder="Enter team name"
+        required
+        style="width:100%;padding:14px;margin:10px 0 18px;
+        border-radius:12px;background:#080d1c;
+        border:1px solid #263955;color:white">
+
+      <label>Select Game</label>
+
+      <select id="teamGame"
+        style="width:100%;padding:14px;margin:10px 0 18px;
+        border-radius:12px;background:#080d1c;
+        border:1px solid #263955;color:white">
+
+        <option>BGMI</option>
+        <option>Free Fire MAX</option>
+        <option>Valorant</option>
+        <option>Call of Duty Mobile</option>
+
+      </select>
+
+      <label>Team Description</label>
+
+      <textarea id="teamDescription"
+        placeholder="Describe your team..."
+        style="width:100%;padding:14px;margin:10px 0 18px;
+        border-radius:12px;background:#080d1c;
+        border:1px solid #263955;color:white;
+        min-height:90px"></textarea>
+
+      <button type="submit" class="primary-btn"
+        style="width:100%">
+        CREATE TEAM
+      </button>
+
+      <button type="button" class="secondary-btn"
+        style="width:100%;margin-top:10px"
+        onclick="closeTeamModal()">
+        CANCEL
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- WALLET PAGE -->
+<div id="walletPage" class="page hidden">
+
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>💎 My Wallet</h2>
+    </div>
+
+    <!-- WALLET BALANCE -->
+    <div style="
+      background:linear-gradient(135deg,#0753a5,#087bff,#00bce5);
+      padding:28px 20px;
+      border-radius:25px;
+      box-shadow:0 8px 30px #007bff33;
+    ">
+
+      <p style="color:#d6efff">TOTAL WALLET BALANCE</p>
+
+      <h1 id="walletBalance"
+        style="font-size:40px;margin:15px 0">
+        ₹0.00
+      </h1>
+
+      <p style="color:#d6efff">
+        NAYA INDIA ESPORTS WALLET
+      </p>
+
+      <div style="display:flex;gap:10px;margin-top:25px">
+
+        <button class="primary-btn"
+          style="background:white;color:#087bff;flex:1"
+          onclick="openWalletTab('add')">
+          + ADD MONEY
+        </button>
+
+        <button class="secondary-btn"
+          style="background:#064b94;flex:1"
+          onclick="openWalletTab('withdraw')">
+          WITHDRAW
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- BALANCE BREAKDOWN -->
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <h2 id="availableBalance">₹0</h2>
+        <p>AVAILABLE BALANCE</p>
+      </div>
+
+      <div class="stat-card">
+        <h2 id="winningBalance">₹0</h2>
+        <p>WINNING BALANCE</p>
+      </div>
+
+      <div class="stat-card">
+        <h2 id="bonusBalance">₹0</h2>
+        <p>BONUS BALANCE</p>
+      </div>
+
+      <div class="stat-card">
+        <h2 id="pendingWithdrawal">₹0</h2>
+        <p>PENDING WITHDRAWAL</p>
+      </div>
+
+    </div>
+
+    <!-- ADD MONEY SECTION -->
+    <div id="addMoneySection" class="panel"
+      style="margin-top:22px">
+
+      <h2>➕ Add Money</h2>
+
+      <p style="color:#9baac4;margin:12px 0">
+        Select an amount to add to your wallet.
+      </p>
+
+      <div class="stats-grid">
+
+        <button class="view-btn" onclick="selectAmount(50)">
+          ₹50
+        </button>
+
+        <button class="view-btn" onclick="selectAmount(100)">
+          ₹100
+        </button>
+
+        <button class="view-btn" onclick="selectAmount(200)">
+          ₹200
+        </button>
+
+        <button class="view-btn" onclick="selectAmount(500)">
+          ₹500
+        </button>
+
+      </div>
+
+      <label style="display:block;margin-top:20px">
+        Enter Amount
+      </label>
+
+      <input type="number"
+        id="depositAmount"
+        min="1"
+        max="10000"
+        placeholder="Enter amount in rupees"
+        style="width:100%;padding:15px;margin:12px 0 18px;
+        border-radius:12px;background:#080d1c;
+        border:1px solid #263955;color:white">
+
+      <button class="primary-btn"
+        style="width:100%"
+        onclick="startUPIPayment()">
+        PROCEED TO PAYMENT
+      </button>
+
+      <p style="color:#9baac4;font-size:12px;margin-top:15px">
+        Payments are subject to server-side verification.
+      </p>
+
+    </div>
+
+    <!-- WITHDRAW SECTION -->
+    <div id="withdrawSection" class="panel"
+      style="margin-top:22px">
+
+      <h2>💸 Withdraw Money</h2>
+
+      <p style="color:#9baac4;margin:12px 0">
+        Withdraw eligible winning balance through UPI.
+      </p>
+
+      <label>Withdrawal Amount</label>
+
+      <input type="number"
+        id="withdrawAmount"
+        min="1"
+        placeholder="Enter withdrawal amount"
+        style="width:100%;padding:15px;margin:12px 0 18px;
+        border-radius:12px;background:#080d1c;
+        border:1px solid #263955;color:white">
+
+      <label>UPI ID</label>
+
+      <input type="text"
+        id="withdrawUPI"
+        placeholder="Enter your UPI ID"
+        style="width:100%;padding:15px;margin:12px 0 18px;
+        border-radius:12px;background:#080d1c;
+        border:1px solid #263955;color:white">
+
+      <button class="primary-btn"
+        style="width:100%"
+        onclick="requestWithdrawal()">
+        REQUEST WITHDRAWAL
+      </button>
+
+      <p style="color:#9baac4;font-size:12px;margin-top:15px">
+        Withdrawal requests are subject to verification
+        and admin approval.
+      </p>
+
+    </div>
+
+    <!-- TRANSACTION HISTORY -->
+    <div class="section">
+
+      <div class="section-heading">
+        <h2>📜 Transactions</h2>
+      </div>
+
+      <div id="transactionHistory">
+
+        <div class="panel" style="text-align:center">
+          <p style="color:#9baac4">
+            No transactions yet.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- WITHDRAWAL HISTORY -->
+    <div class="section">
+
+      <div class="section-heading">
+        <h2>💸 Withdrawal History</h2>
+      </div>
+
+      <div id="withdrawalHistory">
+
+        <div class="panel" style="text-align:center">
+          <p style="color:#9baac4">
+            No withdrawal requests yet.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- PAYMENT INFORMATION MODAL -->
+<div id="paymentModal" class="hidden"
+  style="position:fixed;inset:0;z-index:600;
+  background:#000d;align-items:center;
+  justify-content:center;padding:18px">
+
+  <div class="panel"
+    style="width:100%;max-width:420px;text-align:center">
+
+    <h2>💳 UPI Payment</h2>
+
+    <p style="color:#9baac4;margin:15px 0">
+      Amount to Pay
+    </p>
+
+    <h1 id="paymentAmount"
+      style="font-size:35px;color:#00d9f5">
+      ₹0
+    </h1>
+
+    <div style="background:#080d1c;padding:17px;
+      border-radius:15px;margin:20px 0">
+
+      <p style="color:#9baac4">UPI ID</p>
+
+      <h3 id="paymentUPI"
+        style="margin:12px 0">
+        9125470027@fam
+      </h3>
+
+      <button class="view-btn"
+        onclick="copyPaymentUPI()">
+        COPY UPI ID
+      </button>
+
+    </div>
+
+    <button class="primary-btn"
+      style="width:100%"
+      onclick="openUPIApp()">
+      PAY USING UPI APP
+    </button>
+
+    <button class="secondary-btn"
+      style="width:100%;margin-top:12px"
+      onclick="closePaymentModal()">
+      CLOSE
+    </button>
+
+    <p style="font-size:11px;color:#9baac4;margin-top:15px">
+      Wallet credit will happen only after verified
+      payment confirmation. Never submit fake payment proof.
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- NOTIFICATIONS PAGE -->
+<div id="notificationsPage" class="page hidden">
+
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>🔔 Notifications</h2>
+    </div>
+
+    <div id="notificationList">
+
+      <div class="panel" style="text-align:center">
+        <p style="color:#9baac4">
+          No new notifications.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- SETTINGS PAGE -->
+<div id="settingsPage" class="page hidden">
+
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>⚙️ Settings</h2>
+    </div>
+
+    <div class="panel">
+
+      <h3>Account Settings</h3>
+
+      <button class="secondary-btn"
+        style="width:100%;margin-top:15px"
+        onclick="showPage('account')">
+        👤 My Profile
+      </button>
+
+      <button class="secondary-btn"
+        style="width:100%;margin-top:12px"
+        onclick="showPage('notifications')">
+        🔔 Notifications
+      </button>
+
+      <button class="secondary-btn"
+        style="width:100%;margin-top:12px"
+        onclick="logoutUser()">
+        🚪 Logout
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+<script type="module">
+
+// =====================================
+// 1. FIREBASE CONFIGURATION
+// =====================================
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  addDoc,
+  query,
+  where,
+  orderBy,
+  limit,
+  serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCUOHKfHy35G4M3pUxWHerEWxPQ-zYvyg8",
+  authDomain: "naya-india-esportsa.firebaseapp.com",
+  projectId: "naya-india-esportsa",
+  storageBucket: "naya-india-esportsa.firebasestorage.app",
+  messagingSenderId: "541751208129",
+  appId: "1:541751208129:web:973af506812cfe23d14c40",
+  measurementId: "G-N7CMN7CMLN"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const PAYMENT_UPI = "9125470027@fam";
+
+let currentUser = null;
+let currentFilter = "All";
+let selectedGame = "Overall";
+
+
+// =====================================
+// 2. COMMON FUNCTIONS
+// =====================================
+
+function money(amount) {
+  return "₹" + Number(amount || 0).toLocaleString("en-IN");
+}
+
+function safe(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[c]);
+}
+
+function notify(message) {
+  alert(message);
+}
+
+window.showPage = function(page) {
+
+  document.querySelectorAll(".page").forEach(el => {
+    el.classList.add("hidden");
+  });
+
+  const pageElement = document.getElementById(page + "Page");
+
+  if (pageElement) {
+    pageElement.classList.remove("hidden");
+  } else {
+    document.getElementById("homePage").classList.remove("hidden");
+  }
+
+  document.querySelectorAll(".nav-item").forEach(el => {
+    el.classList.remove("active");
+  });
+
+  const navIndex = {
+    home:0,
+    tournaments:1,
+    wallet:2,
+    ranks:3,
+    account:4
+  };
+
+  if (navIndex[page] !== undefined) {
+    document.querySelectorAll(".nav-item")[navIndex[page]]
+      ?.classList.add("active");
+  }
+
+  window.scrollTo({top:0,behavior:"smooth"});
+
+  if (page === "wallet") loadWallet();
+  if (page === "tournaments") loadTournaments();
+  if (page === "ranks") loadLeaderboard(selectedGame);
+  if (page === "notifications") loadNotifications();
+};
+
+window.showAuthForm = function(type) {
+  document.getElementById("loginBox").classList.toggle(
+    "hidden", type !== "login"
+  );
+
+  document.getElementById("registerBox").classList.toggle(
+    "hidden", type !== "register"
+  );
+};
+
+
+// =====================================
+// 3. REGISTER USER
+// =====================================
+
+document.getElementById("registerForm")
+.addEventListener("submit", async function(e) {
+
+  e.preventDefault();
+
+  const name = document.getElementById("registerName").value.trim();
+  const email = document.getElementById("registerEmail").value.trim();
+  const phone = document.getElementById("registerPhone").value.trim();
+  const password = document.getElementById("registerPassword").value;
+  const confirm = document.getElementById("confirmPassword").value;
+
+  if (password !== confirm) {
+    return notify("Passwords do not match!");
+  }
+
+  if (!/^[0-9]{10}$/.test(phone)) {
+    return notify("Enter a valid 10-digit mobile number.");
+  }
+
+  try {
+
+    const result = await createUserWithEmailAndPassword(
+      auth, email, password
+    );
+
+    await setDoc(doc(db, "users", result.user.uid), {
+      uid: result.user.uid,
+      name,
+      email,
+      phone,
+      role: "user",
+      createdAt: serverTimestamp()
+    });
+
+    notify("Registration successful!");
+
+  } catch(error) {
+    notify(error.message);
+  }
+
+});
+
+
+// =====================================
+// 4. LOGIN USER
+// =====================================
+
+document.getElementById("loginForm")
+.addEventListener("submit", async function(e) {
+
+  e.preventDefault();
+
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  try {
+
+    await signInWithEmailAndPassword(auth, email, password);
+
+    notify("Login successful!");
+
+  } catch(error) {
+    notify(error.message);
+  }
+
+});
+
+
+// =====================================
+// 5. AUTHENTICATION STATE
+// =====================================
+
+onAuthStateChanged(auth, async user => {
+
+  currentUser = user;
+
+  const loginBox = document.getElementById("loginBox");
+  const registerBox = document.getElementById("registerBox");
+  const userMenu = document.getElementById("userMenu");
+
+  if (user) {
+
+    loginBox.classList.add("hidden");
+    registerBox.classList.add("hidden");
+    userMenu.classList.remove("hidden");
+
+    try {
+
+      const snap = await getDoc(doc(db, "users", user.uid));
+
+      if (snap.exists()) {
+
+        const data = snap.data();
+
+        document.getElementById("profileName").textContent =
+          data.name || "Player";
+
+        document.getElementById("profileEmail").textContent =
+          data.email || user.email;
+
+      } else {
+        document.getElementById("profileEmail").textContent =
+          user.email || "";
+      }
+
+    } catch(error) {
+      console.error(error);
+    }
+
+    loadWallet();
+    loadMyStats();
+
+  } else {
+
+    userMenu.classList.add("hidden");
+    loginBox.classList.remove("hidden");
+
+    document.getElementById("profileName").textContent =
+      "Guest Player";
+
+    document.getElementById("profileEmail").textContent =
+      "Login to access your profile";
+
+    document.getElementById("walletBalance").textContent = "₹0.00";
+    document.getElementById("headerPoints").textContent = "0";
+
+  }
+
+});
+
+
+window.logoutUser = async function() {
+
+  try {
+    await signOut(auth);
+    notify("Logged out successfully!");
+    showPage("home");
+  } catch(error) {
+    notify(error.message);
+  }
+
+};
+
+
+// =====================================
+// 6. LOAD TOURNAMENTS
+// =====================================
+
+let tournamentData = [];
+
+window.loadTournaments = async function() {
+
+  const container = document.getElementById("allTournaments");
+
+  try {
+
+    const snapshot = await getDocs(
+      collection(db, "tournaments")
+    );
+
+    tournamentData = snapshot.docs.map(d => ({
+      id:d.id,
+      ...d.data()
+    }));
+
+    renderTournaments(tournamentData);
+
+    document.getElementById("totalTournaments").textContent =
+      tournamentData.length;
+
+    const featured = document.getElementById("featuredTournaments");
+
+    const live = document.getElementById("liveMatches");
+    const upcoming = document.getElementById("upcomingMatches");
+
+    const featuredItems = tournamentData.slice(0,3);
+
+    featured.innerHTML = featuredItems.length
+      ? featuredItems.map(t => tournamentCard(t)).join("")
+      : `<div class="panel">No featured tournaments yet.</div>`;
+
+    const liveItems = tournamentData.filter(t => t.status === "Live");
+    const upcomingItems = tournamentData.filter(t => t.status === "Upcoming");
+
+    live.innerHTML = liveItems.length
+      ? liveItems.map(t => tournamentCard(t)).join("")
+      : `<div class="panel">No live matches.</div>`;
+
+    upcoming.innerHTML = upcomingItems.length
+      ? upcomingItems.map(t => tournamentCard(t)).join("")
+      : `<div class="panel">No upcoming matches.</div>`;
+
+  } catch(error) {
+
+    console.error(error);
+    container.innerHTML =
+      `<div class="panel">Unable to load tournaments.</div>`;
+
+  }
+
+};
+
+
+function tournamentCard(t) {
+
+  return `
+    <div class="panel" style="margin-bottom:15px">
+
+      <h3>${safe(t.title || "Esports Tournament")}</h3>
+
+      <p style="color:#9baac4;margin-top:12px">
+        🎮 ${safe(t.game || "Game")}
+      </p>
+
+      <p style="margin-top:10px">
+        💰 Prize Pool: ${money(t.prizePool)}
+      </p>
+
+      <p style="margin-top:10px">
+        🎟️ Entry Fee: ${money(t.entryFee)}
+      </p>
+
+      <p style="margin-top:10px;color:#00d9f5">
+        Status: ${safe(t.status || "Upcoming")}
+      </p>
+
+      <button class="primary-btn"
+        style="width:100%;margin-top:15px"
+        onclick="viewTournament('${safe(t.id)}')">
+        VIEW DETAILS
+      </button>
+
+    </div>
+  `;
+}
+
+
+function renderTournaments(items) {
+
+  const container = document.getElementById("allTournaments");
+
+  const filtered = items.filter(t =>
+    currentFilter === "All" || t.status === currentFilter
+  );
+
+  container.innerHTML = filtered.length
+    ? filtered.map(t => tournamentCard(t)).join("")
+    : `<div class="panel">No tournaments found.</div>`;
+
+}
+
+
+window.filterTournament = function(status) {
+  currentFilter = status;
+  renderTournaments(tournamentData);
+};
+
+
+window.searchTournaments = function() {
+
+  const value = document.getElementById("tournamentSearch")
+    .value.toLowerCase();
+
+  const filtered = tournamentData.filter(t =>
+    String(t.title || "").toLowerCase().includes(value) ||
+    String(t.game || "").toLowerCase().includes(value)
+  );
+
+  renderTournaments(filtered);
+
+};
+
+
+window.filterGame = function(game) {
+
+  currentFilter = "All";
+
+  showPage("tournaments");
+
+  const filtered = tournamentData.filter(t =>
+    t.game === game
+  );
+
+  renderTournaments(filtered);
+
+};
+
+
+window.viewTournament = function(id) {
+
+  const t = tournamentData.find(item => item.id === id);
+
+  if (!t) return notify("Tournament not found.");
+
+  showPage("tournamentDetail");
+
+  document.getElementById("tournamentDetailContent").innerHTML = `
+
+    <h2>${safe(t.title)}</h2>
+
+    <p style="margin-top:15px;color:#00d9f5">
+      ${safe(t.game)}
+    </p>
+
+    <p style="margin-top:15px">
+      Prize Pool: ${money(t.prizePool)}
+    </p>
+
+    <p style="margin-top:10px">
+      Entry Fee: ${money(t.entryFee)}
+    </p>
+
+    <p style="margin-top:10px">
+      Mode: ${safe(t.mode || "Squad")}
+    </p>
+
+    <p style="margin-top:10px">
+      Slots: ${safe(t.slots || "Not announced")}
+    </p>
+
+    <p style="margin-top:15px">
+      Rules: ${safe(t.rules || "Follow tournament rules.")}
+    </p>
+
+    <p style="margin-top:15px;color:#00d9f5">
+      Status: ${safe(t.status)}
+    </p>
+
+    <button class="primary-btn"
+      style="width:100%;margin-top:20px"
+      onclick="registerTournament('${safe(t.id)}')">
+      REGISTER NOW
+    </button>
+
+  `;
+
+};
+
+
+// =====================================
+// 7. TOURNAMENT REGISTRATION
+// =====================================
+
+window.registerTournament = async function(id) {
+
+  if (!currentUser) {
+    showPage("account");
+    return notify("Please login first.");
+  }
+
+  try {
+
+    const tournamentRef = doc(db, "tournaments", id);
+    const tournamentSnap = await getDoc(tournamentRef);
+
+    if (!tournamentSnap.exists()) {
+      return notify("Tournament not found.");
+    }
+
+    const t = tournamentSnap.data();
+
+    if (t.status !== "Upcoming") {
+      return notify("Registration is not open.");
+    }
+
+    const registrations = await getDocs(query(
+      collection(db, "registrations"),
+      where("userId", "==", currentUser.uid),
+      where("tournamentId", "==", id)
+    ));
+
+    if (!registrations.empty) {
+      return notify("You are already registered.");
+    }
+
+    // Registration is recorded as pending.
+    // Entry fee deduction must be handled by secure backend.
+
+    await addDoc(collection(db, "registrations"), {
+      userId:currentUser.uid,
+      tournamentId:id,
+      tournamentTitle:t.title || "",
+      entryFee:Number(t.entryFee || 0),
+      status:"Pending Payment",
+      createdAt:serverTimestamp()
+    });
+
+    notify("Registration request created. Complete verified payment if required.");
+
+  } catch(error) {
+    notify(error.message);
+  }
+
+};
+
+
+// =====================================
+// 8. WALLET LOADING
+// =====================================
+
+window.loadWallet = async function() {
+
+  if (!currentUser) return;
+
+  try {
+
+    const snap = await getDoc(
+      doc(db, "wallets", currentUser.uid)
+    );
+
+    if (!snap.exists()) return;
+
+    const w = snap.data();
+
+    const available = Number(w.availableBalance || 0);
+    const winning = Number(w.winningBalance || 0);
+    const bonus = Number(w.bonusBalance || 0);
+    const pending = Number(w.pendingWithdrawal || 0);
+
+    document.getElementById("walletBalance").textContent =
+      money(available + winning + bonus);
+
+    document.getElementById("availableBalance").textContent =
+      money(available);
+
+    document.getElementById("winningBalance").textContent =
+      money(winning);
+
+    document.getElementById("bonusBalance").textContent =
+      money(bonus);
+
+    document.getElementById("pendingWithdrawal").textContent =
+      money(pending);
+
+    document.getElementById("headerPoints").textContent =
+      Number(w.points || 0);
+
+  } catch(error) {
+    console.error(error);
+  }
+
+};
+
+
+// =====================================
+// 9. ADD MONEY
+// =====================================
+
+window.selectAmount = function(amount) {
+  document.getElementById("depositAmount").value = amount;
+};
+
+
+window.openWalletTab = function(type) {
+
+  document.getElementById("addMoneySection").style.display =
+    type === "add" ? "block" : "none";
+
+  document.getElementById("withdrawSection").style.display =
+    type === "withdraw" ? "block" : "none";
+
+};
+
+
+window.startUPIPayment = async function() {
+
+  if (!currentUser) {
+    return notify("Please login first.");
+  }
+
+  const amount = Number(
+    document.getElementById("depositAmount").value
+  );
+
+  if (!Number.isFinite(amount) || amount < 1 || amount > 10000) {
+    return notify("Enter a valid amount between ₹1 and ₹10,000.");
+  }
+
+  // This opens a UPI payment intent.
+  // It does NOT verify payment or credit the wallet.
+
+  const paymentRef = "NIE" + Date.now();
+
+  try {
+
+    const payment = await addDoc(collection(db, "paymentRequests"), {
+      userId:currentUser.uid,
+      amount,
+      reference:paymentRef,
+      status:"Initiated",
+      createdAt:serverTimestamp()
+    });
+
+    const params = new URLSearchParams({
+      pa:PAYMENT_UPI,
+      pn:"NAYA INDIA ESPORTS",
+      am:amount.toFixed(2),
+      cu:"INR",
+      tn:"Wallet Deposit " + paymentRef
+    });
+
+    const upiLink = "upi://pay?" + params.toString();
+
+    window.location.href = upiLink;
+
+  } catch(error) {
+    notify("Payment request error: " + error.message);
+  }
+
+};
+
+
+window.copyPaymentUPI = async function() {
+
+  try {
+    await navigator.clipboard.writeText(PAYMENT_UPI);
+    notify("UPI ID copied!");
+  } catch(error) {
+    notify("UPI ID: " + PAYMENT_UPI);
+  }
+
+};
+
+
+window.openUPIApp = function() {
+  notify("First create a payment request using PROCEED TO PAYMENT.");
+};
+
+
+window.closePaymentModal = function() {
+  document.getElementById("paymentModal").classList.add("hidden");
+};
+
+
+// =====================================
+// 10. WITHDRAWAL REQUEST
+// =====================================
+
+window.requestWithdrawal = async function() {
+
+  if (!currentUser) {
+    return notify("Please login first.");
+  }
+
+  const amount = Number(
+    document.getElementById("withdrawAmount").value
+  );
+
+  const upi = document.getElementById("withdrawUPI")
+    .value.trim();
+
+  if (!Number.isFinite(amount) || amount <= 0) {
+    return notify("Enter a valid withdrawal amount.");
+  }
+
+  const upiPattern = /^[\w.-]+@[\w.-]+$/;
+
+  if (!upiPattern.test(upi)) {
+    return notify("Enter a valid UPI ID.");
+  }
+
+  try {
+
+    // Request only. A trusted backend must check eligible
+    // winning balance and reserve/deduct the requested amount.
+
+    await addDoc(collection(db, "withdrawalRequests"), {
+      userId:currentUser.uid,
+      amount,
+      upiId:upi,
+      status:"Pending",
+      createdAt:serverTimestamp()
+    });
+
+    document.getElementById("withdrawAmount").value = "";
+    document.getElementById("withdrawUPI").value = "";
+
+    notify("Withdrawal request submitted for admin review.");
+
+    loadWithdrawalHistory();
+
+  } catch(error) {
+    notify(error.message);
+  }
+
+};
+
+
+// =====================================
+// 11. TRANSACTION HISTORY
+// =====================================
+
+async function loadTransactionHistory() {
+
+  if (!currentUser) return;
+
+  const box = document.getElementById("transactionHistory");
+
+  try {
+
+    const q = query(
+      collection(db, "transactions"),
+      where("userId", "==", currentUser.uid),
+      limit(30)
+    );
+
+    const snap = await getDocs(q);
+
+    box.innerHTML = snap.empty
+      ? `<div class="panel">No transactions yet.</div>`
+      : snap.docs.map(d => {
+
+          const t = d.data();
+
+          return `
+            <div class="panel" style="margin-bottom:12px">
+              <b>${safe(t.title || t.type || "Transaction")}</b>
+              <p style="margin-top:8px">${money(t.amount)}</p>
+              <p style="color:#9baac4;margin-top:7px">
+                ${safe(t.status || "Processing")}
+              </p>
+            </div>
+          `;
+
+        }).join("");
+
+  } catch(error) {
+    console.error(error);
+  }
+
+}
+
+
+// =====================================
+// 12. WITHDRAWAL HISTORY
+// =====================================
+
+window.loadWithdrawalHistory = async function() {
+
+  if (!currentUser) return;
+
+  const box = document.getElementById("withdrawalHistory");
+
+  try {
+
+    const q = query(
+      collection(db, "withdrawalRequests"),
+      where("userId", "==", currentUser.uid),
+      limit(30)
+    );
+
+    const snap = await getDocs(q);
+
+    box.innerHTML = snap.empty
+      ? `<div class="panel">No withdrawal requests yet.</div>`
+      : snap.docs.map(d => {
+
+          const w = d.data();
+
+          return `
+            <div class="panel" style="margin-bottom:12px">
+              <b>${money(w.amount)}</b>
+              <p style="margin-top:8px">
+                UPI: ${safe(w.upiId)}
+              </p>
+              <p style="color:#00d9f5;margin-top:8px">
+                ${safe(w.status || "Pending")}
+              </p>
+            </div>
+          `;
+
+        }).join("");
+
+  } catch(error) {
+    console.error(error);
+  }
+
+};
+
+
+// =====================================
+// 13. LOAD NOTIFICATIONS
+// =====================================
+
+window.loadNotifications = async function() {
+
+  if (!currentUser) return;
+
+  const box = document.getElementById("notificationList");
+
+  try {
+
+    const q = query(
+      collection(db, "notifications"),
+      where("userId", "==", currentUser.uid),
+      limit(30)
+    );
+
+    const snap = await getDocs(q);
+
+    box.innerHTML = snap.empty
+      ? `<div class="panel">No new notifications.</div>`
+      : snap.docs.map(d => {
+
+          const n = d.data();
+
+          return `
+            <div class="panel" style="margin-bottom:12px">
+              <h3>🔔 ${safe(n.title || "Notification")}</h3>
+              <p style="color:#9baac4;margin-top:10px">
+                ${safe(n.message || "")}
+              </p>
+            </div>
+          `;
+
+        }).join("");
+
+  } catch(error) {
+    console.error(error);
+  }
+
+};
+
+
+// =====================================
+// 14. LEADERBOARD
+// =====================================
+
+window.loadLeaderboard = async function(game) {
+
+  selectedGame = game;
+
+  const box = document.getElementById("leaderboardList");
+
+  try {
+
+    let q = query(
+      collection(db, "leaderboard"),
+      orderBy("points", "desc"),
+      limit(50)
+    );
+
+    if (game !== "Overall") {
+      q = query(
+        collection(db, "leaderboard"),
+        where("game", "==", game),
+        orderBy("points", "desc"),
+        limit(50)
+      );
+    }
+
+    const snap = await getDocs(q);
+
+    box.innerHTML = snap.empty
+      ? `<p style="padding:20px;text-align:center;color:#9baac4">
+          No rankings available.
+        </p>`
+      : snap.docs.map((d,index) => {
+
+          const p = d.data();
+
+          return `
+            <div style="display:grid;
+     grid-template-columns:45px 1fr 70px;
+              gap:10px;padding:16px 0;
+              border-bottom:1px solid #263955">
+
+              <b>${index + 1}</b>
+              <span>${safe(p.playerName || "Player")}</span>
+              <span style="color:#00d9f5">
+                ${Number(p.points || 0)}
+              </span>
+
+            </div>
+          `;
+
+        }).join("");
+
+  } catch(error) {
+    box.innerHTML =
+      `<p style="padding:15px">Unable to load rankings.</p>`;
+  }
+
+};
+
+
+// =====================================
+// 15. TEAM CREATION
+// =====================================
+
+  window.createTeam = function() {
+
+  if (!currentUser) {
+    showPage("account");
+    return notify("Please login first.");
+  }
+
+  const modal = document.getElementById("teamModal");
+
+  modal.classList.remove("hidden");
+  modal.style.display = "flex";
+
+};
+
+
+window.closeTeamModal = function() {
+
+  const modal = document.getElementById("teamModal");
+
+  modal.style.display = "none";
+  modal.classList.add("hidden");
+
+};
+
+
+document.getElementById("teamForm")
+.addEventListener("submit", async function(e) {
+
+  e.preventDefault();
+
+  if (!currentUser) return notify("Please login first.");
+
+  const name = document.getElementById("teamName").value.trim();
+  const game = document.getElementById("teamGame").value;
+  const description = document.getElementById("teamDescription").value.trim();
+
+  try {
+    await addDoc(collection(db, "teams"), {
+      name,
+      game,
+      description,
+      captainId:currentUser.uid,
+      members:[currentUser.uid],
+      createdAt:serverTimestamp()
+    });
+
+    notify("Team created successfully!");
+
+    this.reset();
+    closeTeamModal();
+    loadMyTeams();
+
+  } catch(error) {
+    notify(error.message);
+  }
+
+});
+
+
+async function loadMyTeams() {
+
+  if (!currentUser) return;
+
+  try {
+
+    const snap = await getDocs(query(
+      collection(db, "teams"),
+      where("captainId", "==", currentUser.uid)
+    ));
+
+   document.getElementById("myTeamList").innerHTML =
+      snap.empty
+      ? `<div class="panel">No teams created yet.</div>`
+      : snap.docs.map(d => {
+
+          const t = d.data();
+
+          return `
+            <div class="panel" style="margin-bottom:12px">
+              <h3>🛡️ ${safe(t.name)}</h3>
+              <p style="color:#9baac4;margin-top:8px">
+                ${safe(t.game)}
+              </p>
+            </div>
+          `;
+
+        }).join("");
+
+  } catch(error) {
+    console.error(error);
+  }
+
+}
+
+
+// =====================================
+// 16. PLAYER STATISTICS
+// =====================================
+
+async function loadMyStats() {
+
+  if (!currentUser) return;
+
+  try {
+
+    const snap = await getDoc(
+      doc(db, "users", currentUser.uid)
+    );
+
+    if (!snap.exists()) return;
+
+    const d = snap.data();
+
+    document.getElementById("myTournamentCount").textContent =d.tournamentCount || 0;
+
+    document.getElementById("myWins").textContent =
+      d.wins || 0;
+
+    document.getElementById("myKills").textContent =
+      d.kills || 0;
+
+    document.getElementById("myEarnings").textContent =
+      money(d.earnings || 0);
+
+  } catch(error) {
+    console.error(error);
+  }
+
+}
+
+
+// =====================================
+// 17. INITIALIZE WEBSITE
+// =====================================
+  async function initializeWebsite() {
+
+  showPage("home");
+
+  loadTournaments();
+  loadLeaderboard("Overall");
+
+  if (currentUser) {
+    loadWallet();
+    loadTransactionHistory();
+    loadWithdrawalHistory();
+    loadMyTeams();
+  }
+
+}
+
+initializeWebsite();
+
+onAuthStateChanged(auth, user => {
+
+  if (user) {
+    loadTransactionHistory();
+    loadWithdrawalHistory();
+    loadMyTeams();
+  }
+
+});
+
+console.log("NAYA INDIA ESPORTS initialized!");
+
+</script>
+
+</body>
+</html>
