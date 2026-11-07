@@ -4,324 +4,479 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080a12">
-<title>NAYA INDIA ESPORTS | India's Gaming Arena</title>
+<meta name="theme-color" content="#080b14">
+<title>NAYA INDIA ESPORTS</title>
 
 <style>
 :root{
- --bg:#080a12;--panel:#111522;--panel2:#1b2233;
- --red:#ff304f;--text:#f5f6fa;--muted:#9da6bb;
- --border:#293044;--green:#28d17c;
+  --bg:#080b14;
+  --panel:#11182b;
+  --panel2:#151e34;
+  --border:#242f49;
+  --text:#f5f7ff;
+  --muted:#9ba6bd;
+  --blue:#5265ff;
+  --blue2:#3865ff;
+  --green:#19d66b;
+  --red:#ff4965;
+  --shadow:0 12px 35px rgba(0,0,0,.25);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  padding-bottom:105px;
+}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-.container{width:min(1180px,92%);margin:auto}
-header{position:sticky;top:0;z-index:100;background:#080a12ed;backdrop-filter:blur(15px);border-bottom:1px solid var(--border)}
-.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-size:20px;font-weight:900;white-space:nowrap}
-.logo span{color:var(--red)}
-.navlinks{display:flex;align-items:center;gap:18px}
-.navlinks a{font-size:13px;color:var(--muted)}
-.navlinks a:hover{color:white}
-.btn{background:var(--red);color:white;border:0;padding:12px 18px;border-radius:7px;font-weight:bold}
-.btn:hover{filter:brightness(1.12)}
-.btn.secondary{background:var(--panel2);border:1px solid var(--border)}
-.btn.small{padding:9px 12px;font-size:12px}
-.menu-btn{display:none;background:transparent;color:white;border:0;font-size:25px}
-.hero{padding:95px 0 85px;background:radial-gradient(ellipse at 80% 20%,#ff304f30,transparent 40%),linear-gradient(120deg,#111522,#080a12 65%);border-bottom:1px solid var(--border)}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
-.tag{display:inline-block;background:#ff304f20;color:#ff7185;border:1px solid #ff304f55;padding:8px 12px;border-radius:30px;font-size:12px;font-weight:bold}
-.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.04;margin:20px 0}
-.hero h1 span{color:var(--red)}
-.hero p{color:var(--muted);line-height:1.8;max-width:570px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-.hero-card{background:linear-gradient(145deg,#20283c,#111522);border:1px solid var(--border);border-radius:18px;padding:28px;min-height:260px;display:flex;flex-direction:column;justify-content:center}
-.hero-card .big{font-size:70px;text-align:center}
-.hero-card h2{text-align:center;margin:12px 0}
-.hero-card p{text-align:center;margin:0}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
-.stat{text-align:center;background:#111522;border:1px solid var(--border);padding:16px;border-radius:10px}
-.stat strong{font-size:24px;display:block}
-.stat span{font-size:11px;color:var(--muted)}
-section{padding:65px 0}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;flex-wrap:wrap;margin-bottom:25px}
-.section-head h2{font-size:30px;margin:0 0 8px}
-.section-head p{color:var(--muted);margin:0;font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:17px}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:19px;min-width:0}
-.card h3{margin:8px 0}
-.card p{color:var(--muted);font-size:13px;line-height:1.6}
-.game-icon{font-size:35px}
-.game-card{transition:.2s}
-.game-card:hover{transform:translateY(-4px);border-color:var(--red)}
-.tournament-card{display:flex;flex-direction:column;gap:9px}
-.tournament-card .btn{margin-top:auto}
-.meta{display:flex;gap:7px;flex-wrap:wrap}
-.pill{display:inline-block;padding:5px 9px;border-radius:5px;background:#252d40;font-size:11px;color:#d8deeb}
-.pill.live{background:#51202a;color:#ff9aaa}
-.pill.upcoming{background:#59451c;color:#ffe08a}
-.pill.completed{background:#164c36;color:#8ff2b8}
-.muted{color:var(--muted)}
-.empty{padding:30px;text-align:center;color:var(--muted);background:var(--panel);border:1px dashed var(--border);border-radius:10px}
-.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
-.filters button{background:var(--panel2);color:white;border:1px solid var(--border);padding:9px 13px;border-radius:7px}
-.filters button.active{background:var(--red);border-color:var(--red)}
-input,select,textarea{width:100%;padding:12px;margin:7px 0;background:#090d17;color:white;border:1px solid var(--border);border-radius:7px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--red)}
-label{font-size:12px;color:var(--muted)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.modal{display:none;position:fixed;inset:0;z-index:300;background:#000b;align-items:center;justify-content:center;padding:15px;overflow:auto}
-.modal.show{display:flex}
-.modal-box{width:100%;max-width:520px;max-height:92vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;position:relative}
-.modal-box h2{margin-top:5px}
-.close{position:absolute;right:15px;top:12px;background:transparent;color:white;border:0;font-size:25px}
-.message{font-size:13px;color:#ff8799;line-height:1.6}
-.success{color:var(--green)}
-.table-wrap{overflow:auto}
-table{width:100%;border-collapse:collapse;min-width:550px}
-th,td{padding:12px;text-align:left;border-bottom:1px solid var(--border);font-size:12px}
-th{color:var(--muted)}
-footer{background:#0d111c;border-top:1px solid var(--border);padding:35px 0}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}
-footer p,footer a{font-size:13px;color:var(--muted);line-height:1.8}
-footer a{display:block}
-.notice{background:#252d40;padding:13px;border-radius:8px;color:#cbd3e5;font-size:12px;line-height:1.6}
-#accountSection{display:none}
-@media(max-width:850px){
- .menu-btn{display:block}
- .navlinks{display:none;position:absolute;top:70px;left:0;right:0;background:#0d111c;padding:20px;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--border)}
- .navlinks.open{display:flex}
- .hero-grid{grid-template-columns:1fr}
- .hero{padding:65px 0}
+button:disabled{opacity:.5;cursor:not-allowed}
+.topbar{
+  height:78px;position:sticky;top:0;z-index:50;
+  background:rgba(8,11,20,.96);backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;
 }
-@media(max-width:550px){
- .form-grid{grid-template-columns:1fr}
- .footer-grid{grid-template-columns:1fr}
- .stats{grid-template-columns:repeat(3,1fr)}
- .stat{padding:11px 5px}
- .stat strong{font-size:19px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-logo{
+  width:45px;height:45px;border-radius:50%;
+  background:linear-gradient(135deg,#263c83,#11182b);
+  border:2px solid var(--border);display:grid;place-items:center;
+  font-size:22px;flex-shrink:0;
+}
+.brand-name{font-size:20px;font-weight:900;letter-spacing:1px}
+.top-actions{display:flex;gap:10px;align-items:center}
+.icon-btn{
+  width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--border);background:var(--panel);
+  color:var(--text);font-size:21px;
+}
+.coin-pill{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:30px;padding:12px 15px;font-weight:800;
+}
+.container{width:min(100% - 28px,1000px);margin:auto}
+.page{display:none;padding:25px 0 30px}
+.page.active{display:block}
+.section-title{
+  font-size:25px;font-weight:900;margin:10px 0 18px;
+}
+.sub-title{font-size:19px;font-weight:800;margin:24px 0 14px}
+.muted{color:var(--muted);line-height:1.6}
+.card{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:25px;padding:20px;margin-bottom:17px;
+  box-shadow:var(--shadow);
+}
+.hero{
+  padding:26px 22px;border-radius:25px;
+  background:linear-gradient(135deg,#17285a,#11182b 65%,#18204a);
+  border:1px solid #34447b;margin-bottom:25px;
+}
+.hero h1{font-size:30px;line-height:1.2;margin:0 0 12px}
+.hero p{color:#c2cbea;line-height:1.6}
+.primary-btn{
+  border:0;border-radius:17px;padding:15px 20px;
+  background:linear-gradient(110deg,var(--blue),var(--blue2));
+  color:white;font-weight:800;font-size:16px;
+  box-shadow:0 8px 25px rgba(70,90,255,.22);
+}
+.secondary-btn{
+  border:1px solid var(--border);border-radius:14px;
+  padding:12px 16px;background:var(--panel2);
+  color:var(--text);font-weight:700;
+}
+.danger-btn{
+  background:#351725;color:#ff8294;border:1px solid #713044;
+  border-radius:14px;padding:13px 18px;font-weight:800;
+}
+.full{width:100%}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{
+  padding:16px 8px;text-align:center;border-radius:18px;
+  background:var(--panel2);border:1px solid var(--border);
+}
+.stat strong{display:block;font-size:23px;margin-bottom:7px}
+.stat span{font-size:12px;color:var(--muted)}
+.game-card,.quick-card{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:18px;padding:17px;text-align:center;
+}
+.game-icon{font-size:30px;margin-bottom:8px}
+.tournament-card{
+  overflow:hidden;padding:0;
+}
+.tournament-banner{
+  height:155px;background:linear-gradient(135deg,#163d83,#20265c);
+  display:grid;place-items:center;font-size:48px;
+}
+.tournament-content{padding:18px}
+.tag{
+  display:inline-block;padding:7px 12px;border-radius:30px;
+  background:#202b4a;color:#cbd4ff;font-size:12px;font-weight:800;
+}
+.tournament-content h3{font-size:21px;margin:13px 0 8px}
+.tournament-meta{
+  display:flex;justify-content:space-between;gap:10px;
+  padding:10px 0;border-bottom:1px solid var(--border);
+  color:var(--muted);font-size:14px;
+}
+.tournament-meta strong{color:var(--text)}
+.field{margin:13px 0}
+.field label{display:block;margin-bottom:8px;color:var(--muted);font-size:14px}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px;border-radius:13px;
+  border:1px solid var(--border);background:#0c1221;
+  color:var(--text);outline:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--blue);
+}
+.field textarea{min-height:90px;resize:vertical}
+.profile-head{text-align:center;padding:25px 12px}
+.avatar{
+  width:115px;height:115px;border-radius:50%;
+  display:grid;place-items:center;margin:0 auto 16px;
+  background:linear-gradient(135deg,#3155b9,#11182b);
+  border:4px solid var(--border);font-size:48px;
+}
+.profile-name{font-size:27px;font-weight:900;margin:8px}
+.profile-email{color:var(--muted);overflow-wrap:anywhere}
+.detail-row{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:15px 0;border-bottom:1px solid var(--border);
+}
+.detail-row:last-child{border:0}
+.detail-row span:first-child{color:var(--muted)}
+.bottom-nav{
+  position:fixed;z-index:60;bottom:12px;left:4%;width:92%;
+  background:rgba(17,24,43,.97);backdrop-filter:blur(18px);
+  border:1px solid var(--border);border-radius:35px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  padding:8px;box-shadow:0 10px 35px #0008;
+}
+.nav-btn{
+  border:0;background:transparent;color:var(--muted);
+  border-radius:28px;padding:10px 3px;font-size:12px;
+  font-weight:700;display:flex;flex-direction:column;
+  align-items:center;gap:5px;
+}
+.nav-btn .nav-icon{font-size:22px}
+.nav-btn.active{background:#20243a;color:white}
+.empty{
+  text-align:center;padding:28px 12px;color:var(--muted);
+}
+.notice{
+  padding:13px;border-radius:13px;background:#172541;
+  color:#c8d4ff;line-height:1.5;font-size:13px;
+}
+.modal{
+  display:none;position:fixed;inset:0;z-index:100;
+  background:#000b;align-items:center;justify-content:center;
+  padding:18px;
+}
+.modal.show{display:flex}
+.modal-box{
+  width:min(100%,460px);max-height:88vh;overflow:auto;
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:23px;padding:22px;
+}
+.modal-head{display:flex;justify-content:space-between;align-items:center}
+.close-btn{
+  background:var(--panel2);border:1px solid var(--border);
+  color:white;border-radius:50%;width:38px;height:38px;font-size:20px;
+}
+.message{font-size:13px;margin-top:12px;line-height:1.5}
+.success{color:#38df8a}
+.error{color:#ff7187}
+.support-btn{
+  position:fixed;right:17px;bottom:105px;z-index:55;
+  border:0;border-radius:30px;background:var(--green);
+  color:white;padding:14px 18px;font-weight:800;
+  box-shadow:0 0 25px #19d66b66;
+}
+hr{border:0;border-top:1px solid var(--border);margin:18px 0}
+@media(min-width:700px){
+  .brand-name{font-size:24px}
+  .tournament-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .tournament-grid .card{margin:0}
+  .hero{padding:40px}
+}
+@media(max-width:380px){
+  .brand-name{font-size:16px}
+  .topbar{padding:0 12px}
+  .icon-btn{width:42px;height:42px}
+  .grid-3{gap:6px}
+  .stat strong{font-size:19px}
 }
 </style>
 </head>
 
 <body>
 
-<header>
- <div class="container nav">
-  <a href="#home" class="logo">NAYA INDIA <span>ESPORTS</span></a>
-  <button class="menu-btn" id="menuBtn">☰</button>
-  <nav class="navlinks" id="navLinks">
-   <a href="#home">Home</a>
-   <a href="#games">Games</a>
-   <a href="#tournaments">Tournaments</a>
-   <a href="#leaderboard">Leaderboard</a>
-   <a href="#teams">Teams</a>
-   <a href="#news">News</a>
-   <button class="btn small" id="accountBtn">Login / Register</button>
-  </nav>
- </div>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo">🎮</div>
+    <div class="brand-name">NAYA INDIA ESPORTS</div>
+  </div>
+  <div class="top-actions">
+    <button class="coin-pill" onclick="showPage('wallet')">🪙 <span id="topBalance">0</span></button>
+    <button class="icon-btn" onclick="showPage('notifications')" aria-label="Notifications">♧</button>
+    <button class="icon-btn" onclick="toggleTheme()" aria-label="Theme">☼</button>
+  </div>
 </header>
 
-<main>
+<main class="container">
 
-<section class="hero" id="home">
- <div class="container hero-grid">
-  <div>
-   <span class="tag">INDIA'S ESPORTS COMMUNITY</span>
-   <h1>PLAY. COMPETE.<br><span>DOMINATE.</span></h1>
-   <p>Welcome to NAYA INDIA ESPORTS. Join tournaments, compete with players, build your team and prove your skills.</p>
-   <div class="hero-actions">
-    <a href="#tournaments" class="btn">Explore Tournaments</a>
-    <button class="btn secondary" id="heroJoin">Join Community</button>
-   </div>
-   <div class="stats">
-    <div class="stat"><strong id="statTournaments">0</strong><span>Tournaments</span></div>
-    <div class="stat"><strong id="statLive">0</strong><span>Live Events</span></div>
-    <div class="stat"><strong>4+</strong><span>Games</span></div>
-   </div>
-  </div>
-  <div class="hero-card">
-   <div class="big">🏆</div>
-   <h2>YOUR GAME. YOUR GLORY.</h2>
-   <p>Compete • Win • Rise</p>
-  </div>
- </div>
-</section>
+  <!-- HOME PAGE -->
+  <section class="page active" id="homePage">
+    <div class="hero">
+      <span class="tag">INDIA'S ESPORTS ARENA</span>
+      <h1>Play. Compete.<br>Become a Champion.</h1>
+      <p>Join tournaments, challenge players and make your place on the leaderboard.</p>
+      <button class="primary-btn" onclick="showPage('tournaments')">Explore Tournaments →</button>
+    </div>
 
-<section id="games">
- <div class="container">
-  <div class="section-head"><div><h2>Explore Games</h2><p>Choose your battlefield.</p></div></div>
-  <div class="grid">
-   <div class="card game-card"><div class="game-icon">🎯</div><h3>BGMI</h3><p>Battle Royale tournaments and competitive matches.</p><button class="btn small gameFilter" data-game="BGMI">View Tournaments</button></div>
-   <div class="card game-card"><div class="game-icon">🔥</div><h3>Free Fire MAX</h3><p>Join intense survival and squad competitions.</p><button class="btn small gameFilter" data-game="Free Fire MAX">View Tournaments</button></div>
-   <div class="card game-card"><div class="game-icon">⚔️</div><h3>Valorant</h3><p>Team up for tactical competitive battles.</p><button class="btn small gameFilter" data-game="Valorant">View Tournaments</button></div>
-   <div class="card game-card"><div class="game-icon">💥</div><h3>Call of Duty Mobile</h3><p>Test your skills in fast-paced matches.</p><button class="btn small gameFilter" data-game="Call of Duty Mobile">View Tournaments</button></div>
-   <div class="card game-card"><div class="game-icon">🎮</div><h3>Other Games</h3><p>More games and events coming soon.</p><button class="btn small" onclick="document.getElementById('tournaments').scrollIntoView()">Explore</button></div>
-  </div>
- </div>
-</section>
+    <div class="grid-3">
+      <div class="stat"><strong id="homeTournamentCount">0</strong><span>Tournaments</span></div>
+      <div class="stat"><strong id="homeLiveCount">0</strong><span>Live Matches</span></div>
+      <div class="stat"><strong id="homePlayerCount">0</strong><span>Players</span></div>
+    </div>
 
-<section id="tournaments" style="background:#0d111c">
- <div class="container">
-  <div class="section-head">
-   <div><h2>Featured Tournaments</h2><p>Find your next competition.</p></div>
-   <button class="btn secondary small" id="refreshTournaments">↻ Refresh</button>
-  </div>
-  <div class="filters">
-   <button class="active" data-filter="all">All</button>
-   <button data-filter="upcoming">Upcoming</button>
-   <button data-filter="live">Live</button>
-   <button data-filter="completed">Completed</button>
-  </div>
-  <div id="tournamentList" class="grid"><div class="empty">Loading tournaments...</div></div>
- </div>
-</section>
+    <h2 class="section-title">Choose Your Game</h2>
+    <div class="grid-2">
+      <button class="game-card" onclick="filterGame('BGMI')"><div class="game-icon">🎯</div><b>BGMI</b></button>
+      <button class="game-card" onclick="filterGame('Free Fire MAX')"><div class="game-icon">🔥</div><b>Free Fire MAX</b></button>
+      <button class="game-card" onclick="filterGame('Valorant')"><div class="game-icon">⚡</div><b>Valorant</b></button>
+      <button class="game-card" onclick="filterGame('COD Mobile')"><div class="game-icon">🪖</div><b>COD Mobile</b></button>
+    </div>
 
-<section id="leaderboard">
- <div class="container">
-  <div class="section-head"><div><h2>Leaderboard</h2><p>Player rankings will appear here.</p></div></div>
-  <div class="empty">🏅 Leaderboard system is coming soon.<br>Rankings will be displayed after match results are added.</div>
- </div>
-</section>
+    <h2 class="section-title">Featured Tournaments</h2>
+    <div id="homeTournamentList" class="tournament-grid">
+      <div class="card empty">Loading tournaments...</div>
+    </div>
 
-<section id="teams" style="background:#0d111c">
- <div class="container">
-  <div class="section-head"><div><h2>Build Your Team</h2><p>Find teammates and compete together.</p></div></div>
-  <div class="grid">
-   <div class="card"><div class="game-icon">👥</div><h3>Explore Teams</h3><p>Discover competitive teams.</p></div>
-   <div class="card"><div class="game-icon">➕</div><h3>Create Team</h3><p>Team creation feature is coming soon.</p></div>
-   <div class="card"><div class="game-icon">📨</div><h3>Invite Players</h3><p>Player invitations are coming soon.</p></div>
-  </div>
- </div>
-</section>
+    <h2 class="section-title">Live Matches</h2>
+    <div class="card" id="homeLiveMatches"><div class="empty">No live matches right now.</div></div>
 
-<section id="accountSection">
- <div class="container">
-  <div class="section-head">
-   <div><h2>My Account</h2><p id="accountEmail"></p></div>
-   <button class="btn secondary small" id="logoutBtn">Logout</button>
-  </div>
-  <div class="card">
-   <h3>My Tournament Registrations</h3>
-   <div class="table-wrap">
-    <table>
-     <thead><tr><th>Tournament</th><th>Game</th><th>Amount</th><th>Status</th></tr></thead>
-     <tbody id="myRegistrations"><tr><td colspan="4">Login to view registrations.</td></tr></tbody>
-    </table>
-   </div>
-  </div>
- </div>
-</section>
+    <h2 class="section-title">Leaderboard Preview</h2>
+    <div class="card" id="homeLeaderboard"><div class="empty">Leaderboard will appear here.</div></div>
 
-<section id="news">
- <div class="container">
-  <div class="section-head"><div><h2>News & Updates</h2><p>Latest announcements from our community.</p></div></div>
-  <div class="grid">
-   <div class="card"><div class="game-icon">📢</div><h3>Announcements</h3><p>Official tournament announcements will be shared here.</p></div>
-   <div class="card"><div class="game-icon">📰</div><h3>Gaming News</h3><p>Gaming news and esports updates coming soon.</p></div>
-   <div class="card"><div class="game-icon">📅</div><h3>Upcoming Events</h3><p>Check the tournament section for available events.</p></div>
-  </div>
- </div>
-</section>
+    <div class="hero">
+      <h2>Join Our Community</h2>
+      <p>Stay connected for tournament announcements and esports updates.</p>
+      <button class="secondary-btn" onclick="openCommunity()">Join Community</button>
+    </div>
+  </section>
 
-<section id="about" style="background:#0d111c">
- <div class="container">
-  <div class="section-head"><div><h2>About NAYA INDIA ESPORTS</h2><p>A platform for competitive gaming.</p></div></div>
-  <div class="card">
-   <p class="muted" style="line-height:1.9">NAYA INDIA ESPORTS is an esports community platform where players can explore tournaments, register for competitions and connect with the gaming community.</p>
-  </div>
- </div>
-</section>
+  <!-- TOURNAMENTS PAGE -->
+  <section class="page" id="tournamentsPage">
+    <h2 class="section-title">🏆 Tournaments</h2>
+    <div class="field">
+      <select id="tournamentFilter" onchange="loadTournaments()">
+        <option value="All">All Games</option>
+        <option>BGMI</option>
+        <option>Free Fire MAX</option>
+        <option>Valorant</option>
+        <option>COD Mobile</option>
+      </select>
+    </div>
+    <div class="grid-2" style="margin-bottom:16px">
+      <button class="secondary-btn" onclick="setTournamentStatus('All')">All</button>
+      <button class="secondary-btn" onclick="setTournamentStatus('Upcoming')">Upcoming</button>
+      <button class="secondary-btn" onclick="setTournamentStatus('Live')">Live</button>
+      <button class="secondary-btn" onclick="setTournamentStatus('Completed')">Completed</button>
+    </div>
+    <div id="tournamentList" class="tournament-grid">
+      <div class="card empty">Loading tournaments...</div>
+    </div>
+  </section>
+
+  <!-- WALLET PAGE -->
+  <section class="page" id="walletPage">
+    <h2 class="section-title">💰 My Wallet</h2>
+    <div class="card">
+      <div class="muted">My Balance</div>
+      <div style="font-size:42px;font-weight:900;margin:12px 0">🪙 <span id="walletBalance">0</span></div>
+      <p class="muted">Your wallet balance and transaction history.</p>
+      <button class="primary-btn full" onclick="openDeposit()">＋ Deposit Request</button>
+    </div>
+    <h3 class="sub-title">Transaction History</h3>
+    <div class="card" id="transactionList"><div class="empty">Login to view transactions.</div></div>
+  </section>
+
+  <!-- PROFILE PAGE -->
+  <section class="page" id="profilePage">
+    <h2 class="section-title">👤 My Account</h2>
+    <div class="card profile-head">
+      <div class="avatar" id="profileAvatar">👤</div>
+      <div class="profile-name" id="profileName">Guest Player</div>
+      <div class="profile-email" id="profileEmail">Login to access your account</div>
+      <div style="margin-top:20px" id="profileAuthButtons">
+        <button class="primary-btn" onclick="openAuth('login')">Login / Register</button>
+      </div>
+      <div style="margin-top:15px;display:none" id="logoutArea">
+        <button class="danger-btn" onclick="logoutUser()">Logout</button>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="stat"><strong id="profileWins">0</strong><span>Wins</span></div>
+      <div class="stat"><strong id="profileJoined">0</strong><span>Joined</span></div>
+      <div class="stat"><strong id="profilePoints">0</strong><span>Points</span></div>
+    </div>
+
+    <h3 class="sub-title">Account Menu</h3>
+    <div class="card">
+      <button class="secondary-btn full" onclick="showPage('myMatches')">🎮 My Tournaments & Matches</button><br><br>
+      <button class="secondary-btn full" onclick="showPage('editProfile')">✏️ Personal Details</button><br><br>
+      <button class="secondary-btn full" onclick="showPage('notifications')">🔔 Notifications</button><br><br>
+      <button class="secondary-btn full" onclick="showPage('settings')">⚙️ Settings</button><br><br>
+      <button class="secondary-btn full" onclick="showPage('leaderboard')">🏅 Leaderboard</button><br><br>
+      <button class="secondary-btn full" onclick="showPage('news')">📰 News & Updates</button>
+    </div>
+  </section>
+
+  <!-- EXTRA PAGES: PARTS 3-6 WILL CONNECT THESE -->
+  <section class="page" id="myMatchesPage">
+    <h2 class="section-title">My Matches</h2>
+    <div class="card" id="myMatchesList"><div class="empty">Your tournament registrations will appear here.</div></div>
+  </section>
+
+  <section class="page" id="editProfilePage">
+    <h2 class="section-title">Personal Details</h2>
+    <div class="card">
+      <div class="field"><label>Full Name</label><input id="editName" placeholder="Enter your name"></div>
+      <div class="field"><label>Username</label><input id="editUsername" placeholder="Enter username"></div>
+      <div class="field"><label>WhatsApp Number</label><input id="editPhone" type="tel" placeholder="WhatsApp number"></div>
+      <div class="field"><label>BGMI / Free Fire Name</label><input id="editGameName" placeholder="Game name"></div>
+      <div class="field"><label>Game UID</label><input id="editGameUID" placeholder="Game UID"></div>
+      <button class="primary-btn full" onclick="saveProfile()">Save Changes</button>
+      <div id="profileMessage" class="message"></div>
+    </div>
+  </section>
+
+  <section class="page" id="leaderboardPage">
+    <h2 class="section-title">🏅 Leaderboard</h2>
+    <div class="card" id="leaderboardList"><div class="empty">Leaderboard loading...</div></div>
+  </section>
+
+  <section class="page" id="newsPage">
+    <h2 class="section-title">📰 News & Updates</h2>
+    <div class="card" id="newsList"><div class="empty">No announcements yet.</div></div>
+  </section>
+
+  <section class="page" id="notificationsPage">
+    <h2 class="section-title">🔔 Notifications</h2>
+    <div class="card" id="notificationList"><div class="empty">No notifications.</div></div>
+  </section>
+
+  <section class="page" id="settingsPage">
+    <h2 class="section-title">⚙️ Settings</h2>
+    <div class="card">
+      <button class="secondary-btn full" onclick="toggleTheme()">Change Theme</button><br><br>
+      <button class="secondary-btn full" onclick="showPage('profile')">Back to Account</button>
+      <hr>
+      <p class="muted">NAYA INDIA ESPORTS</p>
+      <p class="muted">Privacy Policy · Terms & Conditions · Rules & Fair Play</p>
+    </div>
+  </section>
 
 </main>
 
-<footer>
- <div class="container footer-grid">
-  <div><div class="logo">NAYA INDIA <span>ESPORTS</span></div><p>Play together. Compete together. Rise together.</p></div>
-  <div><h3>Quick Links</h3><a href="#home">Home</a><a href="#games">Games</a><a href="#tournaments">Tournaments</a><a href="#leaderboard">Leaderboard</a></div>
-  <div><h3>Information</h3><a href="#about">About Us</a><a href="#news">News & Updates</a><a href="mailto:nayaindiaesports@gmail.com">Contact Us</a></div>
- </div>
- <div class="container"><p>© 2026 NAYA INDIA ESPORTS. All rights reserved.</p></div>
-</footer>
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-page="home" onclick="showPage('home')"><span class="nav-icon">⌂</span>Home</button>
+  <button class="nav-btn" data-page="tournaments" onclick="showPage('tournaments')"><span class="nav-icon">🏆</span>Tournaments</button>
+  <button class="nav-btn" data-page="wallet" onclick="showPage('wallet')"><span class="nav-icon">▣</span>Wallet</button>
+  <button class="nav-btn" data-page="profile" onclick="showPage('profile')"><span class="nav-icon">👤</span>Account</button>
+</nav>
 
-</body>
+<button class="support-btn" onclick="openSupport()">🎧 Support</button>
 
-<!-- AUTH MODAL -->
+<!-- LOGIN / REGISTER MODAL -->
 <div class="modal" id="authModal">
- <div class="modal-box">
-  <button class="close" onclick="closeModal('authModal')">×</button>
-  <h2 id="authTitle">Login</h2>
-  <input id="authName" placeholder="Your Name" style="display:none">
-  <input id="authEmail" type="email" placeholder="Email Address">
-  <input id="authPassword" type="password" placeholder="Password">
-  <button class="btn" id="authSubmit" style="width:100%">Login</button>
-  <button class="btn secondary" id="googleLogin" style="width:100%;margin-top:9px">Continue with Google</button>
-  <p class="muted" style="font-size:13px;text-align:center">
-   <span id="authSwitchText">New player?</span>
-   <a href="#" id="authSwitch" style="color:#ff7185">Create account</a>
-  </p>
-  <p id="authMessage" class="message"></p>
- </div>
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="authHeading">Login</h2>
+      <button class="close-btn" onclick="closeModal('authModal')">×</button>
+    </div>
+    <div id="authNameField" class="field" style="display:none">
+      <label>Full Name</label><input id="authName" placeholder="Your name">
+    </div>
+    <div class="field"><label>Email Address</label><input id="authEmail" type="email" placeholder="Email"></div>
+    <div class="field"><label>Password</label><input id="authPassword" type="password" placeholder="Password"></div>
+    <button class="primary-btn full" id="authSubmit" onclick="submitAuth()">Login</button>
+    <p class="message" id="authMessage"></p>
+    <hr>
+    <button class="secondary-btn full" onclick="googleLogin()">Continue with Google</button>
+    <p class="muted" style="text-align:center">
+      <span id="authSwitchLabel">New player?</span>
+      <button style="background:none;border:0;color:#8d9cff;font-weight:bold" id="authSwitch" onclick="switchAuthMode()">Create Account</button>
+    </p>
+  </div>
 </div>
 
-<!-- REGISTRATION MODAL -->
+<!-- TOURNAMENT REGISTRATION MODAL -->
 <div class="modal" id="registerModal">
- <div class="modal-box">
-  <button class="close" onclick="closeModal('registerModal')">×</button>
-  <h2>🏆 Tournament Registration</h2>
-  <p class="muted" id="registerTournamentName"></p>
-  <p class="notice" id="registerFee"></p>
-  <form id="registrationForm">
-   <input id="playerName" placeholder="Player Full Name" required maxlength="60">
-   <input id="mobile" type="tel" placeholder="Mobile Number" required pattern="[0-9]{10}" maxlength="10">
-   <div class="form-grid">
-    <div><label>BGMI Character ID</label><input id="bgmiId" placeholder="BGMI ID"></div>
-    <div><label>Free Fire MAX UID</label><input id="freeFireId" placeholder="Free Fire UID"></div>
-    <div><label>Valorant Riot ID</label><input id="valorantId" placeholder="Riot ID"></div>
-    <div><label>COD Mobile UID</label><input id="codmId" placeholder="CODM UID"></div>
-   </div>
-   <input id="teamName" placeholder="Team Name (optional)" maxlength="60">
-   <div class="notice">Payment UPI ID: <b>9125470027@fam</b><br>Registration submit karne ke baad UPI payment aur UTR verification required hogi.</div>
-   <button class="btn" type="submit" id="registerSubmit" style="width:100%;margin-top:12px">Continue to Payment</button>
-   <p id="registerMessage" class="message"></p>
-  </form>
- </div>
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Tournament Registration</h2>
+      <button class="close-btn" onclick="closeModal('registerModal')">×</button>
+    </div>
+    <p id="registerTournamentName" class="muted"></p>
+    <div class="field"><label>Player Name</label><input id="playerName" placeholder="Your name"></div>
+    <div class="field"><label>Mobile Number</label><input id="playerMobile" type="tel" placeholder="Mobile number"></div>
+    <div class="field"><label>Game Name</label><input id="playerGameName" placeholder="In-game name"></div>
+    <div class="field"><label>Game UID</label><input id="playerGameUID" placeholder="Game UID"></div>
+    <div class="field"><label>Team Name (if applicable)</label><input id="playerTeamName" placeholder="Team name"></div>
+    <button class="primary-btn full" onclick="submitRegistration()">Submit Registration</button>
+    <div class="message" id="registerMessage"></div>
+  </div>
 </div>
 
-<!-- PAYMENT MODAL -->
-<div class="modal" id="paymentModal">
- <div class="modal-box">
-  <button class="close" onclick="closeModal('paymentModal')">×</button>
-  <h2>💳 Complete Payment</h2>
-  <p id="paymentDetails" class="muted"></p>
-  <div class="notice">UPI ID: <b>9125470027@fam</b><br>Payment amount: <b id="paymentAmount"></b></div>
-  <button class="btn" id="payNow" style="width:100%;margin-top:12px">Pay using UPI App</button>
-  <p class="muted" style="font-size:12px">Payment karne ke baad UTR / Transaction ID enter karo.</p>
-  <input id="utrInput" placeholder="Enter UTR / Transaction ID" minlength="8" maxlength="30">
-  <button class="btn" id="submitUTR" style="width:100%">Submit Payment Details</button>
-  <p id="paymentMessage" class="message"></p>
- </div>
+<!-- DEPOSIT MODAL -->
+<div class="modal" id="depositModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Deposit Request</h2>
+      <button class="close-btn" onclick="closeModal('depositModal')">×</button>
+    </div>
+    <div class="notice">Payment requests are reviewed by the admin. Do not submit false payment details.</div>
+    <div class="field"><label>Amount (₹)</label><input id="depositAmount" type="number" min="1" placeholder="Enter amount"></div>
+    <div class="field"><label>UPI Transaction ID / UTR</label><input id="depositUTR" placeholder="Enter UTR number"></div>
+    <button class="primary-btn full" onclick="submitDeposit()">Submit Deposit Request</button>
+    <div class="message" id="depositMessage"></div>
+  </div>
 </div>
-
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
 import {
-  getAuth, onAuthStateChanged, createUserWithEmailAndPassword,
-  signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
-  signOut, updateProfile
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  updateProfile
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 import {
-  getFirestore, collection, addDoc, getDocs, getDoc, doc,
-  setDoc, query, where, orderBy, serverTimestamp
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-/* FIREBASE CONFIG */
+// FIREBASE CONFIG
 const firebaseConfig = {
   apiKey: "AIzaSyCUOHKfHy35G4M3pUxWHerEWxPQ-zYvyg8",
   authDomain: "naya-india-esportsa.firebaseapp.com",
@@ -332,463 +487,2046 @@ const firebaseConfig = {
   measurementId: "G-N7CMN7CMLN"
 };
 
-const UPI_ID = "9125470027@fam";
-
+// INITIALIZE FIREBASE
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
+// GLOBAL APP DATA
 let currentUser = null;
-let currentTournament = null;
-let currentRegistrationId = null;
-let currentRegistrationData = null;
-let isRegisterMode = false;
+let currentUserData = {};
+let authMode = "login";
+let selectedTournament = null;
+let tournamentStatusFilter = "All";
+let selectedGameFilter = "All";
 
-const $ = id => document.getElementById(id);
+// ==========================================
+// BASIC HELPERS
+// ==========================================
 
-function showMessage(id, message, error = false) {
-  const el = $(id);
-  if (!el) return;
-  el.textContent = message;
-  el.style.color = error ? "#ff526b" : "#35d49a";
-}
-
-function escapeHTML(value = "") {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
-}
-
-function money(value) {
-  return "₹" + Number(value || 0).toLocaleString("en-IN");
-}
-
-function openModal(id) {
-  const modal = $(id);
-  if (modal) modal.style.display = "flex";
-}
-
-window.closeModal = function(id) {
-  const modal = $(id);
-  if (modal) modal.style.display = "none";
+window.closeModal = function(id){
+  const modal = document.getElementById(id);
+  if(modal) modal.classList.remove("show");
 };
 
-function friendlyError(error) {
-  const messages = {
-    "auth/email-already-in-use": "Yeh email pehle se registered hai.",
-    "auth/invalid-email": "Email address sahi nahi hai.",
-    "auth/weak-password": "Password kam se kam 6 characters ka rakho.",
-    "auth/invalid-credential": "Email ya password galat hai.",
-    "auth/popup-closed-by-user": "Google login cancel ho gaya.",
-    "permission-denied": "Firestore permission denied. Rules check karo."
-  };
-  return messages[error.code] || error.message || "Kuch problem hui. Dobara try karo.";
+window.openModal = function(id){
+  const modal = document.getElementById(id);
+  if(modal) modal.classList.add("show");
+};
+
+window.showMessage = function(id,message,type="error"){
+  const element = document.getElementById(id);
+  if(!element) return;
+  element.textContent = message;
+  element.className = "message " + type;
+};
+
+window.showPage = function(page){
+  document.querySelectorAll(".page").forEach(section=>{
+    section.classList.remove("active");
+  });
+
+  const target = document.getElementById(page + "Page");
+
+  if(target){
+    target.classList.add("active");
+  }else{
+    document.getElementById("homePage").classList.add("active");
+  }
+
+  document.querySelectorAll(".nav-btn").forEach(button=>{
+    button.classList.toggle(
+      "active",
+      button.dataset.page === page
+    );
+  });
+
+  window.scrollTo({top:0,behavior:"smooth"});
+
+  if(page === "tournaments" && typeof window.loadTournaments === "function"){
+    window.loadTournaments();
+  }
+
+  if(page === "wallet" && typeof window.loadWallet === "function"){
+    window.loadWallet();
+  }
+
+  if(page === "myMatches" && typeof window.loadMyMatches === "function"){
+    window.loadMyMatches();
+  }
+
+  if(page === "leaderboard" && typeof window.loadLeaderboard === "function"){
+    window.loadLeaderboard();
+  }
+
+  if(page === "news" && typeof window.loadNews === "function"){
+    window.loadNews();
+  }
+
+  if(page === "notifications" && typeof window.loadNotifications === "function"){
+    window.loadNotifications();
+  }
+};
+
+// THEME
+window.toggleTheme = function(){
+  const light = document.body.classList.toggle("light-theme");
+
+  if(light){
+    document.body.style.background="#f3f5fb";
+    document.body.style.color="#111827";
+
+    document.querySelectorAll(".card,.game-card,.quick-card,.bottom-nav,.topbar")
+    .forEach(el=>{
+      el.style.background="#ffffff";
+      el.style.color="#111827";
+      el.style.borderColor="#dce2ef";
+    });
+  }else{
+    document.body.style.background="";
+    document.body.style.color="";
+
+    document.querySelectorAll(".card,.game-card,.quick-card,.bottom-nav,.topbar")
+    .forEach(el=>{
+      el.style.background="";
+      el.style.color="";
+      el.style.borderColor="";
+    });
+  }
+};
+
+// SUPPORT
+window.openSupport = function(){
+  window.open(
+    "https://wa.me/919125470027?text=Hello%20NAYA%20INDIA%20ESPORTS%20Support",
+    "_blank"
+  );
+};
+
+window.openCommunity = function(){
+  alert("Community link will be added soon.");
+};
+
+// ==========================================
+// AUTH MODE
+// ==========================================
+
+window.openAuth = function(mode="login"){
+  authMode = mode;
+  updateAuthUI();
+  openModal("authModal");
+};
+
+window.switchAuthMode = function(){
+  authMode = authMode === "login" ? "register" : "login";
+  updateAuthUI();
+};
+
+function updateAuthUI(){
+  const heading = document.getElementById("authHeading");
+  const nameField = document.getElementById("authNameField");
+  const submit = document.getElementById("authSubmit");
+  const switchLabel = document.getElementById("authSwitchLabel");
+  const switchButton = document.getElementById("authSwitch");
+
+  if(authMode === "register"){
+    heading.textContent = "Create Account";
+    nameField.style.display = "block";
+    submit.textContent = "Create Account";
+    switchLabel.textContent = "Already have an account?";
+    switchButton.textContent = "Login";
+  }else{
+    heading.textContent = "Login";
+    nameField.style.display = "none";
+    submit.textContent = "Login";
+    switchLabel.textContent = "New player?";
+    switchButton.textContent = "Create Account";
+  }
+
+  showMessage("authMessage","");
 }
 
-/* MOBILE MENU */
-$("menuBtn")?.addEventListener("click", () => {
-  $("navLinks")?.classList.toggle("active");
-});
+// ==========================================
+// EMAIL LOGIN / REGISTRATION
+// ==========================================
 
-document.querySelectorAll("#navLinks a").forEach(link => {
-  link.addEventListener("click", () => $("navLinks")?.classList.remove("active"));
-});
+window.submitAuth = async function(){
+  const name = document.getElementById("authName").value.trim();
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
 
-/* AUTH MODAL */
-function setAuthMode(registerMode) {
-  isRegisterMode = registerMode;
-  if ($("authTitle")) $("authTitle").textContent = registerMode ? "Create Account" : "Player Login";
-  if ($("authName")) $("authName").style.display = registerMode ? "block" : "none";
-  if ($("authSubmit")) $("authSubmit").textContent = registerMode ? "Create Account" : "Login";
-  if ($("authSwitchText")) $("authSwitchText").textContent = registerMode ? "Already have an account?" : "New player?";
-  if ($("authSwitch")) $("authSwitch").textContent = registerMode ? "Login" : "Register";
-  showMessage("authMessage", "");
-}
-
-$("accountBtn")?.addEventListener("click", () => {
-  if (currentUser) {
-    $("accountSection")?.scrollIntoView({ behavior: "smooth" });
-  } else {
-    setAuthMode(false);
-    openModal("authModal");
-  }
-});
-
-$("heroJoin")?.addEventListener("click", () => {
-  if (currentUser) {
-    document.getElementById("tournaments")?.scrollIntoView({ behavior: "smooth" });
-  } else {
-    setAuthMode(true);
-    openModal("authModal");
-  }
-});
-
-$("authSwitch")?.addEventListener("click", () => setAuthMode(!isRegisterMode));
-
-$("authSubmit")?.addEventListener("click", async () => {
-  const email = $("authEmail")?.value.trim();
-  const password = $("authPassword")?.value;
-  const name = $("authName")?.value.trim();
-
-  if (!email || !password) {
-    showMessage("authMessage", "Email aur password fill karo.", true);
+  if(!email || !password){
+    showMessage("authMessage","Please enter email and password.");
     return;
   }
 
-  try {
-    $("authSubmit").disabled = true;
+  if(password.length < 6){
+    showMessage("authMessage","Password must be at least 6 characters.");
+    return;
+  }
 
-    if (isRegisterMode) {
-      if (!name) throw new Error("Apna naam enter karo.");
-      const result = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(result.user, { displayName: name });
-      await setDoc(doc(db, "users", result.user.uid), {
-        name,
-        email,
-        createdAt: serverTimestamp()
-      }, { merge: true });
-      showMessage("authMessage", "Account successfully create ho gaya!");
-    } else {
-      await signInWithEmailAndPassword(auth, email, password);
+  const button = document.getElementById("authSubmit");
+  button.disabled = true;
+  button.textContent = "Please wait...";
+
+  try{
+    if(authMode === "register"){
+      if(!name){
+        throw new Error("Please enter your full name.");
+      }
+
+      const result = await createUserWithEmailAndPassword(
+        auth,email,password
+      );
+
+      await updateProfile(result.user,{displayName:name});
+
+      await setDoc(doc(db,"users",result.user.uid),{
+        uid:result.user.uid,
+        name:name,
+        email:email,
+        username:"",
+        phone:"",
+        gameName:"",
+        gameUID:"",
+        wins:0,
+        points:0,
+        joined:0,
+        createdAt:serverTimestamp()
+      });
+
+      showMessage("authMessage","Account created successfully!","success");
+
+    }else{
+      await signInWithEmailAndPassword(auth,email,password);
+      showMessage("authMessage","Login successful!","success");
+    }
+
+    setTimeout(()=>{
+      closeModal("authModal");
+    },700);
+
+  }catch(error){
+    console.error("Authentication error:",error);
+
+    let message = error.message;
+
+    if(error.code === "auth/email-already-in-use"){
+      message = "This email is already registered. Please login.";
+    }else if(error.code === "auth/invalid-email"){
+      message = "Please enter a valid email address.";
+    }else if(error.code === "auth/invalid-credential"){
+      message = "Incorrect email or password.";
+    }else if(error.code === "auth/weak-password"){
+      message = "Please use a stronger password.";
+    }else if(error.code === "auth/network-request-failed"){
+      message = "Network error. Check your internet connection.";
+    }
+
+    showMessage("authMessage",message,"error");
+
+  }finally{
+    button.disabled = false;
+    updateAuthUI();
+  }
+};
+
+// ==========================================
+// GOOGLE LOGIN
+// ==========================================
+
+window.googleLogin = async function(){
+  try{
+    const result = await signInWithPopup(auth,googleProvider);
+    const user = result.user;
+
+    const userRef = doc(db,"users",user.uid);
+    const userSnap = await getDoc(userRef);
+
+    if(!userSnap.exists()){
+      await setDoc(userRef,{
+        uid:user.uid,
+        name:user.displayName || "",
+        email:user.email || "",
+        username:"",
+        phone:"",
+        gameName:"",
+        gameUID:"",
+        wins:0,
+        points:0,
+        joined:0,
+        createdAt:serverTimestamp()
+      });
     }
 
     closeModal("authModal");
-  } catch (error) {
-    showMessage("authMessage", friendlyError(error), true);
-  } finally {
-    $("authSubmit").disabled = false;
-  }
-});
 
-$("googleLogin")?.addEventListener("click", async () => {
-  try {
-    const result = await signInWithPopup(auth, googleProvider);
-    await setDoc(doc(db, "users", result.user.uid), {
-      name: result.user.displayName || "Player",
-      email: result.user.email || "",
-      updatedAt: serverTimestamp()
-    }, { merge: true });
-    closeModal("authModal");
-  } catch (error) {
-    showMessage("authMessage", friendlyError(error), true);
+  }catch(error){
+    console.error("Google login error:",error);
+    showMessage("authMessage",error.message,"error");
   }
-});
+};
 
-/* AUTH STATE */
-onAuthStateChanged(auth, async user => {
+// ==========================================
+// LOGOUT
+// ==========================================
+
+window.logoutUser = async function(){
+  const confirmLogout = confirm("Are you sure you want to logout?");
+  if(!confirmLogout) return;
+
+  try{
+    await signOut(auth);
+    showPage("home");
+    alert("You have been logged out.");
+
+  }catch(error){
+    console.error(error);
+    alert("Logout failed: " + error.message);
+  }
+};
+
+// ==========================================
+// USER PROFILE LOAD
+// ==========================================
+
+async function loadUserProfile(user){
+  try{
+    const userRef = doc(db,"users",user.uid);
+    const userSnap = await getDoc(userRef);
+
+    if(userSnap.exists()){
+      currentUserData = userSnap.data();
+    }else{
+      currentUserData = {
+        name:user.displayName || "",
+        email:user.email || "",
+        points:0,
+        wins:0,
+        joined:0
+      };
+
+      await setDoc(userRef,{
+        uid:user.uid,
+        ...currentUserData,
+        username:"",
+        phone:"",
+        gameName:"",
+        gameUID:"",
+        createdAt:serverTimestamp()
+      });
+    }
+
+    updateProfileUI();
+
+  }catch(error){
+    console.error("Profile loading error:",error);
+  }
+}
+
+function updateProfileUI(){
+  const user = currentUser;
+  if(!user) return;
+
+  const name = currentUserData.name || user.displayName || "Player";
+  const email = user.email || "";
+
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("profileEmail").textContent = email;
+  document.getElementById("profileAuthButtons").style.display = "none";
+  document.getElementById("logoutArea").style.display = "block";
+
+  document.getElementById("profileWins").textContent =
+    currentUserData.wins || 0;
+
+  document.getElementById("profileJoined").textContent =
+    currentUserData.joined || 0;
+
+  document.getElementById("profilePoints").textContent =
+    currentUserData.points || 0;
+
+  document.getElementById("topBalance").textContent =
+    currentUserData.points || 0;
+
+  document.getElementById("walletBalance").textContent =
+    currentUserData.points || 0;
+
+  document.getElementById("editName").value =
+    currentUserData.name || user.displayName || "";
+
+  document.getElementById("editUsername").value =
+    currentUserData.username || "";
+
+  document.getElementById("editPhone").value =
+    currentUserData.phone || "";
+
+  document.getElementById("editGameName").value =
+    currentUserData.gameName || "";
+
+  document.getElementById("editGameUID").value =
+    currentUserData.gameUID || "";
+}
+
+function updateGuestUI(){
+  document.getElementById("profileName").textContent = "Guest Player";
+  document.getElementById("profileEmail").textContent = "Login to access your account";
+  document.getElementById("profileAuthButtons").style.display = "block";
+  document.getElementById("logoutArea").style.display = "none";
+
+  document.getElementById("profileWins").textContent = "0";
+  document.getElementById("profileJoined").textContent = "0";
+  document.getElementById("profilePoints").textContent = "0";
+  document.getElementById("topBalance").textContent = "0";
+  document.getElementById("walletBalance").textContent = "0";
+}
+
+// ==========================================
+// AUTH STATE LISTENER
+// ==========================================
+
+onAuthStateChanged(auth,async(user)=>{
   currentUser = user;
 
-  if (user) {
-    if ($("accountBtn")) $("accountBtn").textContent = "My Account";
-    if ($("accountEmail")) $("accountEmail").textContent = user.email || "";
-    if ($("accountSection")) $("accountSection").style.display = "block";
+  if(user){
+    await loadUserProfile(user);
+  }else{
+    currentUserData = {};
+    updateGuestUI();
+  }
 
-    try {
-      await setDoc(doc(db, "users", user.uid), {
-        name: user.displayName || "Player",
-        email: user.email || "",
-        lastLoginAt: serverTimestamp()
-      }, { merge: true });
-      await loadMyRegistrations();
-    } catch (error) {
-      console.error("Account load:", error);
+  if(typeof window.loadTournaments === "function"){
+    window.loadTournaments();
+  }
+});
+
+// ==========================================
+// SAVE PROFILE
+// ==========================================
+
+window.saveProfile = async function(){
+  if(!currentUser){
+    alert("Please login first.");
+    openAuth("login");
+    return;
+  }
+
+  const name = document.getElementById("editName").value.trim();
+  const username = document.getElementById("editUsername").value.trim();
+  const phone = document.getElementById("editPhone").value.trim();
+  const gameName = document.getElementById("editGameName").value.trim();
+  const gameUID = document.getElementById("editGameUID").value.trim();
+
+  if(!name){
+    showMessage("profileMessage","Please enter your name.");
+    return;
+  }
+
+  try{
+    await updateDoc(doc(db,"users",currentUser.uid),{
+      name,
+      username,
+      phone,
+      gameName,
+      gameUID,
+      updatedAt:serverTimestamp()
+    });
+
+    await updateProfile(currentUser,{displayName:name});
+
+    currentUserData = {
+      ...currentUserData,
+      name,username,phone,gameName,gameUID
+    };
+
+    updateProfileUI();
+    showMessage("profileMessage","Profile saved successfully!","success");
+
+  }catch(error){
+    console.error(error);
+    showMessage("profileMessage",error.message,"error");
+  }
+};
+
+const {
+  collection,
+  getDocs,
+  addDoc
+} = await import(
+  "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js"
+);
+
+// ==========================================
+// SAFE HTML TEXT
+// ==========================================
+
+function safeText(value){
+  return String(value ?? "").replace(/[&<>"']/g,char=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[char]));
+}
+
+// ==========================================
+// TOURNAMENT DATA
+// ==========================================
+
+let allTournaments = [];
+
+function getTournamentName(t){
+  return t.title || t.name || t.tournamentName || "Esports Tournament";
+}
+
+function getTournamentGame(t){
+  return t.game || t.gameName || "Other";
+}
+
+function getTournamentStatus(t){
+  return String(t.status || "Upcoming").toLowerCase();
+}
+
+function getTournamentFee(t){
+  return t.entryFee ?? t.fee ?? t.registrationFee ?? 0;
+}
+
+function getTournamentPrize(t){
+  return t.prizePool ?? t.prize ?? 0;
+}
+
+function getTournamentDate(t){
+  const value = t.date || t.startDate || t.tournamentDate || "";
+  if(!value) return "Date to be announced";
+
+  if(value.toDate){
+    return value.toDate().toLocaleString("en-IN");
+  }
+
+  const date = new Date(value);
+  if(!isNaN(date.getTime())){
+    return date.toLocaleString("en-IN");
+  }
+
+  return String(value);
+}
+
+// ==========================================
+// LOAD TOURNAMENTS FROM FIRESTORE
+// ==========================================
+
+window.loadTournaments = async function(){
+  const mainList = document.getElementById("tournamentList");
+  const homeList = document.getElementById("homeTournamentList");
+
+  if(mainList) mainList.innerHTML =
+    '<div class="card empty">Loading tournaments...</div>';
+
+  if(homeList) homeList.innerHTML =
+    '<div class="card empty">Loading tournaments...</div>';
+
+  try{
+    const snapshot = await getDocs(collection(db,"tournaments"));
+
+    allTournaments = snapshot.docs.map(item=>({
+      id:item.id,
+      ...item.data()
+    }));
+
+    renderTournaments();
+    updateHomeStats();
+
+  }catch(error){
+    console.error("Tournament loading error:",error);
+
+    if(mainList){
+      mainList.innerHTML =
+        '<div class="card empty">Unable to load tournaments. Please check Firestore rules and internet connection.</div>';
     }
-  } else {
-    if ($("accountBtn")) $("accountBtn").textContent = "Login";
-    if ($("accountSection")) $("accountSection").style.display = "none";
-    if ($("myRegistrations")) $("myRegistrations").innerHTML = "";
-  }
-});
 
-$("logoutBtn")?.addEventListener("click", async () => {
-  try {
-    await signOut(auth);
-    alert("Logout successful.");
-  } catch (error) {
-    alert(friendlyError(error));
+    if(homeList){
+      homeList.innerHTML =
+        '<div class="card empty">Tournament loading failed.</div>';
+    }
   }
-});
+};
 
-/* TOURNAMENTS */
-function tournamentCard(tournament, id) {
-  const status = String(tournament.status || "upcoming").toLowerCase();
-  const statusLabel = status.charAt(0).toUpperCase() + status.slice(1);
+// ==========================================
+// FILTER TOURNAMENTS
+// ==========================================
+
+window.setTournamentStatus = function(status){
+  tournamentStatusFilter = status;
+  renderTournaments();
+};
+
+window.filterGame = function(game){
+  selectedGameFilter = game;
+
+  const filter = document.getElementById("tournamentFilter");
+  if(filter) filter.value = game;
+
+  showPage("tournaments");
+  renderTournaments();
+};
+
+// ==========================================
+// TOURNAMENT CARD DESIGN
+// ==========================================
+
+function tournamentCard(t){
+  const title = safeText(getTournamentName(t));
+  const game = safeText(getTournamentGame(t));
+  const mode = safeText(t.mode || t.type || "Solo");
+  const status = safeText(t.status || "Upcoming");
+  const fee = safeText(getTournamentFee(t));
+  const prize = safeText(getTournamentPrize(t));
+  const date = safeText(getTournamentDate(t));
+  const description = safeText(
+    t.description || "Join this tournament and compete for the top spot."
+  );
+
+  const id = safeText(t.id);
+
+  const image = t.imageUrl || t.banner || "";
+
+  const banner = image
+    ? `<img src="${safeText(image)}" alt="${title}" style="width:100%;height:155px;object-fit:cover">`
+    : `<div class="tournament-banner">🏆</div>`;
 
   return `
-    <article class="tournament-card">
-      <div class="tournament-info">
-        <span class="status ${escapeHTML(status)}">${escapeHTML(statusLabel)}</span>
-        <h3>${escapeHTML(tournament.name || "Tournament")}</h3>
-        <p>${escapeHTML(tournament.game || "Game")}</p>
-        <p>Prize Pool: <strong>${money(tournament.prize)}</strong></p>
-        <p>Entry Fee: <strong>${money(tournament.entryFee)}</strong></p>
-        <p>Date: ${escapeHTML(tournament.date || "To be announced")}</p>
-        <p>Time: ${escapeHTML(tournament.time || "To be announced")}</p>
-        <p>Slots: ${escapeHTML(tournament.slots || "Open")}</p>
-        <p>${escapeHTML(tournament.description || "")}</p>
-        <button class="btn primary tournament-register" data-id="${escapeHTML(id)}">
-          Register Now
+    <div class="card tournament-card">
+      ${banner}
+      <div class="tournament-content">
+        <span class="tag">${game}</span>
+        <span class="tag">${mode}</span>
+
+        <h3>${title}</h3>
+        <p class="muted">${description}</p>
+
+        <div class="tournament-meta">
+          <span>Entry Fee</span>
+          <strong>₹${fee}</strong>
+        </div>
+
+        <div class="tournament-meta">
+          <span>Prize Pool</span>
+          <strong>₹${prize}</strong>
+        </div>
+
+        <div class="tournament-meta">
+          <span>Date</span>
+          <strong>${date}</strong>
+        </div>
+
+        <div class="tournament-meta">
+          <span>Status</span>
+          <strong>${status}</strong>
+        </div>
+
+        <button
+          class="primary-btn full"
+          style="margin-top:16px"
+          onclick="openTournament('${id}')">
+          View Details / Register
         </button>
       </div>
-    </article>
+    </div>
   `;
 }
 
-async function loadTournaments() {
-  const container = $("tournamentList");
-  if (!container) return;
+// ==========================================
+// DISPLAY TOURNAMENTS
+// ==========================================
 
-  container.innerHTML = "<p>Loading tournaments...</p>";
+function renderTournaments(){
+  const mainList = document.getElementById("tournamentList");
+  const homeList = document.getElementById("homeTournamentList");
 
-  try {
-    const snapshot = await getDocs(collection(db, "tournaments"));
-    const tournaments = snapshot.docs.map(item => ({
-      id: item.id,
-      ...item.data()
-    }));
+  const gameFilter =
+    document.getElementById("tournamentFilter")?.value || "All";
 
-    if ($("statTournaments")) $("statTournaments").textContent = tournaments.length;
-    if ($("statLive")) {
-      $("statLive").textContent = tournaments.filter(t =>
-        String(t.status || "").toLowerCase() === "live"
-      ).length;
-    }
+  let filtered = [...allTournaments];
 
-    if (!tournaments.length) {
-      container.innerHTML = "<p>No tournaments available right now. Please check again soon.</p>";
-      return;
-    }
+  if(gameFilter !== "All"){
+    filtered = filtered.filter(t=>
+      getTournamentGame(t).toLowerCase() === gameFilter.toLowerCase()
+    );
+  }
 
-    tournaments.sort((a, b) => {
-      const dateA = String(a.date || "");
-      const dateB = String(b.date || "");
-      return dateA.localeCompare(dateB);
-    });
+  if(selectedGameFilter !== "All"){
+    filtered = filtered.filter(t=>
+      getTournamentGame(t).toLowerCase() === selectedGameFilter.toLowerCase()
+    );
+  }
 
-    container.innerHTML = tournaments.map(t => tournamentCard(t, t.id)).join("");
+  if(tournamentStatusFilter !== "All"){
+    filtered = filtered.filter(t=>
+      getTournamentStatus(t) === tournamentStatusFilter.toLowerCase()
+    );
+  }
 
-    container.querySelectorAll(".tournament-register").forEach(button => {
-      button.addEventListener("click", () => openRegistration(button.dataset.id, tournaments));
-    });
+  if(mainList){
+    mainList.innerHTML = filtered.length
+      ? filtered.map(t=>tournamentCard(t)).join("")
+      : '<div class="card empty">No tournaments found for this filter.</div>';
+  }
 
-  } catch (error) {
-    console.error(error);
-    container.innerHTML = "<p>Tournaments load nahi ho paaye. Refresh karke try karo.</p>";
+  if(homeList){
+    const featured = allTournaments.slice(0,4);
+
+    homeList.innerHTML = featured.length
+      ? featured.map(t=>tournamentCard(t)).join("")
+      : '<div class="card empty">No tournaments available right now.</div>';
   }
 }
 
-$("refreshTournaments")?.addEventListener("click", loadTournaments);
+// ==========================================
+// HOME STATISTICS
+// ==========================================
 
-/* REGISTRATION */
-async function openRegistration(tournamentId, tournamentList) {
-  if (!currentUser) {
-    setAuthMode(false);
-    openModal("authModal");
-    showMessage("authMessage", "Registration ke liye pehle login karo.", true);
+function updateHomeStats(){
+  const total = allTournaments.length;
+
+  const live = allTournaments.filter(t=>
+    getTournamentStatus(t) === "live"
+  ).length;
+
+  document.getElementById("homeTournamentCount").textContent = total;
+  document.getElementById("homeLiveCount").textContent = live;
+}
+
+// ==========================================
+// TOURNAMENT DETAILS
+// ==========================================
+
+window.openTournament = function(id){
+  const tournament = allTournaments.find(t=>t.id === id);
+
+  if(!tournament){
+    alert("Tournament not found. Please refresh.");
     return;
   }
 
-  currentTournament = tournamentList.find(t => t.id === tournamentId);
-  if (!currentTournament) return;
+  selectedTournament = tournament;
 
-  if (String(currentTournament.status || "").toLowerCase() === "completed") {
-    alert("Yeh tournament complete ho chuka hai.");
+  const name = getTournamentName(tournament);
+  const fee = getTournamentFee(tournament);
+
+  const details = [
+    "Tournament: " + name,
+    "Game: " + getTournamentGame(tournament),
+    "Mode: " + (tournament.mode || tournament.type || "Solo"),
+    "Entry Fee: ₹" + fee,
+    "Prize Pool: ₹" + getTournamentPrize(tournament),
+    "Date: " + getTournamentDate(tournament),
+    "Status: " + (tournament.status || "Upcoming"),
+    "Rules: " + (tournament.rules || tournament.description || "Follow tournament instructions.")
+  ].join("\n");
+
+  const shouldRegister = confirm(
+    details + "\n\nOK = Continue to registration\nCancel = Close"
+  );
+
+  if(!shouldRegister) return;
+
+  const status = getTournamentStatus(tournament);
+
+  if(status === "completed"){
+    alert("This tournament has already been completed.");
     return;
   }
 
-  if ($("registerTournamentName")) {
-    $("registerTournamentName").textContent = currentTournament.name || "Tournament";
-  }
-  if ($("registerFee")) {
-    $("registerFee").textContent = money(currentTournament.entryFee);
+  if(status === "closed" || status === "cancelled"){
+    alert("Registration is currently closed.");
+    return;
   }
 
-  showMessage("registerMessage", "");
+  if(!currentUser){
+    alert("Please login before registering.");
+    openAuth("login");
+    return;
+  }
+
+  document.getElementById("registerTournamentName").textContent =
+    name + " | Entry Fee: ₹" + fee;
+
+  document.getElementById("playerName").value =
+    currentUserData.name || currentUser.displayName || "";
+
+  document.getElementById("playerMobile").value =
+    currentUserData.phone || "";
+
+  document.getElementById("playerGameName").value =
+    currentUserData.gameName || "";
+
+  document.getElementById("playerGameUID").value =
+    currentUserData.gameUID || "";
+
+  document.getElementById("playerTeamName").value = "";
+
+  showMessage("registerMessage","");
   openModal("registerModal");
-}
+};
 
-$("registrationForm")?.addEventListener("submit", async event => {
-  event.preventDefault();
+// ==========================================
+// SUBMIT TOURNAMENT REGISTRATION
+// ==========================================
 
-  if (!currentUser || !currentTournament) {
-    showMessage("registerMessage", "Pehle login karo aur tournament select karo.", true);
+window.submitRegistration = async function(){
+  if(!currentUser){
+    alert("Please login first.");
+    closeModal("registerModal");
+    openAuth("login");
     return;
   }
 
-  const playerName = $("playerName")?.value.trim();
-  const mobile = $("mobile")?.value.trim();
-  const game = String(currentTournament.game || "").toLowerCase();
-
-  const gameIds = {
-    bgmi: $("bgmiId")?.value.trim(),
-    "free fire": $("freeFireId")?.value.trim(),
-    "free fire max": $("freeFireId")?.value.trim(),
-    valorant: $("valorantId")?.value.trim(),
-    "cod mobile": $("codmId")?.value.trim(),
-    "call of duty mobile": $("codmId")?.value.trim()
-  };
-
-  const matchingGame = Object.keys(gameIds).find(key => game.includes(key));
-  const gameId = matchingGame ? gameIds[matchingGame] : "";
-
-  if (!playerName || !/^[0-9]{10}$/.test(mobile)) {
-    showMessage("registerMessage", "Naam aur valid 10-digit mobile number enter karo.", true);
+  if(!selectedTournament){
+    showMessage("registerMessage","Please select a tournament.");
     return;
   }
 
-  if (matchingGame && !gameId) {
-    showMessage("registerMessage", "Apni game ID fill karo.", true);
+  const playerName =
+    document.getElementById("playerName").value.trim();
+
+  const mobile =
+    document.getElementById("playerMobile").value.trim();
+
+  const gameName =
+    document.getElementById("playerGameName").value.trim();
+
+  const gameUID =
+    document.getElementById("playerGameUID").value.trim();
+
+  const teamName =
+    document.getElementById("playerTeamName").value.trim();
+
+  if(!playerName || !mobile || !gameName || !gameUID){
+    showMessage(
+      "registerMessage",
+      "Please fill all required fields."
+    );
     return;
   }
 
-  try {
-    $("registerSubmit").disabled = true;
+  if(!/^[0-9]{10,15}$/.test(mobile)){
+    showMessage(
+      "registerMessage",
+      "Please enter a valid mobile number."
+    );
+    return;
+  }
 
+  const button = document.querySelector(
+    "#registerModal .primary-btn"
+  );
+
+  button.disabled = true;
+  button.textContent = "Submitting...";
+
+  try{
     const registration = {
-      userId: currentUser.uid,
-      userEmail: currentUser.email || "",
-      playerName,
-      mobile,
-      game: currentTournament.game || "",
-      gameId: gameId || "",
-      teamName: $("teamName")?.value.trim() || "",
-      tournamentId: currentTournament.id,
-      tournamentName: currentTournament.name || "",
-      entryFee: Number(currentTournament.entryFee || 0),
-      status: "pending",
-      paymentStatus: "pending",
-      createdAt: serverTimestamp()
+      userId:currentUser.uid,
+      tournamentId:String(selectedTournament.id),
+      tournamentName:getTournamentName(selectedTournament),
+      game:getTournamentGame(selectedTournament),
+      playerName:playerName,
+      mobile:mobile,
+      gameName:gameName,
+      gameUID:gameUID,
+      teamName:teamName,
+      amount:Number(getTournamentFee(selectedTournament)) || 0,
+      status:"pending",
+      createdAt:serverTimestamp()
     };
 
-    const registrationRef = await addDoc(collection(db, "registrations"), registration);
-
-    currentRegistrationId = registrationRef.id;
-    currentRegistrationData = registration;
-
-    closeModal("registerModal");
-
-    if (Number(currentTournament.entryFee || 0) > 0) {
-      if ($("paymentAmount")) {
-        $("paymentAmount").textContent = money(currentTournament.entryFee);
-      }
-      if ($("paymentDetails")) {
-        $("paymentDetails").textContent =
-          "Tournament: " + currentTournament.name + " | UPI ID: " + UPI_ID;
-      }
-      if ($("payNow")) {
-        $("payNow").href =
-          "upi://pay?pa=" + encodeURIComponent(UPI_ID) +
-          "&pn=" + encodeURIComponent("NAYA INDIA ESPORTS") +
-          "&am=" + encodeURIComponent(Number(currentTournament.entryFee).toFixed(2)) +
-          "&cu=INR&tn=" + encodeURIComponent(currentTournament.name || "Tournament Entry");
-      }
-      showMessage("paymentMessage", "");
-      openModal("paymentModal");
-    } else {
-      alert("Registration submit ho gayi. Admin approval ka wait karein.");
-      await loadMyRegistrations();
-    }
-
-  } catch (error) {
-    showMessage("registerMessage", friendlyError(error), true);
-  } finally {
-    $("registerSubmit").disabled = false;
-  }
-});
-
-/* UTR PAYMENT SUBMISSION */
-$("submitUTR")?.addEventListener("click", async () => {
-  if (!currentUser || !currentRegistrationId || !currentRegistrationData) {
-    showMessage("paymentMessage", "Registration details nahi mile. Dobara register karo.", true);
-    return;
-  }
-
-  const utr = $("utrInput")?.value.trim();
-
-  if (!utr || utr.length < 8) {
-    showMessage("paymentMessage", "Valid UTR / Transaction ID enter karo (minimum 8 characters).", true);
-    return;
-  }
-
-  try {
-    $("submitUTR").disabled = true;
-
-    await addDoc(collection(db, "payments"), {
-      userId: currentUser.uid,
-      userEmail: currentUser.email || "",
-      playerName: currentRegistrationData.playerName,
-      registrationId: currentRegistrationId,
-      tournamentId: currentRegistrationData.tournamentId,
-      tournamentName: currentRegistrationData.tournamentName,
-      amount: Number(currentRegistrationData.entryFee),
-      upiId: UPI_ID,
-      utr,
-      status: "pending",
-      createdAt: serverTimestamp()
-    });
-
-    closeModal("paymentModal");
-    if ($("utrInput")) $("utrInput").value = "";
-    alert("Payment details submit ho gaye. Admin payment verify karega.");
-    await loadMyRegistrations();
-
-    currentRegistrationId = null;
-    currentRegistrationData = null;
-
-  } catch (error) {
-    showMessage("paymentMessage", friendlyError(error), true);
-  } finally {
-    $("submitUTR").disabled = false;
-  }
-});
-
-/* PLAYER REGISTRATIONS */
-async function loadMyRegistrations() {
-  if (!currentUser || !$("myRegistrations")) return;
-
-  $("myRegistrations").innerHTML = "<p>Loading your registrations...</p>";
-
-  try {
-    const q = query(
-      collection(db, "registrations"),
-      where("userId", "==", currentUser.uid)
+    const result = await addDoc(
+      collection(db,"registrations"),
+      registration
     );
 
-    const snapshot = await getDocs(q);
+    showMessage(
+      "registerMessage",
+      "Registration request submitted! Request ID: " + result.id +
+      ". Wait for admin review.",
+      "success"
+    );
 
-    if (snapshot.empty) {
-      $("myRegistrations").innerHTML = "<p>Abhi aapki koi registration nahi hai.</p>";
-      return;
+    await loadUserProfile(currentUser);
+
+    setTimeout(()=>{
+      closeModal("registerModal");
+    },2500);
+
+  }catch(error){
+    console.error("Registration error:",error);
+
+    showMessage(
+      "registerMessage",
+      "Registration failed: " + error.message
+    );
+
+  }finally{
+    button.disabled = false;
+    button.textContent = "Submit Registration";
+  }
+};
+
+// ==========================================
+// REFRESH BUTTON SUPPORT
+// ==========================================
+
+window.refreshTournaments = function(){
+  loadTournaments();
+};
+
+// ==========================================
+// INITIAL LOAD
+// ==========================================
+
+loadTournaments();
+
+
+const {
+  query,
+  where,
+  orderBy,
+  limit
+} = await import(
+  "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js"
+);
+
+// UPI SETTINGS
+const UPI_ID = "9125470027@fam";
+const UPI_NAME = "NAYA INDIA ESPORTS";
+
+// 1 DESI POINT = ₹1
+// Change this rate only if you want a different conversion.
+const POINTS_PER_RUPEE = 1;
+
+let walletTransactions = [];
+let selectedDepositAmount = 0;
+
+// ==========================================
+// WALLET BALANCE
+// ==========================================
+
+window.loadWallet = async function(){
+  if(!currentUser){
+    updateGuestUI();
+    return;
+  }
+
+  try{
+    const userSnap = await getDoc(
+      doc(db,"users",currentUser.uid)
+    );
+
+    if(userSnap.exists()){
+      currentUserData = userSnap.data();
     }
 
-    const rows = snapshot.docs.map(item => ({
-      id: item.id,
+    const points = Number(currentUserData.points || 0);
+
+    document.getElementById("walletBalance").textContent = points;
+    document.getElementById("topBalance").textContent = points;
+    document.getElementById("profilePoints").textContent = points;
+
+    await loadTransactions();
+
+  }catch(error){
+    console.error("Wallet loading error:",error);
+    alert("Wallet could not be loaded: " + error.message);
+  }
+};
+
+// ==========================================
+// OPEN DEPOSIT
+// ==========================================
+
+window.openDeposit = function(){
+  if(!currentUser){
+    alert("Please login to add money.");
+    openAuth("login");
+    return;
+  }
+
+  selectedDepositAmount = 0;
+
+  document.getElementById("depositAmount").value = "";
+  document.getElementById("depositPoints").textContent = "0";
+  showMessage("depositMessage","");
+
+  openModal("depositModal");
+};
+
+// ==========================================
+// SELECT DEPOSIT AMOUNT
+// ==========================================
+
+window.selectDeposit = function(amount){
+  selectedDepositAmount = Number(amount);
+
+  document.getElementById("depositAmount").value = amount;
+
+  updateDepositPoints();
+};
+
+window.updateDepositPoints = function(){
+  const amount = Number(
+    document.getElementById("depositAmount").value
+  );
+
+  selectedDepositAmount = amount;
+
+  const points = Math.floor(
+    amount * POINTS_PER_RUPEE
+  );
+
+  document.getElementById("depositPoints").textContent =
+    points > 0 ? points : 0;
+};
+
+// ==========================================
+// SHOW UPI PAYMENT DETAILS
+// ==========================================
+
+window.showUPIPayment = function(){
+  if(!currentUser){
+    alert("Please login first.");
+    return;
+  }
+
+  const amount = Number(
+    document.getElementById("depositAmount").value
+  );
+
+  if(!Number.isFinite(amount) || amount < 1 || amount > 100000){
+    showMessage(
+      "depositMessage",
+      "Enter an amount between ₹1 and ₹100000."
+    );
+    return;
+  }
+
+  selectedDepositAmount = amount;
+
+  const upiLink =
+    "upi://pay?pa=" + encodeURIComponent(UPI_ID) +
+    "&pn=" + encodeURIComponent(UPI_NAME) +
+    "&am=" + amount +
+    "&cu=INR" +
+    "&tn=" + encodeURIComponent("NAYA INDIA ESPORTS Deposit");
+
+  document.getElementById("upiAmount").textContent = "₹" + amount;
+
+  document.getElementById("upiID").textContent = UPI_ID;
+
+  document.getElementById("openUPIApp").onclick = function(){
+    window.location.href = upiLink;
+  };
+
+  document.getElementById("upiPaymentSection").style.display = "block";
+
+  showMessage(
+    "depositMessage",
+    "Pay using the UPI ID above, then enter your UTR number.",
+    "success"
+  );
+};
+
+// ==========================================
+// COPY UPI ID
+// ==========================================
+
+window.copyUPI = async function(){
+  try{
+    await navigator.clipboard.writeText(UPI_ID);
+    alert("UPI ID copied: " + UPI_ID);
+  }catch(error){
+    prompt("Copy this UPI ID:",UPI_ID);
+  }
+};
+
+// ==========================================
+// SUBMIT UTR / PAYMENT REQUEST
+// ==========================================
+
+window.submitDepositUTR = async function(){
+  if(!currentUser){
+    alert("Please login first.");
+    return;
+  }
+
+  const amount = Number(
+    document.getElementById("depositAmount").value
+  );
+
+  const utr = document.getElementById("depositUTR").value.trim();
+
+  if(!Number.isFinite(amount) || amount < 1 || amount > 100000){
+    showMessage("depositMessage","Invalid deposit amount.");
+    return;
+  }
+
+  if(utr.length < 8){
+    showMessage(
+      "depositMessage",
+      "Please enter a valid UTR number (at least 8 characters)."
+    );
+    return;
+  }
+
+  const button = document.getElementById("submitDepositButton");
+
+  button.disabled = true;
+  button.textContent = "Submitting...";
+
+  try{
+    const pointsRequested = Math.floor(
+      amount * POINTS_PER_RUPEE
+    );
+
+    await addDoc(collection(db,"payments"),{
+      userId:currentUser.uid,
+      userEmail:currentUser.email || "",
+      amount:amount,
+      utr:utr,
+      type:"deposit",
+      pointsRequested:pointsRequested,
+      status:"pending",
+      createdAt:serverTimestamp()
+    });
+
+    document.getElementById("depositUTR").value = "";
+
+    showMessage(
+      "depositMessage",
+      "Payment request submitted! Your points will be credited after admin approval.",
+      "success"
+    );
+
+    await loadTransactions();
+
+  }catch(error){
+    console.error("Deposit request error:",error);
+
+    showMessage(
+      "depositMessage",
+      "Request failed: " + error.message
+    );
+
+  }finally{
+    button.disabled = false;
+    button.textContent = "Submit Payment Request";
+  }
+};
+
+// ==========================================
+// LOAD TRANSACTION HISTORY
+// ==========================================
+
+window.loadTransactions = async function(){
+  if(!currentUser) return;
+
+  const list = document.getElementById("transactionList");
+
+  if(list){
+    list.innerHTML = "<p>Loading transactions...</p>";
+  }
+
+  try{
+    const transactionsQuery = query(
+      collection(db,"payments"),
+      where("userId","==",currentUser.uid),
+      orderBy("createdAt","desc"),
+      limit(50)
+    );
+
+    const snapshot = await getDocs(transactionsQuery);
+
+    walletTransactions = snapshot.docs.map(item=>({
+      id:item.id,
       ...item.data()
     }));
 
-    $("myRegistrations").innerHTML = rows.map(item => `
-      <div class="registration-row">
-        <h4>${escapeHTML(item.tournamentName || "Tournament")}</h4>
-        <p>Game: ${escapeHTML(item.game || "-")}</p>
-        <p>Entry Fee: ${money(item.entryFee)}</p>
-        <p>Registration: <strong>${escapeHTML(item.status || "pending")}</strong></p>
-        <p>Payment: <strong>${escapeHTML(item.paymentStatus || "pending")}</strong></p>
+    renderTransactions();
+
+  }catch(error){
+    console.error("Transaction history error:",error);
+
+    if(list){
+      list.innerHTML =
+        "<p>Unable to load transaction history. Check Firestore permissions or index.</p>";
+    }
+  }
+};
+
+// ==========================================
+// RENDER TRANSACTIONS
+// ==========================================
+
+function renderTransactions(){
+  const list = document.getElementById("transactionList");
+  if(!list) return;
+
+  if(walletTransactions.length === 0){
+    list.innerHTML =
+      '<div class="card empty">No transactions yet.</div>';
+    return;
+  }
+
+  list.innerHTML = walletTransactions.map(t=>{
+    let date = "Date unavailable";
+
+    if(t.createdAt && t.createdAt.toDate){
+      date = t.createdAt.toDate().toLocaleString("en-IN");
+    }
+
+    const status = String(t.status || "pending").toLowerCase();
+
+    const statusColor =
+      status === "approved" ? "#22c55e" :
+      status === "rejected" ? "#ef4444" :
+      "#f59e0b";
+
+    const amount = Number(t.amount || 0);
+
+    return `
+      <div class="card transaction-card">
+        <div class="transaction-meta">
+          <strong>${safeText(t.type || "Deposit")}</strong>
+          <strong>₹${amount}</strong>
+        </div>
+
+        <p>UTR: ${safeText(t.utr || "N/A")}</p>
+        <p>Date: ${safeText(date)}</p>
+
+        <p style="color:${statusColor};font-weight:700">
+          ${safeText(status.toUpperCase())}
+        </p>
+
+        ${
+          status === "approved"
+          ? `<p>Points credited: ${safeText(t.pointsRequested || amount)}</p>`
+          : ""
+        }
+      </div>
+    `;
+  }).join("");
+}
+
+// ==========================================
+// REFRESH WALLET
+// ==========================================
+
+window.refreshWallet = function(){
+  loadWallet();
+};
+
+// ==========================================
+// ADD MISSING WALLET PAYMENT ELEMENTS
+// ==========================================
+
+const depositBox = document.querySelector("#depositModal .modal-box");
+
+if(depositBox && !document.getElementById("upiPaymentSection")){
+  const paymentSection = document.createElement("div");
+
+  paymentSection.innerHTML = `
+    <div id="upiPaymentSection" style="display:none">
+      <div class="card" style="text-align:center">
+        <h3>Pay Using UPI</h3>
+        <div style="font-size:30px;font-weight:900;color:#7c91ff" id="upiAmount">₹0</div>
+        <p class="muted">UPI ID</p>
+        <h3 id="upiID">${UPI_ID}</h3>
+        <button class="secondary-btn full" onclick="copyUPI()">Copy UPI ID</button>
+        <br><br>
+        <button class="primary-btn full" id="openUPIApp">Open UPI App</button>
+      </div>
+      <div class="field">
+        <label>UTR / Transaction Reference Number</label>
+        <input id="depositUTR" placeholder="Enter your UTR number">
+      </div>
+      <button class="primary-btn full" id="submitDepositButton" onclick="submitDepositUTR()">
+        Submit Payment Request
+      </button>
+    </div>
+  `;
+
+  const amountField = document.getElementById("depositAmount");
+
+  if(amountField){
+    amountField.parentElement.after(paymentSection);
+  }else{
+    depositBox.appendChild(paymentSection);
+  }
+}
+
+if(depositBox && !document.getElementById("depositPoints")){
+  const pointsInfo = document.createElement("p");
+  pointsInfo.innerHTML =
+    'You will receive <b id="depositPoints">0</b> points after approval.';
+  pointsInfo.className = "muted";
+
+  const amountField = document.getElementById("depositAmount");
+  if(amountField) amountField.parentElement.after(pointsInfo);
+}
+
+const depositInput = document.getElementById("depositAmount");
+if(depositInput){
+  depositInput.addEventListener("input",updateDepositPoints);
+}
+
+// ==========================================
+// CREATE EXTRA PAGES
+// ==========================================
+
+function createExtraPage(id,title,content){
+  if(document.getElementById(id+"Page")) return;
+
+  const section = document.createElement("section");
+  section.className = "page";
+  section.id = id+"Page";
+
+  section.innerHTML = `
+    <h2 class="section-title">${title}</h2>
+    ${content}
+  `;
+
+  document.querySelector("main.container").appendChild(section);
+}
+
+createExtraPage(
+  "teams",
+  "👥 Explore Teams",
+  `
+  <div class="card">
+    <h3>Create Your Team</h3>
+    <div class="field">
+      <label>Team Name</label>
+      <input id="newTeamName" placeholder="Enter team name">
+    </div>
+    <div class="field">
+      <label>Game</label>
+      <select id="newTeamGame">
+        <option>BGMI</option>
+        <option>Free Fire MAX</option>
+        <option>Valorant</option>
+        <option>COD Mobile</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Team Description</label>
+      <textarea id="newTeamDescription" placeholder="About your team"></textarea>
+    </div>
+    <button class="primary-btn full" onclick="createTeam()">Create Team</button>
+    <div id="teamMessage" class="message"></div>
+  </div>
+  <h3 class="sub-title">Available Teams</h3>
+  <div id="teamsList" class="card">
+    <div class="empty">Loading teams...</div>
+  </div>
+  `
+);
+
+// Add Teams option in Account menu
+const accountMenu = document.querySelector("#profilePage .card");
+
+if(accountMenu && !document.getElementById("teamsAccountButton")){
+  const teamButton = document.createElement("button");
+  teamButton.id = "teamsAccountButton";
+  teamButton.className = "secondary-btn full";
+  teamButton.textContent = "👥 Explore Teams";
+  teamButton.onclick = ()=>showPage("teams");
+  accountMenu.appendChild(teamButton);
+}
+
+// ==========================================
+// LOAD MY MATCHES / REGISTRATIONS
+// ==========================================
+
+window.loadMyMatches = async function(){
+  const list = document.getElementById("myMatchesList");
+
+  if(!currentUser){
+    list.innerHTML = `
+      <div class="empty">Please login to see your tournaments.</div>
+      <button class="primary-btn full" onclick="openAuth('login')">Login</button>
+    `;
+    return;
+  }
+
+  list.innerHTML = '<div class="empty">Loading your registrations...</div>';
+
+  try{
+    const snapshot = await getDocs(
+      query(
+        collection(db,"registrations"),
+        where("userId","==",currentUser.uid)
+      )
+    );
+
+    const records = snapshot.docs.map(d=>({
+      id:d.id,
+      ...d.data()
+    }));
+
+    if(!records.length){
+      list.innerHTML = '<div class="empty">You have not joined any tournament yet.</div>';
+      return;
+    }
+
+    list.innerHTML = records.map(r=>`
+      <div class="card">
+        <h3>${safeText(r.tournamentName || "Tournament")}</h3>
+        <p class="muted">${safeText(r.game || "Game")}</p>
+        <div class="detail-row">
+          <span>Player</span>
+          <strong>${safeText(r.playerName || "")}</strong>
+        </div>
+        <div class="detail-row">
+          <span>Registration Status</span>
+          <strong>${safeText(r.status || "pending").toUpperCase()}</strong>
+        </div>
+        <div class="detail-row">
+          <span>Payment Status</span>
+          <strong>${safeText(r.paymentStatus || "Not updated")}</strong>
+        </div>
+        <div class="detail-row">
+          <span>Entry Fee</span>
+          <strong>₹${safeText(r.amount || 0)}</strong>
+        </div>
       </div>
     `).join("");
 
-  } catch (error) {
+  }catch(error){
     console.error(error);
-    $("myRegistrations").innerHTML = "<p>Registrations load nahi ho paayi.</p>";
+    list.innerHTML =
+      '<div class="empty">Unable to load registrations. Check Firestore rules.</div>';
   }
+};
+
+// ==========================================
+// CREATE TEAM
+// ==========================================
+
+window.createTeam = async function(){
+  if(!currentUser){
+    alert("Please login to create a team.");
+    openAuth("login");
+    return;
+  }
+
+  const name = document.getElementById("newTeamName").value.trim();
+  const game = document.getElementById("newTeamGame").value;
+  const description =
+    document.getElementById("newTeamDescription").value.trim();
+
+  if(name.length < 3){
+    showMessage("teamMessage","Team name must have at least 3 characters.");
+    return;
+  }
+
+  try{
+    await addDoc(collection(db,"teams"),{
+      name:name,
+      game:game,
+      description:description,
+      captainId:currentUser.uid,
+      captainName:currentUserData.name || currentUser.displayName || "Player",
+      members:[currentUser.uid],
+      createdAt:serverTimestamp(),
+      status:"active"
+    });
+
+    showMessage("teamMessage","Team created successfully!","success");
+
+    document.getElementById("newTeamName").value = "";
+    document.getElementById("newTeamDescription").value = "";
+
+    loadTeams();
+
+  }catch(error){
+    console.error(error);
+    showMessage(
+      "teamMessage",
+      "Team creation failed: " + error.message
+    );
+  }
+};
+
+// ==========================================
+// LOAD TEAMS
+// ==========================================
+
+window.loadTeams = async function(){
+  const list = document.getElementById("teamsList");
+  if(!list) return;
+
+  list.innerHTML = '<div class="empty">Loading teams...</div>';
+
+  try{
+    const snapshot = await getDocs(collection(db,"teams"));
+
+    if(snapshot.empty){
+      list.innerHTML = '<div class="empty">No teams available yet.</div>';
+      return;
+    }
+
+    list.innerHTML = snapshot.docs.map(d=>{
+      const t = d.data();
+
+      return `
+        <div class="card">
+          <h3>🏆 ${safeText(t.name || "Unnamed Team")}</h3>
+          <p class="muted">${safeText(t.game || "Game")}</p>
+          <p>${safeText(t.description || "No description")}</p>
+          <div class="detail-row">
+            <span>Captain</span>
+            <strong>${safeText(t.captainName || "Player")}</strong>
+          </div>
+          <div class="detail-row">
+            <span>Members</span>
+            <strong>${Array.isArray(t.members) ? t.members.length : 1}</strong>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+  }catch(error){
+    console.error(error);
+    list.innerHTML =
+      '<div class="empty">Teams could not load. Firestore teams read permission may be missing.</div>';
+  }
+};
+
+// ==========================================
+// LEADERBOARD
+// ==========================================
+
+window.loadLeaderboard = async function(){
+  const list = document.getElementById("leaderboardList");
+
+  list.innerHTML = '<div class="empty">Loading leaderboard...</div>';
+
+  try{
+    const snapshot = await getDocs(
+      query(collection(db,"users"),limit(50))
+    );
+
+    const players = snapshot.docs.map(d=>({
+      id:d.id,
+      ...d.data()
+    }));
+
+    players.sort((a,b)=>
+      Number(b.points || 0)-Number(a.points || 0)
+    );
+
+    if(!players.length){
+      list.innerHTML = '<div class="empty">No players found.</div>';
+      return;
+    }
+
+    list.innerHTML = players.map((p,index)=>`
+      <div class="detail-row">
+        <strong>
+          ${index===0?"🥇":index===1?"🥈":index===2?"🥉":"#"+(index+1)}
+          ${safeText(p.name || p.username || "Player")}
+        </strong>
+        <strong>${safeText(p.points || 0)} Points</strong>
+      </div>
+    `).join("");
+
+    const preview = document.getElementById("homeLeaderboard");
+
+    if(preview){
+      preview.innerHTML = players.slice(0,3).map((p,i)=>`
+        <div class="detail-row">
+          <strong>#${i+1} ${safeText(p.name || "Player")}</strong>
+          <strong>${safeText(p.points || 0)} pts</strong>
+        </div>
+      `).join("");
+    }
+
+    document.getElementById("homePlayerCount").textContent =
+      players.length;
+
+  }catch(error){
+    console.error(error);
+    list.innerHTML =
+      '<div class="empty">Leaderboard is unavailable. Firestore user-list read permission may be missing.</div>';
+  }
+};
+
+// ==========================================
+// NEWS & ANNOUNCEMENTS
+// ==========================================
+
+window.loadNews = async function(){
+  const list = document.getElementById("newsList");
+
+  list.innerHTML = '<div class="empty">Loading news...</div>';
+
+  try{
+    const snapshot = await getDocs(
+      query(collection(db,"news"),limit(30))
+    );
+
+    if(snapshot.empty){
+      list.innerHTML = '<div class="empty">No news or announcements yet.</div>';
+      return;
+    }
+
+    list.innerHTML = snapshot.docs.map(d=>{
+      const n = d.data();
+
+      return `
+        <div class="card">
+          <span class="tag">${safeText(n.category || "Announcement")}</span>
+          <h3>${safeText(n.title || "Esports Update")}</h3>
+          <p class="muted">${safeText(n.description || n.content || "")}</p>
+        </div>
+      `;
+    }).join("");
+
+  }catch(error){
+    console.error(error);
+    list.innerHTML =
+      '<div class="empty">News is not available yet.</div>';
+  }
+};
+
+// ==========================================
+// NOTIFICATIONS
+// ==========================================
+
+window.loadNotifications = async function(){
+  const list = document.getElementById("notificationList");
+
+  if(!currentUser){
+    list.innerHTML = `
+      <div class="empty">Login to view your notifications.</div>
+      <button class="primary-btn full" onclick="openAuth('login')">Login</button>
+    `;
+    return;
+  }
+
+  list.innerHTML = '<div class="empty">Loading notifications...</div>';
+
+  try{
+    const snapshot = await getDocs(
+      query(
+        collection(db,"notifications"),
+        where("userId","==",currentUser.uid),
+        limit(50)
+      )
+    );
+
+    if(snapshot.empty){
+      list.innerHTML = '<div class="empty">No notifications yet.</div>';
+      return;
+    }
+
+    list.innerHTML = snapshot.docs.map(d=>{
+      const n = d.data();
+
+      return `
+        <div class="card">
+          <h3>🔔 ${safeText(n.title || "Notification")}</h3>
+          <p class="muted">${safeText(n.message || "")}</p>
+          <small class="muted">${safeText(n.status || "New")}</small>
+        </div>
+      `;
+    }).join("");
+
+  }catch(error){
+    console.error(error);
+    list.innerHTML =
+      '<div class="empty">Unable to load notifications. Check Firestore rules.</div>';
+  }
+};
+
+// ==========================================
+// LOAD TEAMS WHEN PAGE OPENS
+// ==========================================
+
+const originalShowPage = window.showPage;
+
+window.showPage = function(page){
+  originalShowPage(page);
+
+  if(page === "teams"){
+    loadTeams();
+  }
+};
+
+// CREATE EXTRA INFORMATION PAGES
+function addInfoPage(id, title, content) {
+  const pageId = id + "Page";
+
+  if (document.getElementById(pageId)) return;
+
+  const page = document.createElement("section");
+  page.id = pageId;
+  page.className = "page";
+
+  page.innerHTML = `
+    <div class="section-heading">
+      <h2>${title}</h2>
+    </div>
+    <div class="card">
+      ${content}
+    </div>
+  `;
+
+  const container =
+    document.querySelector("main") ||
+    document.body;
+
+  container.appendChild(page);
 }
 
-/* INITIAL LOAD */
-loadTournaments();
+addInfoPage(
+  "about",
+  "About Us",
+  `<p>Welcome to NAYA INDIA ESPORTS.</p>
+   <p>Our platform helps gamers discover tournaments,
+   register for competitions and track their esports activity.</p>`
+);
+
+addInfoPage(
+  "contact",
+  "Contact Us",
+  `<p>For support and queries, contact our team.</p>
+   <p>Email: nayaindiaesports@gmail.com</p>
+   <p>UPI: 9125470027@fam</p>`
+);
+
+addInfoPage(
+  "faq",
+  "Frequently Asked Questions",
+  `<h3>How can I join a tournament?</h3>
+   <p>Login, open Tournaments and select a tournament to register.</p>
+   <h3>How can I add wallet points?</h3>
+   <p>Open Wallet, submit your payment UTR and wait for admin approval.</p>
+   <h3>Where can I see my registrations?</h3>
+   <p>Open Account and select My Matches.</p>`
+);
+
+addInfoPage(
+  "privacy",
+  "Privacy Policy",
+  `<p>Your account information is used to operate the esports platform.</p>
+   <p>Do not share your password or payment details with anyone.</p>
+   <p>Contact the platform team for privacy-related questions.</p>`
+);
+
+addInfoPage(
+  "terms",
+  "Terms & Conditions",
+  `<p>Users must provide accurate registration details.</p>
+   <p>Tournament participation is subject to the tournament rules.</p>
+   <p>Fake entries and misuse of the platform may result in account restrictions.</p>
+   <p>Wallet deposits require admin verification.</p>`
+);
+
+
+// CREATE MENU BUTTON
+(function createMainMenu() {
+
+  const topActions = document.querySelector(".top-actions");
+
+  if (!topActions) return;
+
+  if (document.getElementById("mainMenuButton")) return;
+
+  const menuButton = document.createElement("button");
+
+  menuButton.id = "mainMenuButton";
+  menuButton.className = "icon-btn";
+  menuButton.type = "button";
+  menuButton.textContent = "☰";
+  menuButton.title = "Menu";
+
+  menuButton.style.fontSize = "20px";
+
+  topActions.prepend(menuButton);
+
+  menuButton.addEventListener("click", function() {
+    const menu = document.getElementById("mainMenuOverlay");
+
+    if (menu) {
+      menu.style.display =
+        menu.style.display === "flex" ? "none" : "flex";
+    }
+  });
+
+})();
+
+
+// CREATE MENU OVERLAY
+(function createMenuOverlay() {
+
+  if (document.getElementById("mainMenuOverlay")) return;
+
+  const overlay = document.createElement("div");
+
+  overlay.id = "mainMenuOverlay";
+
+  overlay.style.cssText = `
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:rgba(0,0,0,.75);
+    align-items:flex-start;
+    justify-content:flex-end;
+    padding:12px;
+  `;
+
+  overlay.innerHTML = `
+    <div style="
+      background:#111827;
+      color:#fff;
+      width:290px;
+      max-width:90%;
+      max-height:90vh;
+      overflow:auto;
+      border:1px solid #303b52;
+      border-radius:16px;
+      padding:18px;
+    ">
+
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:15px;
+      ">
+        <h2 style="margin:0">NAYA INDIA ESPORTS</h2>
+        <button id="closeMainMenu"
+          style="font-size:24px;background:none;color:white;border:0">
+          ×
+        </button>
+      </div>
+
+      <div id="mainMenuLinks"></div>
+
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const links = [
+    ["Home","home"],
+    ["Tournaments","tournaments"],
+    ["Teams","teams"],
+    ["Leaderboard","leaderboard"],
+    ["Wallet","wallet"],
+    ["My Matches","myMatches"],
+    ["Account","profile"],
+    ["Edit Profile","editProfile"],
+    ["News & Updates","news"],
+    ["Notifications","notifications"],
+    ["Settings","settings"],
+    ["About Us","about"],
+    ["Contact Us","contact"],
+    ["FAQ","faq"],
+    ["Privacy Policy","privacy"],
+    ["Terms & Conditions","terms"]
+  ];
+
+  const linkContainer =
+    document.getElementById("mainMenuLinks");
+
+  links.forEach(function(item) {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.textContent = item[0];
+
+    button.style.cssText = `
+      display:block;
+      width:100%;
+      text-align:left;
+      padding:12px;
+      margin:5px 0;
+      background:#1b263b;
+      color:white;
+      border:1px solid #303b52;
+      border-radius:9px;
+      font-size:14px;
+    `;
+
+    button.addEventListener("click", function() {
+
+      overlay.style.display = "none";
+
+      if (typeof window.showPage === "function") {
+        window.showPage(item[1]);
+      }
+
+    });
+
+    linkContainer.appendChild(button);
+
+  });
+
+  document
+    .getElementById("closeMainMenu")
+    .addEventListener("click", function() {
+      overlay.style.display = "none";
+    });
+
+  overlay.addEventListener("click", function(event) {
+    if (event.target === overlay) {
+      overlay.style.display = "none";
+    }
+  });
+
+})();
+
+
+// CONNECT EXTRA PAGE NAVIGATION
+(function connectExtraPages() {
+
+  const originalShowPage = window.showPage;
+
+  if (typeof originalShowPage !== "function") return;
+
+  const extraPages = [
+    "about",
+    "contact",
+    "faq",
+    "privacy",
+    "terms"
+  ];
+
+  window.showPage = function(page) {
+
+    originalShowPage(page);
+
+    extraPages.forEach(function(name) {
+      const element =
+        document.getElementById(name + "Page");
+
+      if (element) {
+        element.style.display =
+          page === name ? "block" : "none";
+      }
+    });
+
+    const menu =
+      document.getElementById("mainMenuOverlay");
+
+    if (menu) menu.style.display = "none";
+
+  };
+
+})();
+
+
+// CONNECT BOTTOM NAVIGATION
+document.querySelectorAll("[data-page]").forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const page = button.getAttribute("data-page");
+
+    if (typeof window.showPage === "function") {
+      window.showPage(page);
+    }
+
+  });
+
+});
+
+
+// LOAD DATA WHEN USER OPENS A PAGE
+(function connectPageLoading() {
+
+  const originalShowPage = window.showPage;
+
+  if (typeof originalShowPage !== "function") return;
+
+  window.showPage = function(page) {
+
+    originalShowPage(page);
+
+    if (page === "wallet" && window.loadWallet) {
+      window.loadWallet();
+    }
+
+    if (page === "myMatches" && window.loadMyMatches) {
+      window.loadMyMatches();
+    }
+
+    if (page === "teams" && window.loadTeams) {
+      window.loadTeams();
+    }
+
+    if (page === "leaderboard" && window.loadLeaderboard) {
+      window.loadLeaderboard();
+    }
+
+    if (page === "news" && window.loadNews) {
+      window.loadNews();
+    }
+
+    if (page === "notifications" && window.loadNotifications) {
+      window.loadNotifications();
+    }
+
+  };
+
+})();
+
+
+// REFRESH BUTTON
+window.refreshAppData = async function() {
+
+  try {
+
+    if (window.loadTournaments) {
+      await window.loadTournaments();
+    }
+
+    if (window.loadWallet && window.currentUser) {
+      await window.loadWallet();
+    }
+
+    if (window.loadMyMatches && window.currentUser) {
+      await window.loadMyMatches();
+    }
+
+    if (window.loadTeams) {
+      await window.loadTeams();
+    }
+
+    showMessage("App data refreshed successfully.");
+
+  } catch(error) {
+
+    console.error("Refresh error:", error);
+
+    showMessage("Refresh failed. Please try again.");
+
+  }
+
+};
+
+
+// INITIAL APP STARTUP
+console.log("NAYA INDIA ESPORTS initialized.");
+
+if (window.loadTournaments) {
+  window.loadTournaments();
+}
+ 
 </script>
 
 </body>
